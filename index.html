@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>لوحة الرموز</title>
- <link rel="stylesheet" href="style.css">
- <meta name="color-scheme" content="light">
- <style>
-   @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji:wght@300..700&display=swap');
- </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة الرموز</title>
+  
+  <!-- ملف CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- دعم الألوان -->
+  <meta name="color-scheme" content="light">
+
+  <!-- أيقونات الموقع -->
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+
+  <!-- ملف manifest لتطبيق ويب -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- خط الرموز -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji:wght@300..700&display=swap');
+  </style>
 </head>
 <body>
   <!-- القسم العلوي الثابت -->
@@ -52,7 +65,7 @@
     <div id="saved-texts"></div>
   </div>
 
-  <!-- نافذة التحرير -->  <!--<h5>تحرير النص</h5>-->
+  <!-- نافذة التحرير -->
   <div id="edit-modal" class="edit-modal">
     <textarea id="edit-textarea" class="edit-textarea" placeholder="اكتب النص هنا..."></textarea>
     <div class="modal-actions">
@@ -63,7 +76,8 @@
 
   <div id="global-dropdown-menu" class="dropdown-menu" style="display:none;"></div>
   <div id="main-dropdown-menu" class="dropdown-menu" style="display:none;"></div>
+  
+  <!-- ملف جافاسكربت -->
   <script src="script.js"></script>
 </body>
 </html>
-
