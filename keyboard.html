@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>لوحة الرموز</title>
+ <link rel="stylesheet" href="style.css">
+ <meta name="color-scheme" content="light">
+ <style>
+   @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji:wght@300..700&display=swap');
+ </style>
+</head>
+<body>
+  <!-- القسم العلوي الثابت -->
+  <div id="top-section">
+    <!-- المربع العلوي (يدعم عدة أسطر) -->
+    <textarea id="display-box" placeholder="النص المكتوب عند الضغط على الرمز"></textarea>
+
+    <!-- أزرار التحكم -->
+    <div id="control-buttons">
+      <button id="redo-btn" class="control-btn action-btn">إعادة</button>
+      <button id="undo-btn" class="control-btn action-btn">تراجع</button>
+      <button id="save-btn" class="control-btn save-btn">حفظ✅</button>
+    </div>
+
+    <!-- زر القائمة الطافي -->
+    <button id="more-options-btn">⋮⋮</button>
+
+    <!-- الجدول الصغير -->
+    <div id="tabs-container">
+      <table id="keywords">
+        <tr>
+          <td data-board="board1">لفات</td>
+          <td data-board="board2">شحطات</td>
+          <td data-board="board3">عكس</td>
+          <td data-board="board4">دوائر ومربعات</td>
+          <td data-board="board5">نجوم</td>
+          <td data-board="board6">يسار</td>
+          <td data-board="board7">الأعمال</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- حاوية محتوى التبويبات -->
+  <div id="board-content-section">
+    <div id="board-content"></div>
+  </div>
+
+  <!-- منطقة عرض النصوص المحفوظة -->
+  <div id="works-section">
+    <div id="saved-texts"></div>
+  </div>
+
+  <!-- نافذة التحرير -->  <!--<h5>تحرير النص</h5>-->
+  <div id="edit-modal" class="edit-modal">
+    <textarea id="edit-textarea" class="edit-textarea" placeholder="اكتب النص هنا..."></textarea>
+    <div class="modal-actions">
+      <button id="save-edit-btn" class="modal-btn save-btn">حفظ التعديل</button>
+      <button id="cancel-edit-btn" class="modal-btn cancel-btn">إلغاء</button>
+    </div>
+  </div>
+
+  <div id="global-dropdown-menu" class="dropdown-menu" style="display:none;"></div>
+  <div id="main-dropdown-menu" class="dropdown-menu" style="display:none;"></div>
+  <script src="script.js"></script>
+</body>
+</html>

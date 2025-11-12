@@ -1,0 +1,503 @@
+body {
+   font-family: Tahoma, Arial, sans-serif;
+   direction: ltr;
+   text-align: center;
+   margin: 10px; /* ضبط مربع النص من الجوانب والاعلى*/
+}
+
+#top-section {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+}
+
+#display-box {
+   display: flex;
+   justify-content: flex-start;
+   border: 1px solid #dbdbdb;
+   padding: 8px 10px;
+   font-family: "Noto Color Emoji", "Segoe UI Emoji", "Apple Color Emoji", "Segoe UI Symbol", "Android Emoji", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+   font-size: 16px; /* حجم النص المكتوب خطأ*/
+   font-weight: normal;
+   color: #262626;
+   line-height: 18px;/*ارتفاع مربع الكتابة مع تباعد الاسطر مهمة جدا*/
+   margin-bottom: 1px; /* المسافة بين مربع الادخال وحفظ*/
+   width: 73%; /* عرض مربع الكتابة*/
+   max-width: 600px;
+   min-height: 80px;/* ارتفاع مربع الكتابة*/
+   resize: vertical;
+   border-radius: 16px;
+   background: #fff;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   text-rendering: optimizeLegibility;
+
+  /* الكتابة من اليسار لليمين */
+   direction: ltr;
+   text-align: left;
+}
+
+/* أزرار التحكم غلط */
+#control-buttons {
+   margin: 0px 100px 0px 0px; 
+   text-align: center;
+   display: flex;
+   flex-wrap: nowrap;
+   justify-content: center;
+   position: relative; /* لجعل الزر الطافي يتموضع نسبة له */
+}
+
+.control-btn {
+   padding: 3px 5px; /* طول وعرض مربع أزرار الحفظٍ*/
+   margin: 0 2px; /* تباعد بين ازرار حفظ,تراجع,اعادة*/
+   border: none;
+   border-radius: 5px;
+   font-size: 12px; /* حجم خط حفظ,تراجع,اعادة */
+   font-weight: bold;
+   font-family: Tahoma;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+/*رمز القائمة*/
+#more-options-btn {
+   position: absolute;
+   top: 12%;
+   right: 0px;
+   transform: translateY(-50%);
+   font-size: 20px; /* حجم مثلثات رمز القائمة */
+   padding: 8px 12px; /* حجم الزر من الداخل */
+   border: none;
+   border-radius: 50%; /* زر دائري */
+   background-color: #6aaeeb; /* لون خلفية الزر */
+   color: white;
+   width: 35px; /* عرض ثابت للزر */
+   height: 35px; /* ارتفاع ثابت للزر */
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+   transition: all 0.3s ease;
+   z-index: 10;
+}
+
+#more-options-btn:hover {
+   background-color: #cd7b53; /* لون الخلفية عند التمرير */
+   transform: translateY(-50%) scale(1.1);
+   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.save-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: #218838;
+}
+
+.action-btn {
+  background-color: #7c3988;
+  color: white;
+}
+
+.action-btn:hover {
+  background-color: #5a6268;
+}
+
+/* حاوية محتويات الرموز */
+#board-content-section {
+   margin-top: 1px;
+   padding: 0px; /*تقلص جدول الرموز داخل الحاوية*/
+   border: 2px solid #f37526;
+   border-radius: 10px;
+   background-color: #f9f9f9;
+   position: relative;
+   z-index: 1000;
+   min-height: 250px; /* الارتفاع الأدنى */
+}
+
+#board-content {
+   max-height: 325px; /*  ارتفاع حاوية الجداول الاساسية واللوحات المضافة*/
+   overflow-y: auto;
+}
+
+/* حاوية الأعمال المحفوظة موشغالة */
+#works-section {
+   margin-top: 1px;/*مالها شغل*/
+   padding: 2px;/*مالها شغل*/
+   border: 2px solid #f37526; /* سمك الحاوية الخارجية للاعمال */
+   border-radius: 10px;
+   background-color: #f9f9f9;
+   /* إزالة display: none */
+   position: relative; /* إضافة position */
+   z-index: 1000; /* إضافة z-index */
+}
+
+/* عنوان اللوحة الثابت */
+.board-title {
+  position: fixed;
+  top: 80px;
+  left: 0px;
+  right: auto;
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+   color: white;
+   padding: 2px 3px;
+   margin: 0px 0% 0px 78%;
+   border-radius: 9px 1px 9px 1px;
+   font-size: 14px;
+   font-weight:normal;
+   text-align: -webkit-center;
+   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+   z-index: 10;
+}
+
+#works-section h3 {
+  text-align: center;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+#saved-texts {
+  max-height: 450px; /*اقصى طول لحاوية الاعمال فقط*/
+  overflow-y: auto;
+}
+/* الاعمال المحفوظة في حاويات الاعمال*/
+.saved-text-item {
+   background-color: white;
+   padding: 12px 12px; /* ابتعاد الاعمال عن الزوايا باليسار*/
+   margin: 2px 0; /* ابتعاد مستطيلات الاعمال بين بعضها*/
+   border-radius: 16px;
+   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+   position: relative;
+   border: 1px solid #dbdbdb;
+}
+
+.saved-text-item:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.text-content {
+   margin-bottom: 0px; /* مسافة بين النص والسفل الموجود فيه بالمستطيلات*/
+   white-space: pre-wrap;
+   word-wrap: break-word;
+   line-height: 15px;/*تباعد الاسطر بنفس النص بين بعضها مهمة جدا*/
+   min-height: auto;
+   text-align: left;
+   font-family: "Noto Color Emoji", "Segoe UI Emoji", "Apple Color Emoji", "Segoe UI Symbol", "Android Emoji", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+   font-size: 19px;/* حجم النص المحفوظ*/
+   color: #262626;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   text-rendering: optimizeLegibility;
+}
+
+.text-actions {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+  margin-top: 5px;/*ابتعاد لنص المحفوظ عن السفل,عملياً ارتفاع مستطيلات المحفوظة*/
+}
+
+.menu-btn {
+  width: 24px; /*حجم الزر نفسه لقائمة نسح*/
+  height: 24px;
+  padding: 0;
+  margin: 0 4px;
+  border: none;
+  border-radius: 50%;
+  background-color: #ececec;
+  color: #363636;
+  font-size: 21px;/*تغير حجم 3نقاط الزر نفسه*/
+  font-family: Arial, Tahoma, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.08);
+  transition: background 0.20s, color 0.20s;
+  cursor: pointer;
+  user-select: none;
+}
+.menu-btn:active,
+.menu-btn:focus,
+.menu-btn:hover {
+  background-color: #e2eaff;
+  color: #2978c6;
+  outline: none;
+}
+
+#global-dropdown-menu.dropdown-menu {
+  position: fixed !important;
+  z-index: 2200 !important;
+}
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  min-width: 80px;/*لاتعمل*/
+  border-radius: 8px;
+  z-index: 2222;
+  box-shadow: 0 8px 24px 0 rgba(0,0,0,0.08),0 1.5px 3px 0 rgba(0,0,0,0.03);
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 2px 0;
+  opacity: 1;
+  overflow: hidden;
+  transition: box-shadow 0.15s, opacity 0.15s;
+  border: 2px solid orange !important;
+  background: #fffbe7 !important;
+}
+.dropdown-menu.upward {
+  top: unset;
+  bottom: 100%;
+}
+.dropdown-menu:not(.upward) {
+  top: 100%;
+  bottom: unset;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.dropdown-item {
+  cursor: pointer;
+  padding: 10px 15px;
+  transition: background 0.1s;
+  font-size: 16px;/*لاتعمل*/
+  text-align: right;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fff;
+}
+.dropdown-item:last-child { border-bottom: none; }
+.dropdown-item:hover {
+  background: #f3f7fd;
+  color: #2f80ed;
+}
+
+/*  كلها لاتعمل*/
+.edit-modal {
+  position: fixed;
+  top: 22%;
+  left: 50%;
+  transform: translate(-50%, -22%);  /*نتحكم يدويا بارتفاعها*/
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  z-index: 2000;
+  padding: 20px;
+  width: 400px;
+  max-width: 90vw;
+  display: none;
+}
+
+.edit-modal h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: center;
+}
+/*نافذة تحرير النص كلها لاتعمل*/
+.edit-textarea {
+   width: 90%;
+   min-height: 200px;
+   padding: 8px 12px;
+   border: 1px solid #dbdbdb;
+   border-radius: 16px;
+   font-family: "Noto Color Emoji", "Segoe UI Emoji", "Apple Color Emoji", "Segoe UI Symbol", "Android Emoji", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+   font-size: 14px;
+   color: #262626;
+   line-height: 18px;
+   resize: vertical;
+   margin-bottom: 15px;
+   background: #fff;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   text-rendering: optimizeLegibility;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+/*لاتعمل*/
+.modal-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.save-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: #218838;
+}
+
+.cancel-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #5a6268;
+}
+   /*الجدول الاساسي*/
+table {
+  border-collapse: collapse;
+  margin: 1px auto;/*ابتعاد الجدول الاساسي عن حاويته من فوق*/
+  width: 100%; /* حجم الجدول الاساسي خطأ*/
+  table-layout: fixed;
+}
+/* حاوي التبويبات */
+#tabs-container {
+   width: 100%;
+   height: 50px; /* ارتفاع ثابت للحاوي خطأ */
+   overflow-x: auto; /* تمكين التمرير الأفقي */
+   overflow-y: hidden; /* إخفاء التمرير العمودي */
+   -webkit-overflow-scrolling: touch; /* تمرير سلس على الأجهزة اللمسية */
+   scrollbar-width: thin; /* شريط تمرير رفيع */
+   scrollbar-color: #ccc #f0f0f0; /* لون شريط التمرير */
+   padding-bottom: 7px; /*المسافة بين اسم اللوحات والجداول لتحت*/
+   overscroll-behavior-x: contain; /* منع تمرير الصفحة عند الوصول لنهاية التمرير */
+   position: relative; /* للتحكم في التدفق */
+   flex-shrink: 0; /* منع تقلص الحاوي */
+   touch-action: pan-x; /* السماح بالتمرير الأفقي فقط على الأجهزة اللمسية */
+}
+
+/* إخفاء شريط التمرير للتبويبات */
+#tabs-container::-webkit-scrollbar {
+   display: none; /* إخفاء شريط التمرير */
+}
+
+#tabs-container {
+   -ms-overflow-style: none; /* إخفاء شريط التمرير في IE و Edge */
+   scrollbar-width: none; /* إخفاء شريط التمرير في Firefox */
+}
+
+/*اسماء اللوحات  */
+#keywords {
+   table-layout: auto;
+   width: max-content; /* عرض يتناسب مع المحتوى */
+   margin: 5px 0; /* المسافة بين حفظ واسماء اللوحات وصفر هو بعدهم عن الحافة*/
+   white-space: nowrap; /* منع التفاف النص */
+   position: relative; /* للتحكم في التدفق */
+}
+
+/* تخصيص شريط التمرير للمتصفحات الحديثة */
+#keywords::-webkit-scrollbar {
+   height: 6px; /* ارتفاع شريط التمرير لايعمل */
+}
+
+#keywords::-webkit-scrollbar-track {
+   background: #f0f0f0; /* خلفية شريط التمرير */
+   border-radius: 3px;
+}
+
+#keywords::-webkit-scrollbar-thumb {
+   background: #ccc; /* لون شريط التمرير */
+   border-radius: 3px;
+}
+
+#keywords::-webkit-scrollbar-thumb:hover {
+   background: #aaa; /* لون عند التمرير */
+}
+
+#keywords td {
+   border: none;
+   padding: 12px 18px; /* تكبير الحشوة قليلاً */
+   cursor: pointer;
+   background: #dbd6f5;/*لون مربعات اسماء اللوحات*/
+   font-size: 14px;     /*للكمبيوتر لاتعمل*/
+   font-weight: bold;
+   border-radius: 8px;
+   text-align: center;
+   margin: 0 2px; /* زيادة المسافة بين التبويبات شغالة */
+   box-shadow: 0 0 0 1px #666;/*بوردر ازرار اسماء اللوحات*/
+   transition: background-color 0.3s;
+   display: inline-block; /* جعل الخلايا تتصرف كعناصر inline */
+   white-space: nowrap; /* منع التفاف النص */
+   flex-shrink: 0; /* منع تقلص العناصر */
+}
+
+#keywords td:hover {
+  background: #d1ecf1;
+}
+/*الرموز داخل الجدول الكبير للكمبيوتر */
+#main-board {
+    max-height: 300px; /* حد أقصى للارتفاع */
+    overflow-y: auto; /* تمرير عمودي */
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+#main-board td {
+    border: 1px solid #12741d;/*سمك مربعات الرموز ولونها*/
+    height: 50px;
+    font-size: 20px;/*لايعمل من هون لتحت*/
+    font-weight: normal;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    background: white;
+    border-radius: 8px; /* حواف مستديرة أجمل */
+    margin: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* شادو خفيف */
+    transition: all 0.3s ease; /* انتقال سلس لجميع التأثيرات */
+}
+
+#main-board td:hover {
+    background: #f0f8ff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* شادو أقوى عند التمرير */
+}
+
+/*للجوال موشغالة . الصحيحة بكود جافا*/
+@media (max-width: 600px) {
+    #main-board {
+      max-height: 250px; /* ارتفاع أقل للجوال */
+      padding: 8px;/*مالها شغل*/
+    }
+    #main-board td {
+      height: 40px;/*ارتفاع مربعات الرموز موشغالة*/
+      width: 35px; /* عرض أصغر للجوال */
+      line-height: 35px; /* محاذاة النص عمودياً */
+      font-size: 20px; /* حجم الرموز فقط*/
+      border-radius: 6px; /* حواف مستديرة أصغر للجوال */
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* شادو أخف للجوال */
+      margin: 2px; /* مسافة أصغر بين المربعات */
+    }
+    #main-board td:hover {
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15); /* شادو أقوى عند التمرير للجوال */
+    }
+   #keywords td {
+     font-size: 11px; /* اسماء التبويبات شغالة*/
+     padding:  6px 6px;/*طول وعرض مربع اسماء اللوحات*/
+   }
+   #display-box {
+     font-size: 19px;  /* حجم نص مربع الادخال شغال*/
+    font-family: "Noto Color Emoji", "Segoe UI Emoji", "Apple Color Emoji", "Segoe UI Symbol", "Android Emoji", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+   }
+   #tabs-container {
+     height: 30px; /*  شغالة المسافة بين اسماء اللوحات والجداول تحتهم */
+     touch-action: pan-x; /* السماح بالتمرير الأفقي فقط */
+   }
+}
