@@ -16,22 +16,23 @@ body {
    display: flex;
    justify-content: flex-start;
    border: 1px solid #dbdbdb;
-   padding: 8px 10px;
-   font-family: "Noto Color Emoji", "Segoe UI Emoji", "Apple Color Emoji", "Segoe UI Symbol", "Android Emoji", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+   padding: 8px 10px 5px 10px;
+   font-family: "Noto Color Emoji", "Segoe UI Emoji","system-ui", "Apple Color Emoji",  "Android Emoji", -apple-system, BlinkMacSystemFont,  Roboto, Helvetica, Arial, sans-serif;
    font-size: 16px; /* حجم النص المكتوب خطأ*/
    font-weight: normal;
    color: #262626;
-   line-height: 18px;/*ارتفاع مربع الكتابة مع تباعد الاسطر مهمة جدا*/
+   line-height: 25px;/*ارتفاع مربع الكتابة مع تباعد الاسطر مهمة جدا*/
    margin-bottom: 1px; /* المسافة بين مربع الادخال وحفظ*/
    width: 73%; /* عرض مربع الكتابة*/
    max-width: 600px;
-   min-height: 80px;/* ارتفاع مربع الكتابة*/
+   min-height: 100px;/* ارتفاع مربع الكتابة*/
    resize: vertical;
    border-radius: 16px;
    background: #fff;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
    text-rendering: optimizeLegibility;
+   margin: 1px 1px 1px -5px;
 
   /* الكتابة من اليسار لليمين */
    direction: ltr;
@@ -50,29 +51,29 @@ body {
 
 .control-btn {
    padding: 3px 5px; /* طول وعرض مربع أزرار الحفظٍ*/
-   margin: 0 2px; /* تباعد بين ازرار حفظ,تراجع,اعادة*/
+   margin: 2px 2px; /* تباعد بين ازرار حفظ,تراجع,اعادة*/
    border: none;
    border-radius: 5px;
    font-size: 12px; /* حجم خط حفظ,تراجع,اعادة */
    font-weight: bold;
-   font-family: Tahoma;
+   font-family: system-ui;
    cursor: pointer;
    transition: background-color 0.3s;
 }
 /*رمز القائمة*/
 #more-options-btn {
    position: absolute;
-   top: 12%;
-   right: 0px;
+   top: 5%;
+   right: 13px;
    transform: translateY(-50%);
-   font-size: 20px; /* حجم مثلثات رمز القائمة */
+   font-size: 18px; /* حجم رمز القائمة */
    padding: 8px 12px; /* حجم الزر من الداخل */
    border: none;
    border-radius: 50%; /* زر دائري */
-   background-color: #6aaeeb; /* لون خلفية الزر */
+   background-color: #fcf5ff; /* لون خلفية الزر */
    color: white;
-   width: 35px; /* عرض ثابت للزر */
-   height: 35px; /* ارتفاع ثابت للزر */
+   width: 30px; /* عرض ثابت للزر */
+   height: 30px; /* ارتفاع ثابت للزر */
    display: flex;
    align-items: center;
    justify-content: center;
@@ -83,7 +84,7 @@ body {
 }
 
 #more-options-btn:hover {
-   background-color: #cd7b53; /* لون الخلفية عند التمرير */
+   background-color: #ecebff; /* لون الخلفية عند التمرير */
    transform: translateY(-50%) scale(1.1);
    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
@@ -98,19 +99,26 @@ body {
 }
 
 .action-btn {
-  background-color: #7c3988;
-  color: white;
+  background-color: #f3f7fd;
+  border: 1px solid #1b5771;
+  color: #1b5771;
 }
 
 .action-btn:hover {
-  background-color: #5a6268;
+   background-color: #f3f7fd;
+}
+
+#w-btn {
+   background-color: #f3f7fd !important;
+   border: 1px solid #1b5771 !important;
+   color: #ff0000;
 }
 
 /* حاوية محتويات الرموز */
 #board-content-section {
    margin-top: 1px;
    padding: 0px; /*تقلص جدول الرموز داخل الحاوية*/
-   border: 2px solid #f37526;
+   border: 1.5px solid #1b5771;
    border-radius: 10px;
    background-color: #f9f9f9;
    position: relative;
@@ -138,13 +146,13 @@ body {
 /* عنوان اللوحة الثابت */
 .board-title {
   position: fixed;
-  top: 80px;
+  top: 107px;
   left: 0px;
   right: auto;
    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
    color: white;
    padding: 2px 3px;
-   margin: 0px 0% 0px 78%;
+   margin: 0px 0% 0px 77%;
    border-radius: 9px 1px 9px 1px;
    font-size: 14px;
    font-weight:normal;
@@ -167,30 +175,37 @@ body {
 .saved-text-item {
    background-color: white;
    padding: 12px 12px; /* ابتعاد الاعمال عن الزوايا باليسار*/
-   margin: 2px 0; /* ابتعاد مستطيلات الاعمال بين بعضها*/
-   border-radius: 16px;
+   margin: 3px 3px 3px 3px; /* ابتعاد مستطيلات الاعمال بين بعضها*/
+   border-radius: 10px;
    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
    position: relative;
-   border: 1px solid #dbdbdb;
+   border: 1px solid #1b5771;
 }
 
 .saved-text-item:hover {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+   border-color: #f43f5e !important;
+}
+
+.saved-text-item.highlight {
+   border-color: #f43f5e !important;
+   box-shadow: 0 0 6px #f43f5e !important;
 }
 
 .text-content {
-   margin-bottom: 0px; /* مسافة بين النص والسفل الموجود فيه بالمستطيلات*/
-   white-space: pre-wrap;
-   word-wrap: break-word;
-   line-height: 15px;/*تباعد الاسطر بنفس النص بين بعضها مهمة جدا*/
-   min-height: auto;
-   text-align: left;
-   font-family: "Noto Color Emoji", "Segoe UI Emoji", "Apple Color Emoji", "Segoe UI Symbol", "Android Emoji", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-   font-size: 19px;/* حجم النص المحفوظ*/
-   color: #262626;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
-   text-rendering: optimizeLegibility;
+    margin-bottom: 0px; /* مسافة بين النص والسفل الموجود فيه بالمستطيلات*/
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 25px;/*تباعد الاسطر بنفس النص بين بعضها مهمة جدا*/
+    height: 62px;
+    min-height: 50px;
+    /* text-align: left; /* إزالة هذا السطر ليتم التحكم فيه من JS */
+    font-family: "Noto Color Emoji", "Segoe UI Emoji","system-ui", "Apple Color Emoji", "Android Emoji", -apple-system, BlinkMacSystemFont,  Roboto, Helvetica, Arial, sans-serif;
+    font-size: 19px;/* حجم النص المحفوظ*/
+    color: #262626;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 .text-actions {
@@ -312,7 +327,7 @@ body {
    padding: 8px 12px;
    border: 1px solid #dbdbdb;
    border-radius: 16px;
-   font-family: "Noto Color Emoji", "Segoe UI Emoji", "Apple Color Emoji", "Segoe UI Symbol", "Android Emoji", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+   font-family: "Noto Color Emoji", "Segoe UI Emoji", "Apple Color Emoji", "Segoe UI Symbol", "Android Emoji", -apple-system, BlinkMacSystemFont,  Roboto, Helvetica, Arial, sans-serif;
    font-size: 14px;
    color: #262626;
    line-height: 18px;
@@ -372,7 +387,7 @@ table {
    -webkit-overflow-scrolling: touch; /* تمرير سلس على الأجهزة اللمسية */
    scrollbar-width: thin; /* شريط تمرير رفيع */
    scrollbar-color: #ccc #f0f0f0; /* لون شريط التمرير */
-   padding-bottom: 7px; /*المسافة بين اسم اللوحات والجداول لتحت*/
+   padding-bottom: 12px; /*المسافة بين اسم اللوحات والجداول لتحت*/
    overscroll-behavior-x: contain; /* منع تمرير الصفحة عند الوصول لنهاية التمرير */
    position: relative; /* للتحكم في التدفق */
    flex-shrink: 0; /* منع تقلص الحاوي */
@@ -421,13 +436,15 @@ table {
    border: none;
    padding: 12px 18px; /* تكبير الحشوة قليلاً */
    cursor: pointer;
-   background: #dbd6f5;/*لون مربعات اسماء اللوحات*/
+   background: #f3f7fd;/*لون مربعات اسماء اللوحات*/
+   color: #120176;
    font-size: 14px;     /*للكمبيوتر لاتعمل*/
-   font-weight: bold;
+   /*font-weight: bold;*/
    border-radius: 8px;
+   border: 1px solid rgb(27, 87, 113);
    text-align: center;
    margin: 0 2px; /* زيادة المسافة بين التبويبات شغالة */
-   box-shadow: 0 0 0 1px #666;/*بوردر ازرار اسماء اللوحات*/
+   /*box-shadow: 0 0 0 1px #666;/*بوردر ازرار اسماء اللوحات*/
    transition: background-color 0.3s;
    display: inline-block; /* جعل الخلايا تتصرف كعناصر inline */
    white-space: nowrap; /* منع التفاف النص */
@@ -488,12 +505,12 @@ table {
       box-shadow: 0 3px 6px rgba(0,0,0,0.15); /* شادو أقوى عند التمرير للجوال */
     }
    #keywords td {
-     font-size: 11px; /* اسماء التبويبات شغالة*/
-     padding:  6px 6px;/*طول وعرض مربع اسماء اللوحات*/
+     font-size: 13px; /* اسماء التبويبات شغالة*/
+     padding:  6px 3px;/*طول وعرض مربع اسماء اللوحات*/
    }
    #display-box {
      font-size: 19px;  /* حجم نص مربع الادخال شغال*/
-    font-family: "Noto Color Emoji", "Segoe UI Emoji", "Apple Color Emoji", "Segoe UI Symbol", "Android Emoji", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: "Noto Color Emoji", "Segoe UI Emoji","system-ui", "Apple Color Emoji", "Android Emoji", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
 
    }
    #tabs-container {
