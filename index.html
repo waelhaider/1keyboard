@@ -1,84 +1,157 @@
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>لوحة الرموز</title>
-  
-  <!-- ملف CSS -->
+  <title>الحافظة</title>
+
+  <!-- ⚡ تفعيل Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 🎨 ربط ملف التنسيق -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- دعم الألوان -->
-  <meta name="color-scheme" content="light">
+  <!-- 🧠 ربط ملف السكربت -->
+  <script defer src="script.js"></script>
 
-  <!-- أيقونات الموقع -->
-  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
-
-  <!-- ملف manifest لتطبيق ويب -->
+  <!-- 📱 ربط ملف manifest للتطبيق -->
   <link rel="manifest" href="manifest.json">
-
-  <!-- خط الرموز -->
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji:wght@300..700&display=swap');
-  </style>
 </head>
+
 <body>
-  <!-- القسم العلوي الثابت -->
-  <div id="top-section">
-    <!-- المربع العلوي (يدعم عدة أسطر) -->
-    <textarea id="display-box" dir="ltr" placeholder=" اضغط على الرمز"></textarea>
+<!-- 🧱 انشاء شريط التبويبات في الاعلى -->
+<div id="tabContainer" class="p-2 flex gap-4 border-b z-50"></div>
 
-    <!-- أزرار التحكم -->
-    <div id="control-buttons">
-      <button id="w-btn" class="control-btn">مسافة</button>
-      <button id="redo-btn" class="control-btn action-btn">إعادة</button>
-      <button id="undo-btn" class="control-btn action-btn">تراجع</button>
-      <button id="save-btn" class="control-btn save-btn">حفظ✅</button>
+<!-- ✍️ مربع الإدخال -->
+<!-- هنا تم تقليل الفراغ حول مربع الإدخال للجوال لسهولة التصفح -->
+<div id="textarea" class="pt-0 pb-0 bg-white border-b"></div>
+
+<!-- موقع الكتابة داخل مربع الإدخال -->
+<div id="newNoteInput" contenteditable="true" placeholder="✍️ اكتب ملاحظتك هنا..." class="w-full h-20 p-3 border rounded text-right outline-none resize-none" style="min-height: 80px;"></div>
+
+<!-- input مخفي لاختيار الصورة -->
+<input type="file" id="imageInput" accept="image/*" style="display: none;">
+
+<!-- 🧭شريط التحكم(حفظ.تراجع.اعادة)-مرن على سطر واحد -->
+<div class="pt-[1px] pb-[0px] px-12 bg-#d0c4f6
+border-color-#a25bbc
+border-[0px]
+border-[#a25bbc]
+rounded-[5px]
+flex flex-nowrap gap-1 justify-center w-full"> <!-- تقليل المسافة أعلى واسفل شريط الأزرار + محاذاة للوسط + مسافة جانبية -->
+
+  <button onclick="saveNewNote()" class="tab-btn" style="background-color:#16a34a;color:white;border-color:#16a34a;padding:2px 2px;font-size:14px;">✅ حفظ</button>
+
+  <button onclick="undoNote()" class="tab-btn" style="padding:2px 2px;font-size:14px;">تراجع</button>
+
+  <button onclick="redoNote()" class="tab-btn" style="padding:2px 2px;font-size:14px;">إعادة</button>
+
+  <!-- زر تحميل الصورة -->
+  <button id="uploadImageBtn" class="tab-btn" style="background-color:#a25bbc;color:white;border-color:#9B6C8C;padding:2px 2px;font-size:14px;">📷 تحميل صورة</button>
+
+</div>
+
+<!-- 🗂️ منطقة عرض الملاحظات -->
+<div id="trashHeader" class="p-2 text-center text-lg font-bold text-gray-600" style="display: none;">المحذوفات</div>
+<div id="notesContainer" class="p-2"></div>
+
+<!-- زر العودة لأعلى -->
+<button id="scrollToTopBtn" class="scroll-to-top-btn" onclick="scrollToTop()">🔝</button>
+
+<!-- 📝 نافذة التحرير الكبيرة المنبثقة -->
+<div id="editModal" class="hidden">
+  <!-- زر اغلاق نافذة التحرير خارج الحاوية -->
+  <button onclick="closeEditModal()" class="edit-modal-close-btn">✖</button>
+  <div class="edit-modal-wrapper">
+
+    <!-- محتويات نافذة التحرير-->
+    <div id="editTextarea" contenteditable="true" placeholder="داخل النافذة..." class="edit-textarea"></div>
+
+    <div class="edit-modal-buttons">
+      <button onclick="saveEditedText()" class="edit-save-btn">💾حفظ</button>
+      <button type="button" onclick="undoEditText()" class="edit-undo-btn"> تراجع</button>
+      <button type="button" onclick="redoEditText()" class="edit-redo-btn"> إعادة</button>
+      <!-- أزرار تكبير/تصغير خط في نافذة التحرير -->
+      <button type="button" onclick="increaseEditFont()" class="edit-font-increase-btn">+ معاينة</button>
+      <button type="button" onclick="decreaseEditFont()" class="edit-font-decrease-btn">− معاينة</button>
+      <!-- زر الترجمة -->
+      <button type="button" onclick="translateText()" class="edit-translate-btn">ترجمة</button>
+    </div>
+    </div>
+	</div>
+
+<!-- 🌐 نافذة الترجمة المستقلة -->
+<div id="translateModal" class="hidden translate-modal-overlay">
+  <div class="translate-modal-wrapper">
+    <!--حاوية التبديل بين لغات الترجمة-->
+    <div class="translate-language-controls">
+      <div class="translate-language-selectors">
+        <select id="sourceLangSelect" class="translate-lang-select">
+          <option value="auto">كشف تلقائي</option>
+          <option value="ar">العربية</option>
+          <option value="en">الإنجليزية</option>
+          <option value="fr">الفرنسية</option>
+          <option value="de">الألمانية</option>
+          <option value="es">الإسبانية</option>
+          <option value="it">الإيطالية</option>
+          <option value="pt">البرتغالية</option>
+          <option value="ru">الروسية</option>
+          <option value="zh">الصينية</option>
+          <option value="ja">اليابانية</option>
+          <option value="ko">الكورية</option>
+        </select>
+        <button onclick="swapLanguages()" class="translate-swap-btn">↔️</button>
+        <select id="targetLangSelect" class="translate-lang-select">
+          <option value="ar">العربية</option>
+          <option value="en">الإنجليزية</option>
+          <option value="fr">الفرنسية</option>
+          <option value="de">الألمانية</option>
+          <option value="es">الإسبانية</option>
+          <option value="it">الإيطالية</option>
+          <option value="pt">البرتغالية</option>
+          <option value="ru">الروسية</option>
+          <option value="zh">الصينية</option>
+          <option value="ja">اليابانية</option>
+          <option value="ko">الكورية</option>
+        </select>
+      </div>
+      <button onclick="closeTranslateModal()" class="translate-close-btn">✖</button>
     </div>
 
-    <!-- زر القائمة الطافي -->
-    <button id="more-options-btn">🛠️</button>
+    <!-- حساب ارتفاع نافذة الترجمة  -->
+    <div class="translate-content-container">
+      <!-- حاوية النص الاصلي مع محتواه وكلمة نسخ النص  -->
+      <div class="translate-text-section">
+        <!-- تنسيق كلمة النص الاصلي-->
+        <label class="translate-label">النص الأصلي:</label>
+        <!--  تنسيق حاوية محتويات النص الاصلي-->
+        <textarea id="originalText" class="translate-textarea original-text"></textarea>
+      </div>
+      <!-- حاوية الترجمة مع محتواها وكلمة نسخ الترجمة  -->
+      <div class="translate-text-section">
+        <!-- تنسيق كلمة الترجمة-->
+        <label class="translate-label">الترجمة:</label>
+        <!--  تنسيق حاوية محتويات الترجمة-->
+        <textarea id="translatedText" class="translate-textarea translated-text"></textarea>
+      </div>
+    </div>
 
-    <!-- الجدول الصغير -->
-    <div id="tabs-container">
-      <table id="keywords">
-        <tr>
-          <td data-board="board1">لفات</td>
-          <td data-board="board2">شحطات</td>
-          <td data-board="board3">عكس</td>
-          <td data-board="board4">دوائر ومربعات</td>
-          <td data-board="board5">نجوم</td>
-          <td data-board="board6">يسار</td>
-          <td data-board="board7">الأعمال</td>
-        </tr>
-      </table>
+    <!-- أزرار نافذة الترجمة -->
+    <div class="translate-modal-buttons">
+      <button onclick="copyOriginalText()" class="original-copy-btn">📚 نسخ الأصلي</button>
+      <button onclick="saveTranslationEdit()" class="translate-save-btn">حفظ تعديل الترجمة</button>
+      <button onclick="copyTranslatedText()" class="translated-copy-btn">🧮 نسخ الترجمة</button>
     </div>
   </div>
+</div>
 
-  <!-- حاوية محتوى التبويبات -->
-  <div id="board-content-section">
-    <div id="board-content"></div>
-  </div>
-
-  <!-- منطقة عرض النصوص المحفوظة -->
-  <div id="works-section">
-    <div id="saved-texts"></div>
-  </div>
-
-  <!-- نافذة التحرير -->
-  <div id="edit-modal" class="edit-modal">
-    <textarea id="edit-textarea" class="edit-textarea" placeholder="اكتب النص هنا..."></textarea>
-    <div class="modal-actions">
-      <button id="save-edit-btn" class="modal-btn save-btn">حفظ التعديل</button>
-      <button id="cancel-edit-btn" class="modal-btn cancel-btn">إلغاء</button>
-    </div>
-  </div>
-
-  <div id="global-dropdown-menu" class="dropdown-menu" style="display:none;"></div>
-  <div id="main-dropdown-menu" class="dropdown-menu" style="display:none;"></div>
-  
-  <!-- ملف جافاسكربت -->
-  <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+

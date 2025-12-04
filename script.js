@@ -1,2072 +1,3143 @@
-let boards = {
-
-  board1: [ //لفات
-    ["╔","╗","╭","╮","┏","┓","","",],
-    ["╚","╝","╰","╯","┗","┛","","",],
-    ["⌈","⌉","╒","╕","╓","╖","","",],
-    ["⌊","⌋","╘","╛","╙","╜","","",],
-    ["┎","┒","═","─","━","╾","","",],
-    ["┖","┚","=","≡","≣","╼","","",],
-    ["╠","╣","╬","╦","╩","║","","",],
-    ["╏","┇","┋","╽","▌","┤","","",],
-    ["┣","┳","╋","┃","┬","─","","",],
-    ["┫","┻","━","╿","┴","├ ","","",],
-    ["ǁ","⁞","╦̴","⁙","|","┼","","",],
-   ["⌜","⌝","⌌","⌍","┌","┐","","",],
-   ["⌞","⌟","⌎","⌏","└","┘","","",],
-  ],
-
-  board2: [ //شحطات
-    ["┉","┅","╍","┈","┄","╌","","",],
-    ["⁃","=","≡","Ξ","≣","▬","","",],
-    ["▂","⚊","▔","_","⎽","–","","",],
-    ["ᅳ","⎻","‾","ـ","ꔀ","ꔁ","","",],
-    ["ꔞ","ꗴ","ꗥ","ꔣ","⅏","⁐","","",],
-    ["⊶","⚯","⚮","ꕹ","ꖒ","ꗮ","","",],
-    ["⸎","⎏","⍚","≗","≛","⫕⫖","","",],
-    ["Ӂ","⍕","⍎","ᴥ","ᵜ","⟗","","",],
-    ["ж","♓︎","ভ","⌥","⑅","ꔆ","","",],
-    ["ꔅ","⟡","ꕺ","ꕻ","⁔‗","⌒","","",],
-    ["︸","﹊","⎴‏","﹌","丷","⫘","","",],
-    ["︷","﹎","⎵‏","﹏","⊏⊐","⫗","","",],
-    ["◠","⁀","︶","╭⊓╮","","","","",],
-    ["◡","‿","︵","╰⊔╯","","","","",],
-
-   /*كل سطر نضيفه تزداد الرموز*/
-  ],
-
-  board3: [ //عكس
-   ["༻","⊰","≼","⊀","⋞","≾","","",],
-   ["༺","⊱","≽","⊁","⋟","≿","","",],
-   ["ᓀ","⟣","↝","↣","𓆩","⋲","","",],
-   ["ᓂ","⟢","↜","↢","𓆪","⋺","","",],
-   ["ᔙ","«","⸄","⪻","","⋌","","",],
-   ["ᔘ","»","⸅","⪼","","⋋","","",],
-   ["ཌ","ཊ","Ю","⋳","⋶","↬","","",],
-   ["ད","ཊ","Ꙕ","⋻","⋽","↫","","",],
-   ["ᕙ","⋐","彡","⫸","⚞","⟆","","",],
-   ["ᕗ","⋑","ミ","⫷","⚟","⟅","","",],
-   ["Ƹ","﴾","☞","ཎ","↥","[","","",],
-   ["Ʒ","﴿","☜","ན","↧","]","","",],
-   ["⫍","⫔","","⋘","⪃","⩾","","",],
-   ["⫎","⫓","","⋙","⪄","⩽","","",],
-   ["〔","⋰","є‏","❪","◄","‷","","",],
-   ["〕","⋱","э","❫","►","‴","","",],
-   ["◤","◥","⎛","⪁","⪂","","","",],
-   ["◣","◢","⎞","|","┃","","","",],
-   ["╲","＼","\\","/","／","╱","","",],
-   ["╱","／","/","\\","＼","╲","","",],
-   ["⟦","⟧","⩎","⩏","⩔","⩓","","",],
-   ["⇨","⇱","↑","ਿ","ੀ","ะ","","",],
-   ["⇦","⇲","↓","∮","ശ","୵","","",],
- ],
- board4: [ //دوائر
-   ["ﾟ","˚","°","०","⸰","༚","","",],
-   ["ο","⸰","○","●","⍛","ـْ","","",],
-   ["๏","ö","σ","ஃ","⭗","⌾","","",],
-   ["◯","ഠ","◌","◉","⍜","•","","",],
-   ["ᢀ","","๑","ˊ","৹'","˖","","",],
-   ["⟐","◇","◈","◆","◊","¤","","",],
-   ["…",".","·","･","¨","΅","","",],
-   ["⁑","⁎","⊹","∞","☌","≎","","",],
-   ["⁂","╭അ╮","༚⸰०°˚","˚°०⸰༚","˚°०ο༚","༚ο०°˚","","",],
-  ["¸.•*´¨","¨`*•.¸","ྉ","▣","▢","","","",],
- ],
- board5: [ //نجوم
- ["🤍", "❤️", "🎊", "💝", "💖", "💘","","",],
-   ["💕", "💓", "👈", "👉", "💯", "👍","","",],
-   ["🍒", "🍓", "😍", "😘", "🌟", "🧚","","",],
-   ["💟", "¨˚°◦༚", "༚◦°˚¨", "🌷", "🌹", "🙏","","",],
-   ["👑", "࿔𖡄࿔", "🕊", "❣", "♡", "❥","","",],
-   ["☙", "❦", "✪", "✤", "✾", "❉","","",],
-   ["❆", "❀", "✿", "❈", "✫", "※","","",],
-   ["✺", "✥", "✧", "➻", "✦", "★","","",],
-   ["♛", "♚", "✠", "♅", "₪", "☬","","",],
-   ["∬", "§", "↢✥↣", "⍣", "𓇼", "","","",],
-   ["", "═ꨄ═", "ꕥ͜͡ ͜͡ꕥ", "✿͜͡ ͜͡✿͜͡ ͜͡✿", "❈͜͡ ͜͡❈", "","","",],
-   ["∰","⨈","⩖","⩨","⩩","؄","","",],
-   ["؁","ſʅ","ɽɿ","⇶","","","","",],
-
- ],
- board6: [ //يسار
- ["ஐ", "ღ", "༄", "࿓", "༅", "࿔","","",],
-   ["༉", "დ", "ಌ", "ও", "ꈊ", "࿇","","",],
-   ["ꕥ", "ၶႂ်ႈ", "ጀ", "ၺ်", "ℒℴѵℯ", "𖡄","","",],
-   ["⍣┊", "┊⍣", "Ꮙ", "Ꮦ", "Ꭶ", "Ꮄ","","",],
-   ["ፈ", "ᙣ", "ᕴ", "ᓎ", "ꐦ", "ᙍ","","",],
-   ["உ", "ᐸ", "ॡ", "ፚ", "ᙛ", "ᨎ","","",],
-   ["ᨋ", "༆", "ꗏ", "ะ", "८", "࿐","","",],
-   ["२", "⍣⃝ 𝄟", "𝔖", "𝔇", "⍣", "ঔ","","",],
-   ["ྉ", "८ॢैॣॢ", "း", "ঊ", "જ", "୵","","",],
-   ["ɭɲ", "လႄ", "➛", "", "", "❉্᭄͜͡","","",],
-   ["ᬛ", "𒀱ꪳ", "࿔❉্᭄͜͡࿔", "ꨄ", "᯽", "ꪜ","","",],
-   ["ꪹ", "ꪮ", "ꪑ", "ꪶ", "ꫝ", "ꪖ","","",],
- ],
-};
-
-// دالة إظهار إشعار بسيط
-function showNotification(message) {
-  const notification = document.createElement('div');
-  notification.textContent = message;
-  notification.style.position = 'fixed';
-  notification.style.top = '20px';
-  notification.style.left = '50%';
-  notification.style.transform = 'translateX(-50%)';
-  notification.style.background = '#4CAF50';
-  notification.style.color = 'white';
-  notification.style.padding = '8px 12px';
-  notification.style.borderRadius = '6px';
-  notification.style.zIndex = '10000';
-  notification.style.fontSize = '12px';
-  notification.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
-  document.body.appendChild(notification);
-  setTimeout(() => {
-    if (document.body.contains(notification)) {
-      document.body.removeChild(notification);
-    }
-  }, 2000);
-}
-
-// تحميل اللوحات المخصصة من localStorage
-function loadCustomBoards() {
-      const customBoards = JSON.parse(localStorage.getItem('customBoards') || '{}');
-      Object.assign(boards, customBoards);
-      // تحميل اتجاهات الكتابة
-      inputDirection = localStorage.getItem('inputDirection') || 'rtl';
-      textDirection = localStorage.getItem('textDirection') || 'rtl';
-      applyInputDirection();
-      // تطبيق اتجاه النصوص عند التحميل
-      setTimeout(updateTextAlignForAll, 100);
-}
-
-// تحميل ترتيب اللوحات من localStorage
-function loadBoardOrder() {
-    boardOrder = JSON.parse(localStorage.getItem('boardOrder') || '[]');
-    // إذا لم يكن هناك ترتيب محفوظ، أنشئ ترتيباً افتراضياً
-    if (boardOrder.length === 0) {
-        boardOrder = ['board1', 'board2', 'board3', 'board4', 'board5', 'board6'];
-        // إضافة اللوحات المخصصة
-        Object.keys(boards).forEach(boardKey => {
-            if (!boardOrder.includes(boardKey)) {
-                boardOrder.push(boardKey);
-            }
-        });
-        saveBoardOrder();
-    }
-}
-
-// حفظ ترتيب اللوحات في localStorage
-function saveBoardOrder() {
-    localStorage.setItem('boardOrder', JSON.stringify(boardOrder));
-}
-
-// حفظ اللوحات المخصصة في localStorage
-function saveCustomBoards() {
-    const customBoards = {};
-    Object.keys(boards).forEach(key => {
-      if (!['board1', 'board2', 'board3', 'board4', 'board5', 'board6'].includes(key)) {
-        customBoards[key] = boards[key];
-      }
-    });
-    localStorage.setItem('customBoards', JSON.stringify(customBoards));
-}
-
-// تطبيق اتجاه مربع الإدخال
-function applyInputDirection() {
-    displayBox.dir = inputDirection;
-    displayBox.style.direction = inputDirection;
-    displayBox.style.textAlign = inputDirection === 'rtl' ? 'right' : 'left';
-    localStorage.setItem('inputDirection', inputDirection);
-}
-
-// تغيير اتجاه مربع الإدخال
-function toggleInputDirection() {
-    inputDirection = inputDirection === 'rtl' ? 'ltr' : 'rtl';
-    applyInputDirection();
-}
-
-// تطبيق اتجاه النصوص المحفوظة
-function applyTextDirection() {
-    // إعادة رسم النصوص حسب اللوحة الحالية
-    if (currentBoard === "board7") {
-        displaySavedTexts();
-    } else {
-        loadBoardContent(currentBoard);
-    }
-    localStorage.setItem('textDirection', textDirection);
-    // تحديث text-align بعد إعادة الرسم
+// إشعار بسيط يختفي تلقائيًا
+function showToast(message) {
+  try {
+    const el = document.createElement('div');
+    el.className = 'toast';
+    el.textContent = message;
+    document.body.appendChild(el);
+    // force reflow لتفعيل الانتقال
+    void el.offsetWidth;
+    el.style.opacity = '1';
     setTimeout(() => {
-        updateTextAlignForAll();
-        // تحديث إضافي للنصوص المحفوظة
-        const allTextContents = document.querySelectorAll('.text-content');
-        allTextContents.forEach(content => {
-            content.style.setProperty('text-align', textDirection === 'rtl' ? 'right' : 'left', 'important');
-        });
-        // تحديث للرموز في اللوحات المخصصة
-        const customSymbols = document.querySelectorAll('#board-content .saved-text-item .text-content');
-        customSymbols.forEach(symbol => {
-            symbol.style.setProperty('text-align', textDirection === 'rtl' ? 'right' : 'left', 'important');
-        });
-    }, 50); // زيادة التأخير لضمان الانتهاء من الرسم
+      el.style.opacity = '0';
+      setTimeout(() => el.remove(), 200);
+    }, 2000);
+  } catch {}
 }
 
-// تغيير اتجاه النصوص المحفوظة
-function toggleTextDirection() {
-    console.log('Toggling text direction');
-    textDirection = textDirection === 'rtl' ? 'ltr' : 'rtl';
-    console.log('New textDirection:', textDirection);
-    applyTextDirection();
-    // تطبيق text-align على النصوص المحفوظة والرموز
-    updateTextAlignForAll();
+// التحكم بحجم خط محرر الملاحظة وتخزينه
+function getEditFontPx() {
+  const prefs = safeLocalStorageGet('fontPrefs', {});
+  return parseInt(prefs.edit || 20, 10);
 }
-
-// دالة لتحديث text-align لجميع النصوص والرموز
-function updateTextAlignForAll() {
-    const savedTextItems = document.querySelectorAll('.saved-text-item .text-content');
-    savedTextItems.forEach(item => {
-        item.style.setProperty('text-align', textDirection === 'rtl' ? 'right' : 'left', 'important');
-    });
-    const symbolItems = document.querySelectorAll('.saved-text-item');
-    symbolItems.forEach(item => {
-        item.style.setProperty('text-align', textDirection === 'rtl' ? 'right' : 'left', 'important');
-    });
-    // تحديث للرموز في اللوحات المخصصة
-    const customSymbolItems = document.querySelectorAll('#board-content .saved-text-item');
-    customSymbolItems.forEach(item => {
-        item.style.setProperty('text-align', textDirection === 'rtl' ? 'right' : 'left', 'important');
-    });
+function setEditFontPx(px) {
+  const clamped = Math.max(10, Math.min(48, parseInt(px, 10) || 20));
+  document.documentElement.style.setProperty('--edit-font-size', clamped + 'px');
+  const prefs = safeLocalStorageGet('fontPrefs', {});
+  prefs.edit = clamped;
+  safeLocalStorageSet('fontPrefs', prefs);
 }
+function increaseEditFont() {
+  try {
+    const currentSize = getEditFontPx();
+    const newSize = Math.min(48, currentSize + 1);
+    setEditFontPx(newSize);
 
-// دالة إضافة أزرار تغيير اتجاه الكتابة في #top-section
-function addDirectionButtonsToTop() {
-    const topSection = document.getElementById('top-section');
-    // إزالة الحاوية السابقة إذا كانت موجودة
-    const existingContainer = document.getElementById('direction-container');
-    if (existingContainer) existingContainer.remove();
-
-    const directionContainer = document.createElement('div');
-    directionContainer.id = 'direction-container';
-    directionContainer.style.display = 'flex';
-    directionContainer.style.flexDirection = 'column';
-    directionContainer.style.position = 'fixed';
-    directionContainer.style.right = '0px';
-    directionContainer.style.top = '40px';
-    directionContainer.style.gap = '2px';
-    directionContainer.style.zIndex = '10';
-    directionContainer.style.background = 'white';
-    directionContainer.style.padding = '0px 1px 0px 0px';
-    directionContainer.style.borderRadius = '5px';
-    directionContainer.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-
-    const inputDirectionBtn = document.createElement('button');
-    inputDirectionBtn.textContent = 'اتجاه الكتابة';
-    inputDirectionBtn.style.padding = '3px 2px 3px 2px';
-    inputDirectionBtn.style.backgroundColor = ' #f3f7fd';
-    inputDirectionBtn.style.color = ' #120176';
-    inputDirectionBtn.style.border = '1px solid #1b5771';
-    inputDirectionBtn.style.borderRadius = '4px';
-    inputDirectionBtn.style.fontSize = '12px';
-    inputDirectionBtn.style.fontFamily = 'system-ui';
-    inputDirectionBtn.style.cursor = 'pointer';
-    inputDirectionBtn.onclick = toggleInputDirection;
-
-    const textDirectionBtn = document.createElement('button');
-    textDirectionBtn.textContent = 'اتجاه النصوص';
-    textDirectionBtn.style.padding = '3px 2px 3px 2px';
-    textDirectionBtn.style.backgroundColor = ' #f3f7fd';
-    textDirectionBtn.style.color = ' #120176';
-    textDirectionBtn.style.border = '1px solid #1b5771';
-    textDirectionBtn.style.borderRadius = '5px';
-    textDirectionBtn.style.fontSize = '12px';
-    textDirectionBtn.style.fontFamily= 'system-ui';
-    textDirectionBtn.style.cursor = 'pointer';
-    textDirectionBtn.onclick = toggleTextDirection;
-
-    directionContainer.appendChild(inputDirectionBtn);
-    directionContainer.appendChild(textDirectionBtn);
-    topSection.appendChild(directionContainer);
-}
-
-
-
-let currentBoard = "board1";
-let boardOrder = [];
-const mainBoard = document.getElementById("main-board");
-const displayBox = document.getElementById("display-box");
-
-// متغيرات لاتجاه الكتابة
-let inputDirection = 'rtl'; // اتجاه مربع الإدخال
-let textDirection = 'rtl'; // اتجاه النصوص المحفوظة
-
-// متغيرات للتراجع والإعادة
-let textHistory = [];
-let historyIndex = -1;
-let isUndoing = false;
-
-// متغيرات للعناصر الجديدة
-const saveBtn = document.getElementById("save-btn");
-const undoBtn = document.getElementById("undo-btn");
-const redoBtn = document.getElementById("redo-btn");
-const moreOptionsBtn = document.getElementById("more-options-btn");
-const worksSection = document.getElementById("works-section");
-const savedTexts = document.getElementById("saved-texts");
-const editModal = document.getElementById("edit-modal");
-const editTextarea = document.getElementById("edit-textarea");
-const saveEditBtn = document.getElementById("save-edit-btn");
-const cancelEditBtn = document.getElementById("cancel-edit-btn");
-
-// متغير لتخزين فهرس النص الذي يتم تحريره
-let editingIndex = -1;
-
-// متغير لتخزين معلومات الرمز الذي يتم تحريره
-let editingSymbol = null;
-
-// التحقق من وجود العناصر
-
-// دالة رسم الجدول الكبير
-function loadBoard(boardName) {
-   mainBoard.innerHTML = "";
-   boards[boardName].forEach(row => {
-     let tr = document.createElement("tr");
-     row.forEach(symbol => {
-       let td = document.createElement("td");
-       td.textContent = symbol;
-        /*اضافة الرموز بمربع الاخراج*/
-       td.addEventListener("click", () => {
-   const start = displayBox.selectionStart;
-   const end = displayBox.selectionEnd;
-   const text = displayBox.value;
- /*ادخال الرمز عند موضع المؤشر*/
-   displayBox.value = text.slice(0, start) + symbol + text.slice(end);
- /*تحريك المؤشر بعد الموز مباشرة*/
-   displayBox.selectionStart = displayBox.selectionEnd = start + symbol.length;
- /*المحافظة على التركيز في مربع الاخراج*/
-   displayBox.focus();
-   saveToHistoryOnInput();
-});
-
-       tr.appendChild(td);
-     });
-     mainBoard.appendChild(tr);
-   });
-}
-
-// دالة تحميل محتوى اللوحة في الحاوية
-function loadBoardContent(boardName) {
-      const boardContent = document.getElementById('board-content');
-      boardContent.innerHTML = "";
-
-
-     // إضافة عنوان اللوحة الثابت في الأعلى
-     const boardTitle = document.createElement('div');
-     boardTitle.className = 'board-title';
-     boardTitle.textContent = getBoardTitle(boardName);
-     boardContent.appendChild(boardTitle);
-
-    // اللوحات الأساسية
-    const defaultBoards = ['board1', 'board2', 'board3', 'board4', 'board5', 'board6'];
-    const isDefaultBoard = defaultBoards.includes(boardName);
-
-    // التحقق من وجود محتوى في اللوحة
-    const board = boards[boardName];
-    const isEmpty = !board || board.length === 0 || (board.length === 1 && (!board[0] || board[0].length === 0));
-
-    if (isEmpty) {
-      // لوحة فارغة - عرض رسالة
-      const emptyMessage = document.createElement('div');
-      emptyMessage.style.textAlign = 'center';
-      emptyMessage.style.padding = '40px 20px';
-      emptyMessage.style.color = '#666';
-      emptyMessage.style.fontSize = '16px';
-      emptyMessage.innerHTML = `
-        <div style="font-size: 48px; margin-bottom: 20px;">📝</div>
-        <div>هذه اللوحة فارغة</div>
-        <div style="font-size: 14px; margin-top: 10px; color: #999;">استخدم "رمز +" من القائمة لإضافة رموز</div>
-      `;
-      boardContent.appendChild(emptyMessage);
-    }
-
-    if (isDefaultBoard) {
-      //التحكم بابعاد مربعات جداول الرموز
-      const table = document.createElement('table');
-      table.id = 'content-table';
-      table.style.width = '100%';
-      table.style.borderCollapse = 'collapse';
-
-      boards[boardName].forEach(row => {
-        let tr = document.createElement("tr");
-        row.forEach(symbol => {
-          let td = document.createElement("td");
-          td.textContent = symbol;
-          td.style.border = 'none'; // إزالة الحدود الافتراضية
-          td.style.height = '35px';
-          td.style.fontSize = '22px';
-          td.style.fontWeight = 'normal';
-          td.style.cursor = 'pointer';
-          td.style.textAlign = 'center';
-          td.style.verticalAlign = 'middle';
-          td.style.background = 'white';
-          td.style.borderRadius = '8px'; // حواف مستديرة أجمل
-          td.style.margin = '3px'; // مسافة بين المربعات
-          td.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)'; // شادو خفيف
-          td.style.transition = 'all 0.3s ease'; // انتقال سلس لجميع التأثيرات
-          td.style.display = 'inline-block'; // فصل المربعات عن بعضها
-          td.style.width = '9.9%'; // عرض ثابت للمربع
-          td.style.lineHeight = '30px'; // محاذاة النص عمودياً
-
-          // إضافة تأثير التمرير
-          td.onmouseover = () => {
-            td.style.background = '#f0f8ff';
-            td.style.transform = 'scale(1.05)';
-            td.style.boxShadow = '0 4px 8px rgba(0,0,0,0.15)'; // شادو أقوى عند التمرير
-          };
-          td.onmouseout = () => {
-            td.style.background = 'white';
-            td.style.transform = 'scale(1)';
-            td.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)'; // العودة للشادو الأصلي
-          };
-
-          /*اضافة الرموز بمربع الاخراج*/
-          td.addEventListener("click", () => {
-            const start = displayBox.selectionStart;
-            const end = displayBox.selectionEnd;
-            const text = displayBox.value;
-            /*ادخال الرمز عند موضع المؤشر*/
-            displayBox.value = text.slice(0, start) + symbol + text.slice(end);
-            /*تحريك المؤشر بعد الموز مباشرة*/
-            displayBox.selectionStart = displayBox.selectionEnd = start + symbol.length;
-            /*المحافظة على التركيز في مربع الاخراج*/
-            displayBox.focus();
-            saveToHistoryOnInput();
-          });
-
-          tr.appendChild(td);
-        });
-        table.appendChild(tr);
-      });
-
-      boardContent.appendChild(table);
-    } else {
-      // عرض اللوحات المخصصة بتنسيق لوحة الأعمال
-      boards[boardName].forEach(row => {
-        row.forEach(symbol => {
-          const symbolDiv = document.createElement('div');
-          symbolDiv.className = 'saved-text-item';
-          symbolDiv.dir = textDirection;
-          symbolDiv.style.direction = textDirection;
-          symbolDiv.style.textAlign = textDirection === 'rtl' ? 'right' : 'left';
-          symbolDiv.style.unicodeBidi = 'embed';
-          // إنشاء الزر بشكل منفصل لتجنب مشاكل HTML
-          const menuBtn = document.createElement('button');
-          menuBtn.className = 'menu-btn';
-          menuBtn.textContent = '⋮';
-          menuBtn.onclick = (e) => {
-            e.stopPropagation();
-            toggleSymbolMenu(e, boardName, symbol);
-          };
-
-          symbolDiv.innerHTML = `<div class="text-content">${symbol.replace(/</g, '<').replace(/>/g, '>')}</div>`;
-          const textActions = document.createElement('div');
-          textActions.className = 'text-actions';
-          textActions.appendChild(menuBtn);
-          symbolDiv.appendChild(textActions);
-
-          boardContent.appendChild(symbolDiv);
-        });
-      });
-    }
-
-}
-
-// دالة الحصول على عنوان اللوحة
-function getBoardTitle(boardName) {
-   const titles = {
-     board1: "لفات",
-     board2: "شحطات",
-     board3: "عكس",
-     board4: "دوائر ومربعات",
-     board5: "نجوم",
-     board6: "يسار"
-   };
-   return titles[boardName] || boardName;
-}
-
-// تبديل اللوحات عند الضغط على الكلمات المفتاحية
-document.querySelectorAll("#keywords td").forEach(cell => {
-   cell.addEventListener("click", () => {
-     let boardName = cell.getAttribute("data-board");
-
-     if (boardName === "board7") {
-       // تبويب الأعمال - إظهار منطقة الأعمال وإخفاء حاوية التبويبات
-       worksSection.style.setProperty('display', 'block', 'important');
-       document.getElementById('board-content-section').style.display = 'none';
-       displaySavedTexts();
-     } else if (boards[boardName]) {
-       // تبويب آخر - إظهار حاوية التبويبات وإخفاء منطقة الأعمال
-       worksSection.style.setProperty('display', 'none', 'important');
-       document.getElementById('board-content-section').style.display = 'block';
-       currentBoard = boardName;
-       loadBoardContent(boardName);
-     }
-   });
-});
-
-// تحميل اللوحة الأولى عند البداية
-loadCustomBoards();
-loadBoardOrder();
-updateTabsDisplay();
-loadBoardContent(currentBoard);
-
-// دالة التاريخ الجديدة
-function saveToHistoryOnInput() {
-  if (!isUndoing && (historyIndex === -1 || displayBox.value !== textHistory[historyIndex])) {
-    textHistory = textHistory.slice(0, historyIndex + 1);
-    textHistory.push(displayBox.value);
-    historyIndex = textHistory.length - 1;
-  }
-}
-displayBox.addEventListener('input', saveToHistoryOnInput);
-
-// دالة التعامل مع الضغطات المهمة
-function handleKeyDown(e) {
-  // حفظ التاريخ قبل الضغط على المفاتيح المهمة
-  if (e.key === 'Backspace' || e.key === 'Delete' || e.key === 'Enter') {
-    setTimeout(() => {
-      saveToHistory();
-    }, 10);
+    console.log(`تم تكبير خط نافذة التحرير إلى ${newSize}px`);
+    showToast(`تم تكبير الخط إلى ${newSize}px ✅`);
+  } catch (error) {
+    console.error('خطأ في تكبير الخط:', error);
+    showToast('❌ خطأ في تكبير الخط');
   }
 }
 
-// دالة التراجع
-function undo() {
-  console.log('Undo called, historyIndex:', historyIndex, 'textHistory length:', textHistory.length);
-  console.log('textHistory:', textHistory);
+function decreaseEditFont() {
+  try {
+    const currentSize = getEditFontPx();
+    const newSize = Math.max(10, currentSize - 1);
+    setEditFontPx(newSize);
 
-  if (historyIndex > 0) {
-    historyIndex--;
-    isUndoing = true;
-    displayBox.value = textHistory[historyIndex];
-    displayBox.focus();
-    setTimeout(() => isUndoing = false, 0);
-    console.log('Undo successful, new value:', textHistory[historyIndex]);
-  } else {
-    console.log('Cannot undo - already at beginning');
+    console.log(`تم تصغير خط نافذة التحرير إلى ${newSize}px`);
+    showToast(`تم تصغير الخط إلى ${newSize}px ✅`);
+  } catch (error) {
+    console.error('خطأ في تصغير الخط:', error);
+    showToast('❌ خطأ في تصغير الخط');
+  }
+}
+// --- دعم التراجع والإعادة أثناء تحرير الملاحظة ---
+let editUndoStack = [];
+let editRedoStack = [];
+
+const editTextarea = () => document.getElementById("editTextarea");
+
+function undoEditText() {
+  if (editUndoStack.length > 0) {
+    editRedoStack.push(editTextarea().innerHTML);
+    const prev = editUndoStack.pop();
+    editTextarea().innerHTML = prev;
   }
 }
 
-// دالة الإعادة
-function redo() {
-  console.log('Redo called, historyIndex:', historyIndex, 'textHistory length:', textHistory.length);
-  console.log('textHistory:', textHistory);
-
-  if (historyIndex < textHistory.length - 1) {
-    historyIndex++;
-    isUndoing = true;
-    displayBox.value = textHistory[historyIndex];
-    displayBox.focus();
-    setTimeout(() => isUndoing = false, 0);
-    console.log('Redo successful, new value:', textHistory[historyIndex]);
-  } else {
-    console.log('Cannot redo - already at end');
+function redoEditText() {
+  if (editRedoStack.length > 0) {
+    editUndoStack.push(editTextarea().innerHTML);
+    const next = editRedoStack.pop();
+    editTextarea().innerHTML = next;
   }
 }
 
-// دالة حفظ النص في الأعمال أو تحديث الرمز في اللوحة الحالية
-function saveText() {
-  const text = displayBox.value.trim();
-  if (text) {
-    // التحقق من وجود رمز يتم تحريره في اللوحات المخصصة
-    if (editingSymbol && editingSymbol.boardName) {
-      // تحديث الرمز في اللوحة المخصصة
-      const board = boards[editingSymbol.boardName];
-      for (let i = 0; i < board.length; i++) {
-        const index = board[i].indexOf(editingSymbol.symbol);
-        if (index !== -1) {
-          board[i][index] = text;
-          saveCustomBoards();
-          loadBoardContent(editingSymbol.boardName);
-          // الانتقال إلى الرمز المحدث وتمييزه
-          setTimeout(() => {
-            const items = document.querySelectorAll('#board-content .saved-text-item');
-            for (let item of items) {
-              if (item.querySelector('.text-content').textContent === text) {
-                item.scrollIntoView({ behavior: 'smooth' });
-                item.classList.add('highlight');
-                setTimeout(() => item.classList.remove('highlight'), 7000);
-                break;
-              }
-            }
-          }, 100);
-          showNotification('تم تحديث الرمز بنجاح!');
-          editingSymbol = null;
-          return;
-        }
-      }
-    }
+// مراقبة التغييرات في textarea أثناء التحرير
+function setupEditTextareaHistory() {
+     editUndoStack = [];
+     editRedoStack = [];
+     const textarea = editTextarea();
+     let lastValue = textarea.innerHTML;
+     textarea.oninput = function() {
+       editUndoStack.push(lastValue);
+       lastValue = textarea.innerHTML;
+       // عند أي إدخال جديد، امسح redoStack
+       editRedoStack = [];
 
-    // التحقق من اللوحة الحالية - إذا كانت لوحة أساسية، لا تحفظ وأظهر رسالة
-    const defaultBoards = ['board1', 'board2', 'board3', 'board4', 'board5', 'board6'];
-    if (defaultBoards.includes(currentBoard)) {
-      showNotification('لايمكن حفظ النص في هذه اللوحة. انتقل إلى لوحة مخصصة لحفظ النص.');
-      return;
-    }
-
-    // التحقق من اللوحة الحالية - إذا كانت لوحة مخصصة، أضف النص كرمز جديد
-    if (!defaultBoards.includes(currentBoard)) {
-      // إضافة النص كرمز جديد في اللوحة المخصصة (في البداية)
-      const board = boards[currentBoard];
-      if (board.length > 0) {
-        const firstRow = board[0];
-        if (firstRow.length < 6) {
-          firstRow.unshift(text);
-        } else {
-          board.unshift([text]);
-        }
-      } else {
-        board.push([text]);
-      }
-      saveCustomBoards();
-      loadBoardContent(currentBoard);
-      showNotification('تم حفظ النص في اللوحة الحالية!');
-      return;
-    }
-
-    // الحصول على النصوص المحفوظة من localStorage (لوحة الأعمال)
-    let savedTextsArray = JSON.parse(localStorage.getItem('savedTexts') || '[]');
-
-    // إضافة النص الجديد مع التاريخ والوقت
-    const timestamp = new Date().toLocaleString('ar-SA');
-    // الانتقال إلى لوحة الأعمال بعد الحفظ أو التعديل
-    worksSection.style.setProperty('display', 'block', 'important');
-    document.getElementById('board-content-section').style.display = 'none';
-
-    if (editingIndex !== -1) {
-      // تحديث نص محفوظ
-      savedTextsArray[editingIndex].text = text;
-      savedTextsArray[editingIndex].timestamp = timestamp;
-      localStorage.setItem('savedTexts', JSON.stringify(savedTextsArray));
-      displaySavedTexts();
-      showNotification('تم تحديث النص بنجاح!');
-      // الانتقال إلى النص المحدث وتمييزه
-      setTimeout(() => {
-        const displayIndex = savedTextsArray.length - 1 - editingIndex;
-        const items = document.querySelectorAll('.saved-text-item');
-        if (items[displayIndex]) {
-          items[displayIndex].scrollIntoView({ behavior: 'smooth' });
-          items[displayIndex].classList.add('highlight');
-          setTimeout(() => items[displayIndex].classList.remove('highlight'), 5000);
-        }
-      }, 100);
-      editingIndex = -1;
-    } else {
-      // إضافة نص جديد في البداية (أولاً)
-      savedTextsArray.unshift({
-        text: text,
-        timestamp: timestamp
-      });
-      localStorage.setItem('savedTexts', JSON.stringify(savedTextsArray));
-      displaySavedTexts();
-      showNotification('تم حفظ النص بنجاح!');
-      // التمرير إلى النص الجديد في الأعلى وتمييزه
-      setTimeout(() => {
-        const items = document.querySelectorAll('.saved-text-item');
-        if (items[0]) {
-          const savedTextsContainer = document.getElementById('saved-texts');
-          savedTextsContainer.scrollTop = 0;
-          items[0].classList.add('highlight');
-          setTimeout(() => items[0].classList.remove('highlight'), 5000);
-        }
-      }, 100);
-    }
-  } else {
-    alert('يرجى كتابة نص للحفظ');
-  }
-}
-
-// دالة عرض النصوص المحفوظة
-function displaySavedTexts() {
-   // أعِد القائمة العائمة دائماً للـbody قبل إعادة رسم النصوص
-   const globalMenu = document.getElementById('global-dropdown-menu');
-   if (globalMenu && globalMenu.parentElement !== document.body) {
-     document.body.appendChild(globalMenu);
-     globalMenu.style.display = 'none';
+       // تنسيق تلقائي للنص العربي والإنجليزي فقط (بدون تحديث تموضع الصور)
+       autoFormatTextDirection(textarea);
+     };
    }
-   const savedTextsArray = JSON.parse(localStorage.getItem('savedTexts') || '[]');
-   savedTexts.innerHTML = '';
-  
-  if (savedTextsArray.length === 0) {
-    savedTexts.innerHTML = '<p style="text-align: center; color: #666;">لا توجد نصوص محفوظة</p>';
+// قائمة نقل الملاحظة إلى لوحة أخرى
+function toggleMoveMenu(button, index) {
+  // إزالة أي قائمة نقل موجودة مسبقًا
+  document.querySelectorAll('div[data-movemenu]').forEach(m => m.remove());
+
+  // إنشاء قائمة النقل
+  const moveMenuBox = document.createElement("div");
+  moveMenuBox.setAttribute('data-movemenu', '1');
+  moveMenuBox.classList.add('move-menu');
+  moveMenuBox.style.width = '140px'; // عرض أقل للقائمة
+
+  // أزرار النقل . كلمة نقل الى
+  for (const tabId in tabNames) {
+    if (tabId !== currentTab && tabId !== "trash" && tabId !== "settings") {
+      const btn = document.createElement("button");
+      btn.textContent = `إلى ${tabNames[tabId]}`;
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        moveNoteToTab(index, tabId);
+        moveMenuBox.remove();
+      };
+      moveMenuBox.appendChild(btn);
+    }
+  }
+
+
+  // أضف قائمة النقل إلى الجسم الرئيسي للصفحة لتظهر خارج الحاوية
+  document.body.appendChild(moveMenuBox);
+  moveMenuBox.style.position = 'fixed';
+  moveMenuBox.style.left = '10px'; // وضعها على الجانب الأيسر لتكون ملاصقة للقائمة الرئيسية
+  moveMenuBox.style.right = 'auto';
+
+  // حساب موضع القائمة باستخدام getBoundingClientRect للدقة
+  const btnRect = button.getBoundingClientRect();
+
+  // عرض القائمة مؤقتًا لحساب ارتفاعها الفعلي
+  moveMenuBox.style.visibility = 'hidden';
+  moveMenuBox.style.display = 'block';
+  const menuHeight = Math.min(moveMenuBox.offsetHeight, 300); // حد أقصى للارتفاع
+  moveMenuBox.style.visibility = '';
+  moveMenuBox.style.display = '';
+
+  // حساب المساحة المتاحة
+  const spaceBelow = window.innerHeight - btnRect.bottom;
+  const spaceAbove = btnRect.top;
+
+  let topPosition;
+
+  // إذا كانت المساحة تحت الزر كافية، ضع القائمة هناك
+  if (spaceBelow >= menuHeight) {
+    topPosition = btnRect.bottom + 5; // مسافة صغيرة من الزر
+  }
+  // إذا كانت المساحة فوق الزر كافية، ضع القائمة هناك
+  else if (spaceAbove >= menuHeight) {
+    topPosition = btnRect.top - menuHeight - 5; // مسافة صغيرة من الزر
+  }
+  // إذا لم تكن المساحة كافية في أي مكان، ضع القائمة في أفضل موضع ممكن
+  else {
+    // ضع القائمة تحت الزر مع تمرير داخلي
+    topPosition = btnRect.bottom + 5;
+
+    // تأكد من أن القائمة لا تخرج من الشاشة
+    const maxTop = window.innerHeight - menuHeight - 10;
+    if (topPosition > maxTop) {
+      topPosition = maxTop;
+    }
+  }
+
+  moveMenuBox.style.top = topPosition + 'px';
+
+  // إغلاق القائمة عند الضغط خارجها
+  setTimeout(() => {
+    function closeMenuOnClick(e) {
+      if (!moveMenuBox.contains(e.target)) {
+        moveMenuBox.remove();
+        document.removeEventListener('mousedown', closeMenuOnClick);
+      }
+    }
+    document.addEventListener('mousedown', closeMenuOnClick);
+  }, 0);
+}
+
+  // حذف اللوحة الحالية مع حماية لوحة المحذوفات
+function deleteCurrentTab() {
+  if (currentTab === "trash" || currentTab === 'settings' || currentTab === 'home') {
+    alert("❌ لا يمكن حذف المحذوفات أو الإعدادات أو الرئيسية.");
     return;
   }
-  
-  // عرض النصوص من الأحدث للأقدم مع الحفاظ على الفهرس الصحيح
-  const reversedArray = [...savedTextsArray].reverse();
-  reversedArray.forEach((item, displayIndex) => {
-    const originalIndex = savedTextsArray.length - 1 - displayIndex;
-    const textDiv = document.createElement('div');
-    textDiv.className = 'saved-text-item';
-    textDiv.dir = textDirection;
-    textDiv.style.direction = textDirection;
-    textDiv.style.textAlign = textDirection === 'rtl' ? 'right' : 'left';
-    textDiv.style.unicodeBidi = 'embed';
-    // تطبيق text-align على النص المحفوظ
-    const textContent = textDiv.querySelector('.text-content');
-    if (textContent) {
-        textContent.style.textAlign = textDirection === 'rtl' ? 'right' : 'left';
+    
+    // طلب كتابة اسم اللوحة للتأكيد
+    const currentTabName = tabNames[currentTab];
+    const userInput = prompt(`⚠️ تحذير: سيتم حذف اللوحة "${currentTabName}" وجميع ملاحظاتها نهائياً!\n\nلتأكيد الحذف، اكتب اسم اللوحة بالضبط:\n"${currentTabName}"`);
+    
+    // التحقق من مطابقة الاسم المدخل
+    if (userInput === null) {
+      // المستخدم ضغط إلغاء
+      return;
     }
-    textDiv.innerHTML = `
-      <div class="text-content">${item.text}</div>
-      <div class="text-actions">
-        <button class="menu-btn" onclick="toggleMenu(event, ${originalIndex})">⋮</button>
-      </div>
-    `;
-    // تطبيق text-align بعد إنشاء العنصر
-    const textContentElement = textDiv.querySelector('.text-content');
-    if (textContentElement) {
-        textContentElement.style.setProperty('text-align', textDirection === 'rtl' ? 'right' : 'left', 'important');
+    
+    if (userInput.trim() !== currentTabName) {
+      alert("❌ الاسم المدخل غير مطابق. تم إلغاء عملية الحذف.");
+      return;
     }
-    savedTexts.appendChild(textDiv);
-  });
+    
+    // حذف اسم اللوحة والملاحظات
+    delete tabNames[currentTab];
+    delete notes[currentTab];
+    safeLocalStorageSet("tabNames", tabNames);
+    safeLocalStorageSet("notes", notes);
+    // تفعيل أول لوحة متاحة (عدا المحذوفة)
+    const tabIds = Object.keys(tabNames).filter(id => id !== currentTab);
+    const nextTab = tabIds.length > 0 ? tabIds[0] : "trash";
+    renderTabs();
+    switchTab(nextTab);
+    alert("✅ تم حذف اللوحة بنجاح");
+  }
+
+
+// 🧠 تهيئة البيانات من التخزين المحلي لوكال أو إنشاؤها لأول مرة
+if (!localStorage.getItem("notes") || !localStorage.getItem("tabNames")) {
+  localStorage.setItem("notes", JSON.stringify({
+    "home": [
+      { text: "هذا نص تجريبي للترجمة", createdAt: new Date().toISOString() },
+      { text: "This is a test text for translation", createdAt: new Date().toISOString() }
+    ],
+    "trash": []
+  }));
+  localStorage.setItem("tabNames", JSON.stringify({
+    "home": "الرئيسية", "settings": "اعدادات", "trash": "المحذوفات"
+  }));
 }
 
-// استبدل دالة toggleMenu بالكامل بهذا الكود الاحترافي:
-function toggleMenu(event, index) {
-  // أزل أي قائمة منبثقة سابقة
-  const oldMenu = document.getElementById('popup-menu');
-  if (oldMenu) oldMenu.remove();
+// إصلاح مشكلة Firefox مع localStorage
+try {
+  // محاولة كتابة وقراءة بسيطة للتأكد من عمل localStorage
+  localStorage.setItem('test', 'test');
+  localStorage.removeItem('test');
+} catch (e) {
+  console.warn('localStorage غير متاح، قد تكون في وضع التصفح الخفي أو متصفح قديم');
+  // في حالة عدم توفر localStorage، سنستخدم متغيرات عامة كبديل
+  window.fallbackStorage = {
+    notes: JSON.parse(JSON.stringify({
+      "home": [], "trash": []
+    })),
+    tabNames: JSON.parse(JSON.stringify({
+      "home": "الرئيسية", "settings": "اعدادات", "trash": "المحذوفات"
+    }))
+  };
+}
 
-  // الزر الذي ضغط عليه المستخدم
-  const btn = event.currentTarget || event.target;
-  const rect = btn.getBoundingClientRect();
+let notes, tabNames, currentTab = "home";
 
-  // أنشئ عنصر القائمة للكمبيرتر ة
-  const menu = document.createElement('div');
-  menu.id = 'popup-menu';
-  menu.style.position = 'fixed';
-  menu.style.minWidth = '50px';//عرض لائحة نسخ
-  menu.style.background = '#fff';
-  menu.style.border = '1.5px solid #e0e0e0';
-  menu.style.boxShadow = '0 8px 24px 0 rgba(0,0,0,0.09),0 1.5px 3px 0 rgba(0,0,0,0.04)';
-  menu.style.borderRadius = '10px';
-  menu.style.overflow = 'hidden';
-  menu.style.zIndex = '99999';
-  menu.style.padding = '0';
-  menu.style.opacity = '0';
-  menu.style.transform = 'translateX(20px)';
-  menu.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+// دالة آمنة للوصول إلى localStorage
+function safeLocalStorageGet(key, defaultValue) {
+  try {
+    const value = localStorage.getItem(key);
+    return value ? JSON.parse(value) : defaultValue;
+  } catch (e) {
+    console.warn(`فشل في قراءة ${key} من localStorage:`, e);
+    return window.fallbackStorage ? window.fallbackStorage[key] : defaultValue;
+  }
+}
 
-  // عناصر القائمة
-  const items = [
-    { label: 'نسخ', action: copyText },
-    { label: 'تحرير', action: editText },
-    { label: 'حذف', action: deleteText },
-    { label: 'نقل الى', action: moveTo }
+// دالة آمنة لحفظ في localStorage
+function safeLocalStorageSet(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    // تحديث البيانات الاحتياطية إذا كانت متوفرة
+    if (window.fallbackStorage) {
+      window.fallbackStorage[key] = JSON.parse(JSON.stringify(value));
+    }
+  } catch (e) {
+    console.warn(`فشل في حفظ ${key} في localStorage:`, e);
+    // حفظ في الذاكرة كبديل
+    if (window.fallbackStorage) {
+      window.fallbackStorage[key] = JSON.parse(JSON.stringify(value));
+    }
+  }
+}
+
+notes = safeLocalStorageGet("notes", { "home": [], "trash": [] });
+tabNames = safeLocalStorageGet("tabNames", { "home": "الرئيسية", "settings": "اعدادات", "trash": "المحذوفات" });
+
+// إضافة ملاحظات تجريبية إذا كانت اللوحة الرئيسية فارغة
+if (!notes["home"] || notes["home"].length === 0) {
+  notes["home"] = [
+    { text: "هذا نص تجريبي للترجمة", createdAt: new Date().toISOString() },
+    { text: "This is a test text for translation", createdAt: new Date().toISOString() }
   ];
-  items.forEach(item => {
-    const div = document.createElement('div');
-    div.className = 'dropdown-item';
-    div.textContent = item.label;
-    div.onclick = () => {
-      item.action(index);
-      if (item.label !== 'نقل الى') {
-        closeMenuPop();
+  safeLocalStorageSet("notes", notes);
+}
+
+// تأكد من وجود لوحة المحذوفات دائمًا في البيانات
+if (!tabNames["trash"]) {
+  tabNames["trash"] = "المحذوفات";
+  notes["trash"] = [];
+  safeLocalStorageSet("tabNames", tabNames);
+  safeLocalStorageSet("notes", notes);
+}
+
+// تأكد من وجود تبويب الرئيسية دائمًا
+if (!tabNames["home"]) {
+  tabNames["home"] = "الرئيسية";
+  if (!notes["home"]) notes["home"] = [];
+  safeLocalStorageSet("tabNames", tabNames);
+  safeLocalStorageSet("notes", notes);
+}
+
+// تأكد من وجود تبويب الاعدادات قبل المحذوفات
+if (!tabNames["settings"]) {
+  tabNames["settings"] = "اعدادات";
+  safeLocalStorageSet("tabNames", tabNames);
+}
+
+// 🧩 عرض ازرار التبويبات في الأعلى
+function renderTabs() {
+  const tabContainer = document.getElementById("tabContainer");
+  tabContainer.innerHTML = "";
+
+  let firstTabId = null;
+
+  // أنشئ حاوية داخلية للتمرير للتبويبات فقط
+  const scrollWrap = document.createElement('div');
+  scrollWrap.className = 'tabs-scroll';
+
+  // الحصول على الترتيب المحفوظ أو الافتراضي
+  const savedOrder = safeLocalStorageGet('tabOrder', null);
+  let ordered;
+
+  if (savedOrder && Array.isArray(savedOrder)) {
+    // استخدام الترتيب المحفوظ، مع التأكد من وجود التبويبات
+    const savedNormal = savedOrder.filter(id => tabNames[id] && id !== 'trash' && id !== 'settings' && id !== 'home');
+    // Get all normal tabs not in saved order
+    const allNormal = Object.keys(tabNames).filter(id => id !== 'trash' && id !== 'settings' && id !== 'home');
+    const missing = allNormal.filter(id => !savedNormal.includes(id));
+    ordered = ['home', ...savedNormal, ...missing];
+  } else {
+    // الترتيب الافتراضي: الرئيسية ثم التبويبات العادية (مع إخفاء المحذوفات) ثم الإعدادات
+    const normalKeys = Object.keys(tabNames).filter(id => id !== 'trash' && id !== 'settings' && id !== 'home');
+    normalKeys.sort();
+    ordered = ['home', ...normalKeys].filter(k => tabNames[k]);
+  }
+
+  ordered.forEach((key, idx) => {
+    if (!firstTabId) firstTabId = key;
+    const btn = document.createElement("button");
+    btn.className = "tab-btn";
+    btn.dataset.tab = key;
+    btn.textContent = tabNames[key];
+    btn.onclick = () => switchTab(key);
+    scrollWrap.appendChild(btn);
+  });
+
+  // زر الإعدادات خارج منطقة التمرير
+  const settingsBtn = document.createElement('button');
+  settingsBtn.className = 'tab-btn settings-tab';
+  settingsBtn.dataset.tab = 'settings';
+  settingsBtn.textContent = '🛡️'; // أيقونة ترس بدل النص🛠️/🛡️⚙️
+  settingsBtn.title = 'إعدادات';
+                                             // حجم زر اعدادات
+  settingsBtn.style.padding = '1px 2px'; // هنا حجم مربع زر الاعدادات,الحشوة
+  settingsBtn.style.fontSize = '20px'; // هنا حجم مربع زر الاعدادات
+  settingsBtn.style.lineHeight = '1'; // هنا حجم مربع زر الاعدادات
+  settingsBtn.style.minWidth = 'auto'; // هنا حجم مربع زر الاعدادات
+  settingsBtn.style.height = '30px'; // هنا حجم مربع زر الاعدادات,الارتفاع
+  settingsBtn.onclick = (e) => { e.stopPropagation(); toggleSettingsMenu(settingsBtn); };
+
+  // زر المحذوفات - إضافة زر المحذوفات إلى شريط التبويبات
+  const trashBtn = document.createElement('button');
+  trashBtn.className = 'tab-btn trash-tab';
+  trashBtn.dataset.tab = 'trash';
+  trashBtn.textContent = '🗑️';
+  trashBtn.title = 'المحذوفات';
+  trashBtn.style.padding = '1px 3px';
+  trashBtn.style.fontSize = '11px';
+  trashBtn.style.lineHeight = '1';
+  trashBtn.style.minWidth = 'auto';
+  trashBtn.style.height = '30px';
+  trashBtn.onclick = () => switchTab('trash');
+
+  tabContainer.appendChild(scrollWrap);
+  tabContainer.appendChild(settingsBtn);
+return firstTabId;
+}
+
+// 🔄 تغيير التبويب عند الضغط
+function switchTab(tabId) {
+  // تحديث التاب
+  currentTab = tabId;
+  // إزالة التمييز من كل الأزرار
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+  // تمييز الزر النشط
+  const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+  if (activeBtn) activeBtn.classList.add("active");
+
+  // إخفاء أو إظهار عناصر الواجهة حسب التبويب
+  const textarea = document.getElementById("textarea");
+  const newNoteInput = document.getElementById("newNoteInput");
+  const uploadImageBtn = document.getElementById("uploadImageBtn");
+  const controlDiv = document.querySelector(".pt-1.pb-1.px-12.bg-white.border-b.flex.flex-nowrap");
+  const trashHeader = document.getElementById("trashHeader");
+
+  if (currentTab === "trash") {
+    // إخفاء مربع الإدخال وأزرار التحكم في لوحة المحذوفات
+    if (textarea) textarea.style.display = "none";
+    if (newNoteInput) newNoteInput.style.display = "none";
+    if (uploadImageBtn) uploadImageBtn.style.display = "none";
+    if (controlDiv) controlDiv.style.display = "none";
+    // إظهار عنوان المحذوفات
+    if (trashHeader) {
+      trashHeader.style.display = "block";
+      trashHeader.innerHTML = "<h2 style='text-align: center; font-size: 0.8em; font-weight: bold; color:rgb(255, 255, 255); margin: 0% -25% 0px -25%; padding: 1px 1px; background-color: #a25bbc; border-radius: 4px; border: 1px solid #a25bbc; position: fixed; top: 47px; left: 37%; right: 37%; z-index: 100;'>المحذوفات</h2>";
+    }
+  } else {
+    // إظهار مربع الإدخال وأزرار التحكم في اللوحات العادية
+    if (textarea) textarea.style.display = "";
+    if (newNoteInput) newNoteInput.style.display = "";
+    if (uploadImageBtn) uploadImageBtn.style.display = "";
+    if (controlDiv) controlDiv.style.display = "";
+    // إخفاء عنوان المحذوفات
+    if (trashHeader) trashHeader.style.display = "none";
+  }
+
+  // عرض الملاحظات الخاصة بالتبويب
+  renderNotes();
+}
+// 🎯 تمييز التبويب النشط بصريًا
+function updateActiveFirstTab() {
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.tab === currentTab);
+  });
+}
+// تفعيل أول تبويب تلقائيًا عند تحميل الصفحة
+function activateFirstTab() {
+  const firstTab = document.querySelector(".tab-btn");
+  if (firstTab) {
+    const tabId = firstTab.getAttribute("data-tab");
+    switchTab(tabId); // يعرض الملاحظات ويُفعّل الزر
+  }
+}
+
+
+// 🧩 رندر نوت         ازرار نسخ,تحرير,حذف,نقل
+
+function renderNotes() {
+  const container = document.getElementById("notesContainer");
+  container.innerHTML = "";
+  if (!notes[currentTab]) notes[currentTab] = [];
+
+  notes[currentTab].forEach((item, index) => {
+    let text = item;
+    let from = null;
+    let createdAt = null;
+    // إذا كنا في المحذوفات، العنصر كائن
+    if (currentTab === "trash" && typeof item === "object" && item !== null) {
+      text = item.text;
+      from = item.from;
+      createdAt = item.createdAt || null;
+    }
+    // في اللوحات العادية: قد تكون الملاحظة نصًا خامًا أو كائنًا
+    if (currentTab !== "trash" && typeof item === "object" && item !== null) {
+      text = item.text;
+      createdAt = item.createdAt || null;
+    }
+    const div = document.createElement("div");   
+ 
+                // (تقليل الهامش بين الملاحظات mb)(pt=المسافة بين النص وأعلى الملاحظة من جوا
+    div.className = "note-box relative bg-[#f3f1fa] border shadow-sm pt-2 mb-1 rounded"; 
+    div.style.display = "flex";
+    div.style.flexDirection = "column";
+
+    // إنشاء العناصر يدويًا
+    const span = document.createElement("span");
+    span.className = "note-preview break-words";
+
+    // التحقق من وجود تموضع محفوظ للصور في هذه الملاحظة
+    let modifiedText = text;
+    if (typeof item === "object" && item.imagePositions) {
+      // تطبيق تموضع الصور المحفوظ
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = text;
+
+      const images = tempDiv.querySelectorAll('img');
+      images.forEach(img => {
+        const imgSrc = img.src;
+        if (item.imagePositions[imgSrc]) {
+          const positionInfo = item.imagePositions[imgSrc];
+          img.className = positionInfo.class || 'inline';
+
+          // تطبيق التموضع المطلق إذا كان موجوداً
+          if (positionInfo.position) {
+            if (img.className.includes('position-absolute') && !img.className.includes('position-top') && !img.className.includes('position-bottom')) {
+              img.style.top = positionInfo.position.top + 'px';
+              img.style.left = positionInfo.position.left + 'px';
+            }
+          }
+        }
+      });
+
+      modifiedText = tempDiv.innerHTML;
+    }
+
+    // تحديد اتجاه النص حسب اللغة
+    const textContent = modifiedText.replace(/<[^>]*>/g, ''); // إزالة HTML للتحقق من اللغة
+    const isArabic = /[\u0600-\u06FF]/.test(textContent);
+    const isEnglish = /[a-zA-Z]/.test(textContent);
+
+    if (isArabic && !isEnglish) {
+      span.style.direction = 'rtl';
+      span.style.textAlign = 'right';
+    } else if (isEnglish && !isArabic) {
+      span.style.direction = 'ltr';
+      span.style.textAlign = 'left';
+    } else {
+      // نص مختلط أو غير محدد - استخدم الافتراضي
+      span.style.direction = 'rtl';
+      span.style.textAlign = 'right';
+    }
+
+    span.innerHTML = modifiedText; // استخدام innerHTML لعرض الصور بدلاً من textContent
+    span.onclick = () => {
+      // تبديل توسع الملاحظة الحالية
+      span.classList.toggle("expanded");
+
+      // إضافة التأثير للملاحظة الحالية إذا كانت موسعة
+      if (span.classList.contains('expanded')) {
+        span.closest('.note-box').classList.add('expanded');
+      } else {
+        span.closest('.note-box').classList.remove('expanded');
       }
     };
-    div.style.cursor = 'pointer';
-    div.style.padding = '6px 10px';//طول وعرض حجم لائحة نسخ
-    div.style.fontSize = '15px';//حجم خط لائحة نسخ
-    div.style.borderBottom = '1px solid #f0f0f0';
-    div.style.background = '#fff';
-    div.style.textAlign = 'right';
-    div.onpointerover = () => { div.style.background = '#f3f7fd'; div.style.color = '#2f80ed'; };
-    div.onpointerout  = () => { div.style.background = '#fff'; div.style.color = '#262626'; };
-    menu.appendChild(div);
-  });
-  // إزالة خط أسفل آخر عنصر
-  menu.lastChild.style.borderBottom = 'none';
 
-  // احسب موضع القائمة: أسفل الزر أو للأعلى إذا المسافة غير كافية
-  const menuHeight = 30 * items.length; // تقدير تقريبي
-  const margin = 6;
-  let left = rect.right - menu.offsetWidth;
-  // حاول إظهارها بجانب الزر؛ إذا لا تتسع يمنع الخروج عن الشاشة
-  if (left < 4) left = 6;
-  if (left + 140 > window.innerWidth) left = window.innerWidth - 140;
-  let top;
-  if (window.innerHeight - rect.bottom < menuHeight + margin) {
-    // للأعلى
-    top = rect.top - menuHeight;
-    if (top < 2) top = 8;
-  } else {
-    // للأسفل
-    top = rect.bottom;
-    if (top + menuHeight + margin > window.innerHeight)
-      top = window.innerHeight - menuHeight - margin;
-  }
-  menu.style.left = left + 'px';
-  menu.style.top = top + 'px';
-
-  document.body.appendChild(menu);
-  // تأثير التلاشي والانزلاق
-  setTimeout(() => {
-    menu.style.opacity = '1';
-    menu.style.transform = 'translateX(0)';
-  }, 10);
-  // دالة إغلاق القائمة بالنقر بالخارج
-  function closeMenuPop(e) {
-    if(!e || (e && !menu.contains(e.target) && (!btn.contains(e.target)))) {
-      if (menu) menu.remove();
-      document.removeEventListener('mousedown', closeMenuPop, true);
+    // مكان كلمة منقول من في المحذوفات
+    if (currentTab === "trash" && from) {
+      const fromDiv = document.createElement("div");
+      fromDiv.style.fontSize = "12px";
+      fromDiv.style.color = "#888";
+      fromDiv.style.marginTop = "4px";
+      fromDiv.textContent = `من : ${from}`;
+      span.appendChild(fromDiv);
     }
+
+    // سطر معلومات الوقت تحت كل ملاحظة
+
+    const meta = document.createElement("div");
+meta.className = "note-meta";
+
+if (createdAt) {
+  try {
+    const d = new Date(createdAt);
+
+    const parts = new Intl.DateTimeFormat('en-US', {
+      calendar: 'gregory',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    }).formatToParts(d);
+
+    // استخراج الأجزاء
+    const day = parts.find(p => p.type === 'day')?.value;
+    const month = parts.find(p => p.type === 'month')?.value;
+    const year = parts.find(p => p.type === 'year')?.value;
+    const hour = parts.find(p => p.type === 'hour')?.value;
+    const minute = parts.find(p => p.type === 'minute')?.value;
+    const dayPeriod = parts.find(p => p.type === 'dayPeriod')?.value;
+
+    // تنسيق مخصص: اليوم/الشهر/السنة 🕒 الساعة:الدقيقة
+    const dateStr = `${day}/${month}/${year}🕒${hour}:${minute} ${dayPeriod}`;
+
+    meta.textContent = ` ${dateStr}`;
+  } catch {
+    meta.textContent = "";
   }
-  setTimeout(() => {
-    document.addEventListener('mousedown', closeMenuPop, true);
-  }, 10);
+}
+     
+
+    const menuContainer = document.createElement("div");
+    menuContainer.className = "relative";
+    // لا حاجة لهوامش أو تخطيطات لأن الزر متموضع مطلقًا عبر CSS
+    menuContainer.style.marginTop = "0";
+    menuContainer.style.display = "";
+    menuContainer.style.justifyContent = "";
+
+    const menuToggle = document.createElement("button");
+    menuToggle.className = "menu-toggle"; // تقريب الزر من الحافة، إزالة الهوامش الجانبية
+    menuToggle.textContent = "✍️";
+    menuToggle.addEventListener("click", function(e) {
+      e.stopPropagation();
+      toggleMenu(menuToggle);
+    });
+
+    const menu = document.createElement("div");
+    menu.className = "action-menu hidden absolute left-full top-0 bg-[#d0c4f6] border rounded-lg shadow-lg z-1";
+
+    // زر نسخ
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "block w-full text-right px-3 py-2 hover:bg-gray-100";
+    copyBtn.textContent = "📚 نسخ";
+    copyBtn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      copyText(index);
+      menu.classList.add("hidden");
+    });
+
+    // زر تحرير
+    const editBtn = document.createElement("button");
+    editBtn.className = "block w-full text-right px-3 py-2 hover:bg-gray-100";
+    editBtn.textContent = "✏️ تحرير";
+    editBtn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      openEditModal(index);
+      menu.classList.add("hidden");
+    });
+
+    // زر ترجمة
+    const translateBtn = document.createElement("button");
+    translateBtn.className = "block w-full text-right px-3 py-2 hover:bg-gray-100";
+    translateBtn.textContent = "🌐 ترجمة";
+    translateBtn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      translateNote(index);
+      menu.classList.add("hidden");
+    });
+
+    // زر حذف
+    const deleteBtn = document.createElement("button");
+    deleteBtn.className = "block w-full text-right px-3 py-2 text-red-600 hover:bg-red-100";
+    deleteBtn.textContent = "🗑️ حذف";
+    deleteBtn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      deleteText(index);
+      menu.classList.add("hidden");
+    });
+
+    // زر نقل
+    const moveDiv = document.createElement("div");
+    moveDiv.className = "relative";
+    const moveBtn = document.createElement("button");
+    moveBtn.className = "block w-full text-left px-3 py-2 hover:bg-gray-100";
+    moveBtn.textContent = "📦 نقل";
+    moveBtn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      toggleMoveMenu(moveBtn, index);
+    });
+    moveDiv.appendChild(moveBtn);
+
+    // تجميع القائمة
+    menu.appendChild(copyBtn);
+    menu.appendChild(editBtn);
+    menu.appendChild(translateBtn);
+    menu.appendChild(deleteBtn);
+    menu.appendChild(moveDiv);
+
+    menuContainer.appendChild(menuToggle);
+    menuContainer.appendChild(menu);
+
+    div.appendChild(span);
+    if (meta.textContent) {
+      div.appendChild(meta);
+    }
+
+    // ضبط الحشوة السفلية ديناميكيًا بحسب عدد الأسطر المعروضة (1..3)
+    // حتى لا يظهر فراغ زائد في حالة سطر واحد
+    requestAnimationFrame(() => {
+      try {
+        const computed = window.getComputedStyle(span);
+        const lineHeightPx = parseFloat(computed.lineHeight);
+        const heightPx = span.getBoundingClientRect().height;
+        if (lineHeightPx > 0) {
+          const linesShown = Math.round(heightPx / lineHeightPx);
+          // محاذاة متوازنة: 8px لسطر/سطرين (تساوي العلوية)، و24px عند 3 أسطر لإتاحة مكان للزر
+          if (linesShown < 3) {
+            div.style.paddingBottom = "4px";
+          } else {
+            div.style.paddingBottom = "5px"; //المسافة بين النص وسفل الملاحظة من جوا
+          }
+        }
+      } catch {}
+    });
+
+    div.appendChild(menuContainer);
+    container.appendChild(div);
+  });
 }
 
-// دالة نسخ النص
-function copyText(index) {
-  const savedTextsArray = JSON.parse(localStorage.getItem('savedTexts') || '[]');
-  if (savedTextsArray[index]) {
-    navigator.clipboard.writeText(savedTextsArray[index].text).then(() => {
-      showNotification('تم نسخ النص!');
-    }).catch(() => {
-      // طريقة بديلة للنسخ
-      const textArea = document.createElement('textarea');
-      textArea.value = savedTextsArray[index].text;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
-      showNotification('تم نسخ النص!');
+//حفظ الملاحظة الجديدة
+function saveNewNote() {
+  const input = document.getElementById("newNoteInput");
+  const content = input.innerHTML.trim();
+  if (content) {
+    // استخراج النص العادي للمقارنة (إزالة HTML)
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = content;
+    const plainText = tempDiv.textContent || tempDiv.innerText || '';
+
+    // التحقق من وجود النص في اللوحة الحالية
+    let isDuplicate = false;
+    for (const note of notes[currentTab]) {
+      let existingText = (typeof note === "object" && note !== null) ? note.text : note;
+      if (existingText) {
+        // استخراج النص العادي من الملاحظة الموجودة
+        const existingTempDiv = document.createElement('div');
+        existingTempDiv.innerHTML = existingText;
+        const existingPlainText = existingTempDiv.textContent || existingTempDiv.innerText || '';
+
+        // مقارنة النصوص (تجاهل الفراغات الزائدة)
+        if (existingPlainText.trim() === plainText.trim()) {
+          isDuplicate = true;
+          break;
+        }
+      }
+    }
+
+    if (isDuplicate) {
+      showToast("⚠️ النص موجود فعلاً في هذه اللوحة");
+      return;
+    }
+
+    const noteObj = { text: content, createdAt: new Date().toISOString() };
+    notes[currentTab].unshift(noteObj); // أضف الملاحظة في البداية
+    safeLocalStorageSet("notes", notes);
+    renderNotes();
+    input.innerHTML = "";
+  }
+}
+
+// دعم الضغط على Enter لإضافة سطر جديد
+function setupInputEnterKey() {
+  const input = document.getElementById("newNoteInput");
+  if (input) {
+    input.addEventListener("keydown", function(e) {
+      if (e.key === "Enter" && !e.shiftKey) {
+        // السماح بسلوك Enter الافتراضي (إضافة سطر جديد)
+        // لا نحتاج لمنع الحدث الافتراضي
+        return;
+      }
     });
   }
-  // إخفاء القائمة
-  document.getElementById('popup-menu').style.display = 'none';
 }
 
-// دالة تعديل النص
-function editText(index) {
-  const savedTextsArray = JSON.parse(localStorage.getItem('savedTexts') || '[]');
-  if (savedTextsArray[index]) {
-    editingIndex = index;
-    displayBox.value = savedTextsArray[index].text; // التعديل يتم في مربع النص الأساسي
-    displayBox.focus();
-    saveToHistoryOnInput(); // حفظ التاريخ بعد تحميل النص
-    // لا نعرض نافذة التحرير
-    //editModal.style.display = 'block';
-  }
-  // إخفاء القائمة
-  document.getElementById('popup-menu').style.display = 'none';
+// 📄 نسخ النص إلى الحافظة
+function copyText(index) {
+  const noteItem = notes[currentTab][index];
+  let text = (noteItem && typeof noteItem === "object") ? (noteItem.text || "") : noteItem;
+
+  // تحويل HTML إلى نص عادي مع الحفاظ على الأسطر الجديدة
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = text;
+
+  // استبدال عناصر الأسطر الجديدة بأسطر جديدة حقيقية
+  tempDiv.innerHTML = tempDiv.innerHTML
+    .replace(/<br\s*\/?>/gi, '\n')  // استبدال <br> بـ \n
+    .replace(/<\/div>/gi, '\n')      // استبدال نهاية <div> بـ \n
+    .replace(/<\/p>/gi, '\n\n')      // استبدال نهاية <p> بـ \n\n
+    .replace(/<div[^>]*>/gi, '')     // إزالة بداية <div>
+    .replace(/<p[^>]*>/gi, '');      // إزالة بداية <p>
+
+  text = tempDiv.textContent || tempDiv.innerText || "";
+
+  navigator.clipboard.writeText(text || "");
+  showToast("تم نسخ النص ✅");
 }
 
-// دالة حذف النص
+// 🗑️ حذف النص من اللوحة
 function deleteText(index) {
-  if (confirm('هل تريد حذف هذا النص؟')) {
-    const savedTextsArray = JSON.parse(localStorage.getItem('savedTexts') || '[]');
-    savedTextsArray.splice(index, 1);
-    localStorage.setItem('savedTexts', JSON.stringify(savedTextsArray));
-    displaySavedTexts();
-  }
-  // إخفاء القائمة
-  document.getElementById('popup-menu').style.display = 'none';
-}
-
-// دالة نقل الى
-function moveTo(index) {
-  // إزالة أي قائمة فرعية سابقة
-  const oldSubmenu = document.getElementById('move-to-submenu');
-  if (oldSubmenu) oldSubmenu.remove();
-
-  // الحصول على اللوحات المخصصة
-  const customBoards = Object.keys(boards).filter(key => !['board1', 'board2', 'board3', 'board4', 'board5', 'board6'].includes(key));
-
-  if (customBoards.length === 0) {
-    showNotification('لا توجد لوحات مخصصة للنقل إليها');
-    // إخفاء القائمة الرئيسية
-    const mainMenu = document.getElementById('popup-menu');
-    if (mainMenu) mainMenu.remove();
+  if (currentTab === "trash") {
+    // حذف نهائي من المحذوفات
+    if (confirm("⚠️ سيتم حذف هذا النص نهائيًا من المحذوفات. هل أنت متأكد؟")) {
+      const deletedObj = notes[currentTab][index];
+      notes[currentTab].splice(index, 1);
+      undoStack.push({
+        type: "delete",
+        tabId: currentTab,
+        text: deletedObj,
+        index: index
+      });
+      redoStack = [];
+      safeLocalStorageSet("notes", notes);
+      renderNotes();
+    }
     return;
   }
+  // نقل إلى المحذوفات مع حفظ اسم اللوحة الأصلية
+  if (confirm("هل تريد نقل هذا النص إلى المحذوفات؟")) {
+    const originalNote = notes[currentTab][index];
+    const deletedText = (typeof originalNote === "object" && originalNote !== null) ? originalNote.text : originalNote;
+    const trashFrom = tabNames[currentTab];
+    const trashObj = {
+      text: deletedText,
+      from: trashFrom,
+      createdAt: (typeof originalNote === "object" && originalNote !== null) ? originalNote.createdAt : undefined
+    };
+    notes["trash"].unshift(trashObj);
+    notes[currentTab].splice(index, 1);
+    undoStack.push({
+      type: "delete",
+      tabId: currentTab,
+      text: deletedText,
+      index: index,
+      movedToTrash: true,
+      trashFrom: trashFrom,
+      originalNote: originalNote
+    });
+    redoStack = [];
+    safeLocalStorageSet("notes", notes);
+    renderNotes();
+  }
+}
+// 📋 فتح أو إغلاق قائمة الخيارات الزر الصغير
+function toggleMenu(button) {
+  const menu = button.nextElementSibling;
+  const currentNoteBox = button.closest('.note-box');
 
-  // إنشاء عنصر القائمة الفرعية
-  const submenu = document.createElement('div');
-  submenu.id = 'move-to-submenu';
-  submenu.style.position = 'fixed';
-  submenu.style.minWidth = '100px';
-  submenu.style.background = 'rgb(57, 129, 134)';
-  submenu.style.border = '1.5px solid #e0e0e0';
-  submenu.style.boxShadow = '0 8px 24px 0 rgba(0,0,0,0.09),0 1.5px 3px 0 rgba(0,0,0,0.04)';
-  submenu.style.borderRadius = '10px';
-  submenu.style.overflow = 'hidden';
-  submenu.style.zIndex = '99999';
-  submenu.style.padding = '0';
-  submenu.style.opacity = '1';
-  submenu.style.transition = 'opacity 0.3s ease';
-
-  // عناصر القائمة
-  customBoards.forEach(boardKey => {
-    const div = document.createElement('div');
-    div.className = 'dropdown-item';
-    div.textContent = getBoardTitle(boardKey);
-    div.onclick = () => { moveTextToBoard(index, boardKey); };
-    div.style.cursor = 'pointer';
-    div.style.padding = '6px 10px';
-    div.style.fontSize = '15px';
-    div.style.border = '2px solid #f0f0f0';
-    div.style.background = 'rgb(57, 129, 134)';
-    div.style.textAlign = 'right';
-    div.onpointerover = () => { div.style.background = '#f3f7fd'; div.style.color = '#2f80ed'; };
-    div.onpointerout  = () => { div.style.background = '#fff'; div.style.color = '#262626'; };
-    submenu.appendChild(div);
+  // إزالة التأثير من جميع الملاحظات الأخرى
+  document.querySelectorAll('.note-box').forEach(box => {
+    if (box !== currentNoteBox) {
+      box.classList.remove('expanded');
+    }
   });
-  // إزالة خط أسفل آخر عنصر
-  submenu.lastChild.style.borderBottom = 'none';
 
-  // حساب موضع القائمة الفرعية: بجانب القائمة الرئيسية
-  const mainMenu = document.getElementById('popup-menu');
-  const mainRect = mainMenu.getBoundingClientRect();
-  const submenuHeight = 30 * customBoards.length;
-  const margin = -15; // قيمة سالبة للتقريب أكثر
-  let left = mainRect.right + margin;
-  let top = mainRect.top;
-
-  // التأكد من عدم الخروج عن حدود الشاشة
-  if (left + 120 > window.innerWidth) {
-    left = mainRect.left - 120 - margin;
+  // إضافة التأثير للملاحظة الحالية
+  if (currentNoteBox) {
+    currentNoteBox.classList.add('expanded');
   }
-  if (top + submenuHeight + margin > window.innerHeight) {
-    top = window.innerHeight - submenuHeight - margin;
-  }
-  if (top < 2) top = 8;
 
-  submenu.style.left = left + 'px';
-  submenu.style.top = top + 'px';
+  document.querySelectorAll(".action-menu").forEach(m => {
+    if (m !== menu) m.classList.add("hidden");
+  });
 
-  document.body.appendChild(submenu);
-  // تأثير التلاشي
-  setTimeout(() => {
-    submenu.style.opacity = '1';
-  }, 10);
+  const isHidden = menu.classList.contains("hidden");
 
-  // دالة إغلاق القائمة الفرعية بالنقر بالخارج
-  function closeSubmenu(e) {
-    if(!e || (e && !submenu.contains(e.target))) {
-      if (submenu) submenu.remove();
-      document.removeEventListener('mousedown', closeSubmenu, true);
-    }
-  }
-  setTimeout(() => {
-    document.addEventListener('mousedown', closeSubmenu, true);
-  }, 10);
-}
-
-// دالة نقل الرمز إلى لوحة
-function moveSymbolToBoard(symbol, sourceBoard, targetBoard) {
-  // إزالة الرمز من اللوحة المصدر
-  removeSymbolFromBoard(sourceBoard, symbol);
-
-  // إضافة الرمز إلى اللوحة الهدف
-  const target = boards[targetBoard];
-  if (target.length > 0) {
-    const lastRow = target[target.length - 1];
-    if (lastRow.length < 6) {
-      lastRow.push(symbol);
+  if (isHidden) {
+    // فتح القائمة
+    menu.classList.remove("hidden");
+    menu.style.position = 'fixed';
+    const btnRect = button.getBoundingClientRect();
+    menu.style.right = '';
+    menu.style.left = (btnRect.left + 30)+'px';
+    // بعد قائمة نسخ تحرير عن الحافة
+    menu.style.visibility = 'hidden';
+    menu.style.display = 'block';
+    // ...existing code...
+    menu.style.display = '';
+    menu.style.visibility = '';
+    // حساب المساحة المتاحة فوق وتحت الزر
+    const spaceBelow = window.innerHeight - btnRect.bottom;
+    const spaceAbove = btnRect.top;
+    const menuHeight = menu.offsetHeight;
+    if (spaceBelow >= menuHeight) {
+      menu.style.top = btnRect.bottom + 'px';
+    } else if (spaceAbove >= menuHeight) {
+      menu.style.top = (btnRect.top - menuHeight) + 'px';
+    } else if (spaceBelow >= spaceAbove) {
+      menu.style.top = (window.innerHeight - menuHeight - 4) + 'px';
     } else {
-      target.push([symbol]);
+      menu.style.top = '4px';
     }
+
+    // إضافة تأثير الانزلاق من جانب الزر
+    requestAnimationFrame(() => {
+      menu.style.transform = 'translateX(0)';
+    });
   } else {
-    target.push([symbol]);
+    // إغلاق القائمة مع تأثير سلس
+    menu.style.transform = 'translateX(-100%)';
+    setTimeout(() => {
+      menu.classList.add("hidden");
+    }, 400); // انتظار انتهاء الانتقال
   }
-  saveCustomBoards();
-  // تحديث العرض
-  loadBoardContent(currentBoard);
-  showNotification('تم نقل الرمز بنجاح!');
-  // إغلاق القوائم
-  const submenu = document.getElementById('move-symbol-submenu');
-  if (submenu) submenu.remove();
-  const mainMenu = document.getElementById('popup-menu');
-  if (mainMenu) mainMenu.remove();
+  // ...existing code...
 }
 
-// دالة نقل النص إلى لوحة
-function moveTextToBoard(index, boardName) {
-  const savedTextsArray = JSON.parse(localStorage.getItem('savedTexts') || '[]');
-  if (savedTextsArray[index]) {
-    const text = savedTextsArray[index].text;
-    // إزالة من النصوص المحفوظة
-    savedTextsArray.splice(index, 1);
-    localStorage.setItem('savedTexts', JSON.stringify(savedTextsArray));
-    // إضافة إلى اللوحة
-    const board = boards[boardName];
-    if (board.length > 0) {
-      const lastRow = board[board.length - 1];
-      if (lastRow.length < 6) {
-        lastRow.push(text);
-      } else {
-        board.push([text]);
-      }
+// 🌙 تبديل الوضع الليلي
+function toggleNightMode() {
+  const body = document.body;
+  const isNightMode = body.classList.contains('night');
+  
+  if (isNightMode) {
+    body.classList.remove('night');
+    safeLocalStorageSet('nightMode', 'false');
+  } else {
+    body.classList.add('night');
+    safeLocalStorageSet('nightMode', 'true');
+  }
+}
+
+// قائمة إعدادات منسدلة تضم: تصدير، استيراد، إضافة لوحة، تعديل اسم، حذف
+function toggleSettingsMenu(anchorBtn) {
+  // أغلق أي قوائم مفتوحة أخرى
+  document.querySelectorAll('.menu, .action-menu').forEach(m => m.classList.add('hidden'));
+  // إذا كانت موجودة سابقًا، احذفها ليصبح لدينا نسخة واحدة فقط
+  const existing = document.querySelector('#settingsMenu');
+  if (existing) existing.remove();
+
+  const menu = document.createElement('div');
+  menu.id = 'settingsMenu';
+  menu.className = 'menu';
+  menu.style.position = 'fixed';
+  menu.style.transform = 'translateX(-100%)';
+
+  function addItem(label, onClick) {
+    const b = document.createElement('button');
+    b.className = 'block w-full text-right px-3 py-2 hover:bg-gray-100';
+    b.textContent = label;
+    b.onclick = (e) => { e.stopPropagation(); onClick(); menu.remove(); };
+    menu.appendChild(b);
+  }
+
+  // فتح المحذوفات في أعلى القائمة
+  addItem('🗑️المحذوفات', () => switchTab('trash'));
+  addItem('📤تصدير كامل', exportNotes);
+  addItem('🔺 تصدير لوحة', exportCurrentTab);
+  addItem('📥استيراد كامل', importNotes);
+  addItem('🔻 استيراد لوحة', importTab);
+  addItem('📄استيراد نص', importFromText); // استيراد من ملف نصي عادي
+  addItem('➕إضافة لوحة', addNewTab);
+  addItem('✏️تعديل لوحة', renameCurrentTab);
+  addItem('🌙 وضع ليلي', toggleNightMode);
+  addItem('🗑️حذف لوحة', deleteCurrentTab);
+  addItem('🔀 ترتيب لوحات', openTabOrderModal);
+
+  // زر حجم النص يفتح قائمة فرعية فيها + و - لكل نوع
+  
+  const fontBtn = document.createElement('button');
+  fontBtn.className = 'font-size-btn block w-full text-center';
+  fontBtn.textContent = 'حجم النص';
+  const fontMenu = document.createElement('div');
+  fontMenu.className = 'menu hidden';
+  fontMenu.style.position = 'fixed';
+  fontMenu.style.width = '145px';
+  fontMenu.style.padding = '3px';
+
+  function getCurrentPx(key, fallback) {
+    const prefs = safeLocalStorageGet('fontPrefs', {});
+    const v = prefs[key] || fallback;
+    return parseInt(v, 10);
+  }
+  function setPx(key, px) {
+    const prefs = safeLocalStorageGet('fontPrefs', {});
+    prefs[key] = px;
+    safeLocalStorageSet('fontPrefs', prefs);
+    if (key === 'input') document.documentElement.style.setProperty('--input-font-size', px + 'px');
+    if (key === 'note') document.documentElement.style.setProperty('--note-font-size', px + 'px');
+    if (key === 'edit') document.documentElement.style.setProperty('--edit-font-size', px + 'px');
+    if (key === 'tab') {
+      document.documentElement.style.setProperty('--tab-font-size', px + 'px');
+      console.log(`تم تطبيق --tab-font-size: ${px}px`);
+    }
+  }
+  //تنسيق قائمة حجم النص
+  function makeRow(label, key, fallbackPx) {
+    const row = document.createElement('div');
+    row.style.display = 'flex';
+    row.style.alignItems = 'center';
+    row.style.justifyContent = 'space-between';
+    row.style.gap = '0px';     // أبعاد مربع يحوي تكبير (ادخال,الملاحظات,اسم اللوحة
+    row.style.padding = '1px'; // تباعد عمودي بين كلمات (ادخال الملاحظات,اسم اللوحة
+    row.style.border = '1px solid #a25bbc';
+    row.style.borderRadius= '8px'
+    row.style.fontFamily='tahoma';
+    row.style.margin = '0px';
+    row.style.background = ' #ebe7f6';
+    row.style.width = '100%';
+    row.style.whiteSpace = 'nowrap';
+    const title = document.createElement('div');
+    title.textContent = label;
+    title.style.fontSize = '15px';    //حجم خط (ادخال الملاحظات,اسم اللوحة
+    title.style.padding = '3px 3px';  //تباعد عمودي بين مربعات الزائد والناقص
+    row.appendChild(title);
+
+    const controls = document.createElement('div');
+    controls.style.display = 'flex';
+    controls.style.gap = '2px'; // تقريب مربعي + و - افقيا
+
+    const minus = document.createElement('button');
+    minus.textContent = '−';
+    minus.style.padding = '2px 8px';
+    minus.style.border = '1px solid #ccc';
+    minus.style.borderRadius = '4px';
+    minus.style.fontSize = '20px'; // حجم الناقص
+    minus.onclick = (e) => {
+      e.stopPropagation();
+      const current = getCurrentPx(key, fallbackPx);
+      const next = Math.max(8, current - 1);
+      setPx(key, next);
+      console.log(`تم تقليل حجم ${key} إلى ${next}px`);
+    };
+
+    const plus = document.createElement('button');
+    plus.textContent = '+';
+    plus.style.padding = '2px 8px';
+    plus.style.border = '1px solid #ccc';
+    plus.style.borderRadius = '4px';
+    plus.style.fontSize = '20px'; // حجم الزائد
+    plus.onclick = (e) => {
+      e.stopPropagation();
+      const current = getCurrentPx(key, fallbackPx);
+      const next = Math.min(40, current + 1);
+      setPx(key, next);
+      console.log(`تم زيادة حجم ${key} إلى ${next}px`);
+    };
+
+    controls.appendChild(plus);
+    controls.appendChild(minus);
+    row.appendChild(controls);
+    fontMenu.appendChild(row);
+  }
+
+  makeRow('الإدخال', 'input', 14);
+  makeRow('الملاحظات', 'note', 13);
+  makeRow('اسم اللوحة', 'tab', 14);
+
+  // تعديل عرض القائمة لتجنب السطر الثاني
+  fontMenu.style.width = 'auto';
+  fontMenu.style.minWidth = '150px';
+  fontMenu.style.whiteSpace = 'nowrap';
+
+  fontBtn.onclick = (e) => {
+    e.stopPropagation();
+    const r = fontBtn.getBoundingClientRect();
+    fontMenu.style.left = (r.left + 115) +'px';
+    fontMenu.style.top = (r.bottom - 75) + 'px';  // انزياح قائمة محتويات حجم النص لتحت
+    if (fontMenu.classList.contains('hidden')) {
+      fontMenu.classList.remove('hidden');
+      // إضافة تأثير الانزلاق من جانب الزر
+      requestAnimationFrame(() => {
+        fontMenu.style.transform = 'translateX(0)';
+      });
     } else {
-      board.push([text]);
+      fontMenu.classList.add('hidden');
     }
-    saveCustomBoards();
-    // تحديث العرض
-    displaySavedTexts();
-    loadBoardContent(currentBoard);
-    showNotification('تم نقل النص بنجاح!');
-  }
-  // إغلاق القوائم
-  const submenu = document.getElementById('move-to-submenu');
-  if (submenu) submenu.remove();
-  const mainMenu = document.getElementById('popup-menu');
-  if (mainMenu) mainMenu.remove();
-}
-
-// دالة حفظ التعديل
-function saveEdit() {
-  if (editingIndex !== -1) {
-    const savedTextsArray = JSON.parse(localStorage.getItem('savedTexts') || '[]');
-    if (savedTextsArray[editingIndex]) {
-      savedTextsArray[editingIndex].text = editTextarea.value.trim();
-      localStorage.setItem('savedTexts', JSON.stringify(savedTextsArray));
-      displaySavedTexts();
-      editModal.style.display = 'none';
-      editingIndex = -1;
-    }
-  }
-}
-
-// دالة إلغاء التعديل
-function cancelEdit() {
-  editModal.style.display = 'none';
-  editingIndex = -1;
-}
-
-// دالة تصدير النصوص واللوحات
-async function exportTexts() {
-  const savedTextsArray = JSON.parse(localStorage.getItem('savedTexts') || '[]');
-  const customBoards = JSON.parse(localStorage.getItem('customBoards') || '{}');
-  const boardOrder = JSON.parse(localStorage.getItem('boardOrder') || '[]');
-
-  // دمج اللوحات الافتراضية مع المخصصة
-  const allBoards = { ...boards, ...customBoards };
-
-  // الحصول على التاريخ الحالي بتنسيق يوم/شهر/سنة/ساعة/دقيقة/ص,م
-  const now = new Date();
-  const day = String(now.getDate()).padStart(2, '0');
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const year = now.getFullYear();
-  let hours = now.getHours();
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-  const ampm = hours >= 12 ? 'م' : 'ص';
-  hours = hours % 12;
-  hours = hours ? hours : 12; // الساعة 0 تصبح 12
-  const hours12 = String(hours).padStart(2, '0');
-  const dateString = `${day}-${month}-${year}`;
-  const timeString = `${hours12}-${minutes}-${ampm}`;
-  const fullDateTime = `${day}/${month}/${year}⏱️${hours12}:${minutes}:${ampm}`;
-
-  const exportData = {
-    savedTexts: savedTextsArray,
-    boards: allBoards,
-    boardOrder: boardOrder,
-    exportDate: fullDateTime
   };
 
-  const data = JSON.stringify(exportData, null, 2);
-
-  if (data.length === 0 || data === '{}') {
-    showNotification('لا توجد بيانات للتصدير');
-    return;
-  }
-
-  const blob = new Blob([data], { type: 'application/json' });
-
-  // التحقق من دعم File System Access API
-  if ('showSaveFilePicker' in window) {
-    // استخدام File System Access API للأجهزة المكتبية الحديثة
-    const options = {
-      suggestedName: `Keyboard_${dateString}.json`,
-      types: [{
-        description: 'ملف JSON',
-        accept: { 'application/json': ['.json'] }
-      }]
-    };
-
+  // تطبيق تفضيلات الخط المحفوظة عند فتح القائمة لأول مرة
+  (function applySavedFonts() {
     try {
-      const handle = await window.showSaveFilePicker(options);
-      const writable = await handle.createWritable();
-      await writable.write(data); // استخدام data بدلاً من blob
-      await writable.close();
-      showNotification('تم حفظ النسخة الاحتياطية بنجاح!');
-    } catch (error) {
-      if (error.name !== 'AbortError') {
-        console.error('خطأ في حفظ الملف:', error);
-        // الرجوع للطريقة التقليدية
-        fallbackDownload(data, `Keyboard_${dateString}.json`);
+      const prefs = safeLocalStorageGet('fontPrefs', {});
+      if (prefs.input) document.documentElement.style.setProperty('--input-font-size', prefs.input + 'px');
+      if (prefs.note) document.documentElement.style.setProperty('--note-font-size', prefs.note + 'px');
+      if (prefs.edit) document.documentElement.style.setProperty('--edit-font-size', prefs.edit + 'px');
+      if (prefs.tab) document.documentElement.style.setProperty('--tab-font-size', prefs.tab + 'px');
+    } catch {}
+  })();
+
+  menu.appendChild(fontBtn);
+  document.body.appendChild(menu);
+  document.body.appendChild(fontMenu);
+
+  document.body.appendChild(menu);
+  const rect = anchorBtn.getBoundingClientRect();
+  menu.style.left = (rect.left + 0)+'px';
+  menu.style.top = (rect.bottom + 6) + 'px';
+
+  // إضافة تأثير الانزلاق من جانب الزر
+  requestAnimationFrame(() => {
+    menu.style.transform = 'translateX(0)';
+  });
+
+  // اغلاق عند النقر خارج
+  setTimeout(() => {
+    function onDoc(e) {
+      if (!menu.contains(e.target) && (!fontMenu || !fontMenu.contains(e.target))) {
+        menu.remove();
+        document.removeEventListener('mousedown', onDoc);
       }
     }
-  } else {
-    // الطريقة التقليدية للأجهزة القديمة والجوال
-    fallbackDownload(data, `Keyboard_${dateString}.json`);
+    document.addEventListener('mousedown', onDoc);
+  }, 0);
+}
+
+// العثور على معرف لوحة بالاسم أو إنشاؤها إن لم توجد
+function findOrCreateTabByName(name) {
+  // ابحث عن اسم مطابق
+  for (const id in tabNames) {
+    if (tabNames[id] === name) return id;
   }
+  // لا تنشئ لوحات خاصة
+  if (name === 'المحذوفات' || name === 'اعدادات') return null;
+  // أنشئ معرفًا جديدًا
+  let newId = 1;
+  while (tabNames.hasOwnProperty(String(newId))) newId++;
+  newId = String(newId);
+  tabNames[newId] = name;
+  notes[newId] = [];
+  safeLocalStorageSet('tabNames', tabNames);
+  safeLocalStorageSet('notes', notes);
+  renderTabs();
+  return newId;
 }
 
-// دالة التحميل التقليدية كبديل
-function fallbackDownload(data, filename) {
-  const blob = new Blob([data], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-
-  // محاولة استخدام Web Share API إذا كان متاحاً (للجوال)
-  if (navigator.share && navigator.canShare && navigator.canShare({ files: [new File([blob], filename, { type: 'application/json' })] })) {
-    const file = new File([blob], filename, { type: 'application/json' });
-    navigator.share({
-      title: 'نسخة احتياطية لوحة المفاتيح',
-      files: [file]
-    }).then(() => {
-      showNotification('تم مشاركة النسخة الاحتياطية بنجاح!');
-    }).catch((error) => {
-      if (error.name !== 'AbortError') {
-        console.error('خطأ في المشاركة:', error);
-        // الرجوع للطريقة التقليدية
-        traditionalDownload(url, filename);
-      }
-    });
-  } else {
-    // الطريقة التقليدية
-    traditionalDownload(url, filename);
-  }
-}
-
-// دالة التحميل التقليدية
-function traditionalDownload(url, filename) {
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  a.click();
-  URL.revokeObjectURL(url);
-  showNotification('تم تصدير جميع البيانات بنجاح!');
-}
-
-
-// دالة استرجاع النصوص واللوحات
-function importTexts() {
+// استيراد من ملف نصي بصيغة: سطر عنوان لوحة بين أقواس [اسم اللوحة] ثم ملاحظات تفصلها أسطر فارغة
+function importFromText() {
   const input = document.createElement('input');
   input.type = 'file';
-  input.accept = '.json';
+  input.accept = '.txt';
   input.onchange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        try {
-          const data = JSON.parse(e.target.result);
-          if (Array.isArray(data)) {
-            // ملف قديم يحتوي على النصوص فقط
-            localStorage.setItem('savedTexts', JSON.stringify(data));
-            displaySavedTexts();
-            showNotification('تم استرجاع النصوص بنجاح!');
-          } else if (data.savedTexts && data.boards && data.boardOrder) {
-            // ملف جديد يحتوي على جميع البيانات
-            localStorage.setItem('savedTexts', JSON.stringify(data.savedTexts));
-            localStorage.setItem('customBoards', JSON.stringify(data.boards));
-            localStorage.setItem('boardOrder', JSON.stringify(data.boardOrder));
-            // تحديث اللوحات العامة
-            Object.assign(boards, data.boards);
-            boardOrder = data.boardOrder;
-            displaySavedTexts();
-            updateTabsDisplay();
-            loadBoardContent(currentBoard);
-            showNotification('تم استرجاع جميع البيانات بنجاح!');
-          } else {
-            showNotification('ملف JSON غير صحيح');
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const text = String(reader.result || '');
+        const lines = text.split(/\r?\n/);
+        let currentTabName = null;
+        let currentTabId = null;
+        let buffer = [];
+
+        function flushNote() {
+          const content = buffer.join('\n').trim();
+          if (!content) return;
+          const noteObj = { text: content, createdAt: new Date().toISOString() };
+          if (!currentTabId) {
+            // إن لم يحدد تبويب بعد، ضعها في اللوحة الحالية
+            currentTabId = currentTab;
           }
-        } catch {
-          showNotification('خطأ في قراءة الملف');
+          if (!notes[currentTabId]) notes[currentTabId] = [];
+          notes[currentTabId].push(noteObj); // نحافظ على ترتيب الملف من الأعلى للأسفل
+          buffer = [];
         }
-      };
-      reader.readAsText(file);
-    }
+
+        for (let raw of lines) {
+          const line = raw;
+          const m = line.match(/^\s*\[(.+?)\]\s*$/);
+          if (m) {
+            // عنوان لوحة
+            flushNote();
+            currentTabName = m[1].trim();
+            currentTabId = findOrCreateTabByName(currentTabName);
+            continue;
+          }
+          if (/^\s*$/.test(line)) {
+            // سطر فارغ يفصل الملاحظات
+            flushNote();
+          } else {
+            buffer.push(line);
+          }
+        }
+        // آخر ملاحظة
+        flushNote();
+
+        safeLocalStorageSet('notes', notes);
+        safeLocalStorageSet('tabNames', tabNames);
+        renderTabs();
+        // بعد الاستيراد، اعرض أول لوحة عادية إن وجدت
+        const firstTab = Object.keys(tabNames).find(id => id !== 'settings' && id !== 'trash');
+        if (firstTab) switchTab(firstTab);
+        renderNotes();
+        alert('✅ تم استيراد النصوص من الملف النصي وتوزيعها على التبويبات');
+      } catch (err) {
+        alert('❌ تعذر قراءة الملف النصي');
+        console.error(err);
+      }
+    };
+    reader.readAsText(file);
   };
   input.click();
 }
 
-// دالة إضافة رمز إلى اللوحة الحالية
-function addSymbol() {
-   const symbol = prompt('اكتب الرمز تريد إضافته في اللوحة الحالية');
-   if (symbol && symbol.trim()) {
-     const board = boards[currentBoard];
-     if (board.length > 0) {
-       const lastRow = board[board.length - 1];
-       if (lastRow.length < 6) { // افتراض 6 رموز لكل سطر
-         lastRow.push(symbol.trim());
-       } else {
-         board.push([symbol.trim()]);
-       }
-     } else {
-       board.push([symbol.trim()]);
-     }
-     saveCustomBoards(); // حفظ التغييرات
-     loadBoardContent(currentBoard); // تحديث العرض
-   }
-   // لا نحتاج لإغلاق القائمة هنا لأن النافذة المنبثقة ستغطيها
+//                        تنفيذ نقل الملاحظة   
+function moveNoteToTab(index, targetTabId) {
+  let note = notes[currentTab][index];
+  // إذا كنا في المحذوفات والملاحظة كائن، ننقل النص فقط
+  if (currentTab === "trash" && typeof note === "object" && note !== null && note.text) {
+    note = note.text;
+  }
+  notes[targetTabId].unshift(note);
+  notes[currentTab].splice(index, 1);
+  undoStack.push({
+    type: "move",
+    fromTab: currentTab,
+    toTab: targetTabId,
+    text: note,
+    index: index
+  });
+  // عند أي عملية جديدة، امسح redoStack
+  redoStack = [];
+  safeLocalStorageSet("notes", notes);
+  renderNotes();
 }
 
-// دالة إظهار قائمة رمز
-function toggleSymbolMenu(event, boardName, symbol) {
-  // أزل أي قائمة منبثقة سابقة
-  const oldMenu = document.getElementById('symbol-menu');
-  if (oldMenu) oldMenu.remove();
 
-  // الزر الذي ضغط عليه المستخدم
-  const btn = event.currentTarget || event.target;
-  const rect = btn.getBoundingClientRect();
+//نافذة تحرير النص المنبثقة 
+// 📝 متغير لتخزين رقم النص الجاري تحريره
+let editingIndex = null;
+// متغير لتخزين النص الأصلي أثناء التحرير
+let originalNoteContent = null;
 
-  // حاوية عناصر قائمة نسخ تحرير للجوال
-  const menu = document.createElement('div');
-  menu.id = 'popup-menu';
-  menu.style.position = 'fixed';
-  menu.style.minWidth = '70px';
-  menu.style.background = ' #85aeba';
-  menu.style.border = '1.5px solid #1b5771';
-  menu.style.boxShadow = '0 8px 24px 0 rgba(0,0,0,0.09),0 1.5px 3px 0 rgba(0,0,0,0.04)';
-  menu.style.borderRadius = '10px';
-  menu.style.overflow = 'hidden';
-  menu.style.zIndex = '99999';
-  menu.style.padding = '1px';
-  menu.style.opacity = '0';
-  menu.style.transform = 'translateX(20px)';
-  menu.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+// ✏️ فتح نافذة التحرير بالنص الكامل
+function openEditModal(index) {
+  editingIndex = index;
+  let value = notes[currentTab][index];
+  if (typeof value === "object" && value !== null) {
+    value = value.text || "";
+  }
 
-  // عناصر القائمة
-  const items = [
-    { label: 'نسخ', action: copySymbol },
-    { label: 'تحرير', action: editSymbol },
-    { label: 'حذف', action: deleteSymbol },
-    { label: 'نقل ', action: moveSymbolTo }
-  ];
-  items.forEach(item => {
-    const div = document.createElement('div');
-    div.className = 'dropdown-item';
-    div.textContent = item.label;
-    div.onclick = () => {
-      item.action(symbol, boardName);
-      if (item.label !== 'نقل ') {
-        const menuToClose = document.getElementById('popup-menu');
-        if (menuToClose) menuToClose.remove();
+  // حفظ النص الأصلي (مع الصور كما هو)
+  originalNoteContent = value;
+
+  // عرض المحتوى الكامل مع الصور (لكن الصور مخفية في CSS)
+  const editTextarea = document.getElementById("editTextarea");
+  if (editTextarea) {
+    editTextarea.innerHTML = value; // عرض المحتوى كما هو مع الصور
+    // تطبيق التنسيق التلقائي عند فتح النافذة
+    autoFormatTextDirection(editTextarea);
+  }
+  document.getElementById("editModal").classList.remove("hidden");
+  document.body.classList.add("modal-open");
+  isEditModalOpen = true;
+  setupEditTextareaHistory();
+
+  // تطبيق التنسيق التلقائي للنص فقط (بدون صور قابلة للسحب)
+  setTimeout(() => {
+    // تحديث تنسيق الصور بعد فتح النافذة (إذا كانت موجودة)
+    updateImageStyles();
+  }, 100); // تأخير لضمان تحميل DOM
+}
+// ❌ إغلاق نافذة التحرير
+function closeEditModal() {
+  const editModal = document.getElementById("editModal");
+  if (editModal) {
+    editModal.classList.add("hidden");
+  }
+  isEditModalOpen = false;
+  editingIndex = null;
+  originalNoteContent = null; // مسح النص الأصلي عند الإغلاق
+
+  // إزالة قفل التمرير من الجسم عند إغلاق النافذة
+  document.body.classList.remove("modal-open");
+
+  // تم تعطيل إزالة التحديد من الصور
+}
+// 💾 حفظ التعديل وتحديث اللوحة
+function saveEditedText() {
+  try {
+    // التحقق من أن نافذة التحرير مفتوحة
+    if (!isEditModalOpen) {
+      console.error('نافذة التحرير مغلقة');
+      showToast('❌ نافذة التحرير مغلقة');
+      return;
+    }
+
+    const editTextarea = document.getElementById("editTextarea");
+    if (!editTextarea) {
+      console.error('لم يتم العثور على editTextarea');
+      showToast('❌ خطأ في العثور على منطقة التحرير');
+      return;
+    }
+
+    const newContent = editTextarea.innerHTML.trim();
+    if (!newContent) {
+      console.error('المحتوى فارغ');
+      showToast('❌ لا يوجد محتوى لحفظه');
+      return;
+    }
+
+    if (editingIndex === null || editingIndex < 0) {
+      console.error('editingIndex غير صالح:', editingIndex);
+      showToast('❌ خطأ في فهرس الملاحظة');
+      return;
+    }
+
+    // حفظ المحتوى في الملاحظة
+    const item = notes[currentTab][editingIndex];
+    if (item && typeof item === "object") {
+      item.text = newContent;
+      item.lastModified = new Date().toISOString();
+    } else {
+      notes[currentTab][editingIndex] = {
+        text: newContent,
+        createdAt: new Date().toISOString(),
+        lastModified: new Date().toISOString()
+      };
+    }
+
+    // تم تعطيل حفظ تموضع الصور في نافذة التحرير
+
+    // تم حفظ التغييرات في الملاحظات الأصلية
+
+    // حفظ في localStorage
+    safeLocalStorageSet("notes", notes);
+
+    // تحديث عرض الملاحظات
+    renderNotes();
+
+    // إغلاق نافذة التحرير
+    closeEditModal();
+
+    showToast('تم حفظ التعديلات ✅');
+    console.log('تم حفظ التعديلات بنجاح');
+
+  } catch (error) {
+    console.error('خطأ في حفظ التعديلات:', error);
+    showToast('❌ خطأ في حفظ التعديلات: ' + error.message);
+  }
+}
+//                     التراجع والاعادة
+let undoStack = [];
+let redoStack = [];
+
+function undoNote() {
+  const last = undoStack.pop();
+  if (!last) return;
+
+  if (last.type === "move") {
+    // ...نفس منطق النقل...
+    const targetNotes = notes[last.toTab];
+    const movedIndex = targetNotes.indexOf(last.text);
+    if (movedIndex !== -1) targetNotes.splice(movedIndex, 1);
+    if (!notes[last.fromTab]) notes[last.fromTab] = [];
+    notes[last.fromTab].splice(last.index, 0, last.text);
+    redoStack.push(last);
+    currentTab = last.fromTab;
+    renderTabs();
+    switchTab(currentTab);
+    safeLocalStorageSet("notes", notes);
+  } else if (last.type === "delete") {
+    // استرجاع النص المحذوف
+    if (last.movedToTrash) {
+      // أزل النسخة من المحذوفات أولاً
+      const trashList = notes["trash"] || [];
+      const removeIndex = trashList.findIndex(function(item) {
+        if (!(item && typeof item === "object")) return false;
+        const sameText = item.text === last.text;
+        const sameFrom = item.from === last.trashFrom;
+        const sameCreated = (last.originalNote && last.originalNote.createdAt) ? item.createdAt === last.originalNote.createdAt : true;
+        return sameText && sameFrom && sameCreated;
+      });
+      if (removeIndex !== -1) {
+        trashList.splice(removeIndex, 1);
+      }
+    }
+    if (!notes[last.tabId]) notes[last.tabId] = [];
+    const noteToRestore = (last.originalNote !== undefined) ? last.originalNote : last.text;
+    notes[last.tabId].splice(last.index, 0, noteToRestore);
+    redoStack.push(last);
+    currentTab = last.tabId;
+    renderTabs();
+    switchTab(currentTab);
+    safeLocalStorageSet("notes", notes);
+  }
+}
+
+
+function redoNote() {
+  const redoAction = redoStack.pop();
+  if (!redoAction) return;
+
+  if (redoAction.type === "move") {
+    // ...نفس منطق النقل...
+    if (!notes[redoAction.fromTab]) notes[redoAction.fromTab] = [];
+    const idx = notes[redoAction.fromTab].indexOf(redoAction.text);
+    if (idx !== -1) notes[redoAction.fromTab].splice(idx, 1);
+    if (!notes[redoAction.toTab]) notes[redoAction.toTab] = [];
+    notes[redoAction.toTab].push(redoAction.text);
+    undoStack.push(redoAction);
+    currentTab = redoAction.toTab;
+    renderTabs();
+    switchTab(currentTab);
+    safeLocalStorageSet("notes", notes);
+  } else if (redoAction.type === "delete") {
+    // إعادة الحذف
+    if (!notes[redoAction.tabId]) notes[redoAction.tabId] = [];
+    notes[redoAction.tabId].splice(redoAction.index, 1);
+    if (redoAction.movedToTrash) {
+      // أعدها إلى المحذوفات كما في عملية الحذف الأصلية
+      const trashObj = {
+        text: redoAction.text,
+        from: redoAction.trashFrom,
+        createdAt: (redoAction.originalNote && redoAction.originalNote.createdAt) ? redoAction.originalNote.createdAt : undefined
+      };
+      notes["trash"].unshift(trashObj);
+    }
+    undoStack.push(redoAction);
+    currentTab = redoAction.tabId;
+    renderTabs();
+    switchTab(currentTab);
+    safeLocalStorageSet("notes", notes);
+  }
+}
+//                                 تصدير الملاحظات
+
+function exportNotes() {
+  const data = {
+    notes: notes,
+    tabNames: tabNames
+  };
+
+  // 🕒 توليد التاريخ بصيغة YYYY-MM-DD
+  const now = new Date();
+  const yyyy = now.getFullYear();
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  const dd = String(now.getDate()).padStart(2, '0');
+  const dateString = `${yyyy}-${mm}-${dd}`;
+
+  // 📁 اسم الملف مع التاريخ
+  const filename = `clip-note-pro-${dateString}.json`;
+
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+//                    استيراد الملاحظات
+function importNotes() {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".json";
+  input.onchange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const imported = JSON.parse(reader.result);
+        if (imported.notes && imported.tabNames) {
+          notes = imported.notes;
+          tabNames = imported.tabNames;
+          safeLocalStorageSet("notes", notes);
+          safeLocalStorageSet("tabNames", tabNames);
+          renderTabs();
+          switchTab("1");
+          renderNotes();
+          alert("✅ تم استيراد جميع اللوحات والملاحظات بنجاح");
+        } else {
+          alert("❌ الملف لا يحتوي على بيانات كاملة");
+        }
+      } catch {
+        alert("❌ الملف غير صالح أو تالف");
       }
     };
-    div.style.cursor = 'pointer';
-    div.style.padding = '5px 3px';// تباعد افقي وعمودي بين تحرير نسخ
-    div.style.margin = '2px';
-    div.style.fontSize = '15px';//حجم خط تحرير نسخ
-    div.style.border = '1px solid #1b5771';
-    div.style.borderRadius = '10px';
-    div.style.background = ' #f3f7fd';
-    div.style.textAlign = 'center';
-    div.onpointerover = () => { div.style.background = '#f3f7fd'; div.style.color = '#2f80ed'; };
-    div.onpointerout  = () => { div.style.background = '#fff'; div.style.color = '#262626'; };
-    menu.appendChild(div);
-  });
-  // إزالة خط أسفل آخر عنصر
-  menu.lastChild.style.borderBottom = 'none';
+    reader.readAsText(file);
+  };
+  input.click();
+}
 
-  // احسب موضع القائمة
-  const menuHeight = 35 * items.length;
-  const margin = 6;
-  let left = rect.right - menu.offsetWidth;
-  if (left < 4) left = 6;
-  if (left + 100 > window.innerWidth) left = window.innerWidth - 100;
-  let top;
-  if (window.innerHeight - rect.bottom < menuHeight + margin) {
-    top = rect.top - menuHeight;
-    if (top < 2) top = 8;
-  } else {
-    top = rect.bottom;
-    if (top + menuHeight + margin > window.innerHeight)
-      top = window.innerHeight - menuHeight - margin;
+// استيراد لوحة واحدة
+function importTab() {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".json";
+  input.onchange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const importedTab = JSON.parse(reader.result);
+        if (importedTab.tabName && importedTab.notes && Array.isArray(importedTab.notes)) {
+          // إنشاء معرف جديد للوحة إذا كان الاسم موجود
+          let newTabId = importedTab.tabId || findOrCreateTabByName(importedTab.tabName);
+
+          // إذا كان المعرف موجود، أنشئ معرف جديد
+          if (tabNames[newTabId] && newTabId !== importedTab.tabId) {
+            let counter = 1;
+            let baseName = importedTab.tabName;
+            while (tabNames.hasOwnProperty(String(counter))) {
+              counter++;
+            }
+            newTabId = String(counter);
+            tabNames[newTabId] = baseName;
+          } else {
+            tabNames[newTabId] = importedTab.tabName;
+          }
+
+          // إضافة الملاحظات
+          notes[newTabId] = importedTab.notes.map(note => ({
+            text: note.text || note,
+            createdAt: note.createdAt || new Date().toISOString(),
+            lastModified: note.lastModified || new Date().toISOString()
+          }));
+
+          safeLocalStorageSet("tabNames", tabNames);
+          safeLocalStorageSet("notes", notes);
+          renderTabs();
+          switchTab(newTabId);
+          renderNotes();
+          showToast(`✅ تم استيراد لوحة "${importedTab.tabName}" بنجاح`);
+        } else {
+          showToast("❌ الملف لا يحتوي على بيانات لوحة صحيحة");
+        }
+      } catch {
+        showToast("❌ الملف غير صالح أو تالف");
+      }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
+//                       اضافة لوحة
+function addNewTab() {
+  const newName = prompt("🆕 أدخل اسم اللوحة الجديدة:");
+  if (newName) {
+    // توليد رقم معرف جديد لا يتكرر
+    let newId = 1;
+    while (tabNames.hasOwnProperty(String(newId))) {
+      newId++;
+    }
+    newId = String(newId);
+    tabNames[newId] = newName;
+    notes[newId] = [];
+    safeLocalStorageSet("tabNames", tabNames);
+    safeLocalStorageSet("notes", notes);
+    renderTabs();
+    switchTab(newId);
   }
-  menu.style.left = left + 'px';
-  menu.style.top = top + 'px';
+}
+//                           تعديل اسم اللوحة الحالية
+function renameCurrentTab() {
+  if (currentTab === "trash" || currentTab === 'settings' || currentTab === 'home') {
+    alert("❌ لا يمكن إعادة تسمية هذه اللوحة.");
+    return;
+  }
+  const currentName = tabNames[currentTab];
+  const newName = prompt("✏️ أدخل الاسم الجديد للوحة:", currentName);
+  if (newName && newName !== currentName) {
+    tabNames[currentTab] = newName;
+    safeLocalStorageSet("tabNames", tabNames);
+    renderTabs();
+    updateActiveTab();
+  }
+}
 
-  document.body.appendChild(menu);
-  // تأثير التلاشي والانزلاق
-  setTimeout(() => {
-    menu.style.opacity = '1';
-    menu.style.transform = 'translateX(0)';
-  }, 10);
-  // دالة إغلاق القائمة بالنقر بالخارج
-  function closeMenuPop(e) {
-    if(!e || (e && !menu.contains(e.target) && (!btn.contains(e.target)))) {
-      if (menu) menu.remove();
-      document.removeEventListener('mousedown', closeMenuPop, true);
+
+// وظيفة تصغير الصورة بنسبة 20% من مساحة الملاحظة
+function resizeImage(file, callback) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+
+      // حساب عرض مساحة الملاحظة
+      const container = document.getElementById('notesContainer');
+      const containerWidth = container.offsetWidth;
+
+      // حساب الأبعاد الجديدة (25% من عرض مساحة الملاحظة)
+      const newWidth = containerWidth * 0.25;
+      const aspectRatio = img.height / img.width;
+      const newHeight = newWidth * aspectRatio;
+
+      canvas.width = newWidth;
+      canvas.height = newHeight;
+
+      // رسم الصورة المصغرة
+      ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+      // تحويل إلى base64
+      const resizedDataUrl = canvas.toDataURL('image/jpeg', 0.8);
+      callback(resizedDataUrl);
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+// وظيفة إدراج الصورة في مربع الإدخال مع تحسينات الاستجابة
+function insertImageIntoInput(dataUrl) {
+  const input = document.getElementById('newNoteInput');
+  if (!input) return;
+
+  const img = document.createElement('img');
+  img.src = dataUrl;
+
+  // تحسين التنسيق حسب حجم الشاشة
+  const isMobile = window.innerWidth <= 768;
+  img.style.maxWidth = isMobile ? '35%' : '25%';
+  img.style.height = 'auto';
+  img.style.borderRadius = '6px';
+  img.style.margin = isMobile ? '4px 2px' : '3px 2px';
+  img.style.display = 'inline'; // النص يسبح حول الصورة,block يحجز سطر كامل
+  img.style.float = 'right';  // الصورة ع اليمين
+  //   img.style.verticalAlign = 'top';
+  img.style.margin = '0 0 10px 10px'; // مسافة من الأسفل واليسار
+  img.style.border = '2px solid #ddd';
+  img.style.borderRadius = '8px';
+  img.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+  img.style.cursor = 'move';
+
+  // إدراج الصورة في موضع المؤشر أو نهاية النص
+  try {
+    const selection = window.getSelection();
+    const range = selection.rangeCount > 0 ? selection.getRangeAt(0) : document.createRange();
+
+    if (input.contains(range.commonAncestorContainer)) {
+      range.insertNode(img);
+      range.setStartAfter(img);
+      range.setEndAfter(img);
+      selection.removeAllRanges();
+      selection.addRange(range);
+    } else {
+      input.appendChild(img);
+      // إضافة فراغ بعد الصورة لتحسين التخطيط
+      input.appendChild(document.createElement('br'));
+    }
+  } catch (error) {
+    // في حالة حدوث خطأ، أدرج الصورة في النهاية
+    console.error('خطأ في إدراج الصورة:', error);
+    input.appendChild(img);
+    input.appendChild(document.createElement('br'));
+  }
+
+  // التركيز على مربع الإدخال
+  input.focus();
+}
+
+// إعداد زر تحميل الصورة
+function setupImageUpload() {
+  const uploadBtn = document.getElementById('uploadImageBtn');
+  const imageInput = document.getElementById('imageInput');
+
+  uploadBtn.addEventListener('click', () => {
+    imageInput.click();
+  });
+
+  imageInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+      resizeImage(file, (resizedDataUrl) => {
+        insertImageIntoInput(resizedDataUrl);
+      });
+    }
+    // إعادة تعيين input للسماح باختيار نفس الصورة مرة أخرى
+    imageInput.value = '';
+  });
+}
+
+// وظيفة تحديث تنسيق الصور عند تغيير حجم النافذة
+function updateImageStyles() {
+  const isMobile = window.innerWidth <= 768;
+  const images = document.querySelectorAll('#newNoteInput img, #editTextarea img');
+
+  images.forEach(img => {
+    if (img.closest('#newNoteInput')) {
+      img.style.maxWidth = isMobile ? '35%' : '25%';
+    } else if (img.closest('#editTextarea')) {
+      img.style.maxWidth = isMobile ? '50%' : '35%';
+    }
+  });
+}
+
+// تسجيل الـ Service Worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(registration => {
+        console.log('Service Worker مسجل بنجاح:', registration);
+      })
+      .catch(error => {
+        console.log('فشل في تسجيل Service Worker:', error);
+      });
+  });
+}
+
+// نظام النسخ الاحتياطي التلقائي
+let backupReminderInterval = 1 * 60 * 1000; // 1 دقيقة للاختبار (غير إلى 24 * 60 * 60 * 1000 للإنتاج)
+let backupSnoozeDays = 1; // عدد الأيام للتأجيل
+
+// وظيفة التحقق من آخر نسخ احتياطي وإظهار التنبيه
+function checkBackupReminder() {
+  try {
+    const lastBackup = safeLocalStorageGet('lastBackupDate', null);
+    const snoozedUntil = safeLocalStorageGet('backupSnoozedUntil', null);
+
+    if (!lastBackup) {
+      // أول مرة - لا نعرض تنبيه
+      return;
+    }
+
+    const now = new Date();
+    const lastBackupDate = new Date(lastBackup);
+
+    // التحقق من التأجيل
+    if (snoozedUntil) {
+      const snoozeDate = new Date(snoozedUntil);
+      if (now < snoozeDate) {
+        // ما زال مؤجل
+        return;
+      }
+    }
+
+    // حساب الفرق بالأيام
+    const diffTime = now - lastBackupDate;
+    const diffDays = diffTime / (1000 * 60 * 60 * 24);
+
+    if (diffDays >= (backupReminderInterval / (1000 * 60 * 60 * 24))) { // فترة التنبيه (دقيقة واحدة للاختبار)
+      showBackupReminder(diffDays);
+    }
+  } catch (error) {
+    console.error('خطأ في التحقق من تذكير النسخ الاحتياطي:', error);
+  }
+}
+
+// وظيفة عرض تنبيه النسخ الاحتياطي
+function showBackupReminder(daysSinceLastBackup) {
+  const modal = document.createElement('div');
+  modal.id = 'backupReminderModal';
+  modal.className = 'modal-overlay';
+  modal.innerHTML = `
+    <div class="modal-content backup-reminder-content">
+      <div class="modal-header">
+        <h4>🔄 تذكير النسخ الاحتياطي</h4>
+        <button onclick="closeBackupReminder()" class="close-btn">✖</button>
+      </div>
+      <div class="modal-body">
+        <p>مرحباً! لم تقم بأخذ نسخة احتياطية منذ ${Math.floor(daysSinceLastBackup)} يوم/أيام.</p>
+        <p>يُنصح بأخذ نسخة احتياطية دورية لحفظ ملاحظاتك.</p>
+        <div class="backup-actions">
+          <button onclick="exportNotes(); closeBackupReminder();" class="backup-now-btn">📤 احتياطي الآن</button>
+          <button onclick="snoozeBackupReminder()" class="snooze-btn">⏰ تذكير لاحقاً</button>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+}
+
+// وظيفة إغلاق تنبيه النسخ الاحتياطي
+function closeBackupReminder() {
+  const modal = document.getElementById('backupReminderModal');
+  if (modal) {
+    modal.remove();
+  }
+}
+
+// وظيفة تأجيل التذكير لمدة 3 أيام
+function snoozeBackupReminder() {
+  const snoozeUntil = new Date();
+  snoozeUntil.setDate(snoozeUntil.getDate() + backupSnoozeDays);
+  safeLocalStorageSet('backupSnoozedUntil', snoozeUntil.toISOString());
+  closeBackupReminder();
+  showToast(`تم تأجيل التذكير لمدة ${backupSnoozeDays} أيام ⏰`);
+}
+
+// وظيفة تحديث تاريخ آخر نسخ احتياطي
+function updateLastBackupDate() {
+  const now = new Date().toISOString();
+  safeLocalStorageSet('lastBackupDate', now);
+  // إزالة التأجيل عند أخذ نسخة احتياطية
+  safeLocalStorageRemove('backupSnoozedUntil');
+}
+
+// دالة آمنة لحذف من localStorage
+function safeLocalStorageRemove(key) {
+  try {
+    localStorage.removeItem(key);
+  } catch (e) {
+    console.warn(`فشل في حذف ${key} من localStorage:`, e);
+  }
+}
+
+// تعديل دالة التصدير لتحديث تاريخ النسخ الاحتياطي
+async function exportNotes() {
+  const data = {
+    notes: notes,
+    tabNames: tabNames
+  };
+
+  // 🕒 توليد التاريخ بصيغة YYYY-MM-DD
+  const now = new Date();
+  const yyyy = now.getFullYear();
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  const dd = String(now.getDate()).padStart(2, '0');
+  const dateString = `${yyyy}-${mm}-${dd}`;
+
+  // 📁 اسم الملف مع التاريخ
+  const filename = `clip-note-pro-${dateString}.json`;
+
+  try {
+    // التحقق من دعم File System Access API
+    if ('showSaveFilePicker' in window) {
+      // استخدام File System Access API لإظهار مربع حوار حفظ الملف
+      const options = {
+        suggestedName: filename,
+        types: [{
+          description: 'JSON Files',
+          accept: { 'application/json': ['.json'] }
+        }]
+      };
+
+      const fileHandle = await window.showSaveFilePicker(options);
+      const writable = await fileHandle.createWritable();
+      await writable.write(JSON.stringify(data, null, 2));
+      await writable.close();
+
+      showToast("تم حفظ النسخة الاحتياطية بنجاح ✅");
+    } else {
+      // الطريقة التقليدية كبديل (للمتصفحات التي لا تدعم File System Access API)
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+
+      showToast("تم التصدير وتحديث تاريخ النسخ الاحتياطي ✅");
+    }
+
+    // تحديث تاريخ آخر نسخ احتياطي
+    updateLastBackupDate();
+  } catch (error) {
+    if (error.name !== 'AbortError') {
+      console.error('خطأ في حفظ الملف:', error);
+      showToast("❌ فشل في حفظ النسخة الاحتياطية");
     }
   }
-  setTimeout(() => {
-    document.addEventListener('mousedown', closeMenuPop, true);
-  }, 10);
 }
 
-// دالة نسخ الرمز
-function copySymbol(symbol) {
-  navigator.clipboard.writeText(symbol).then(() => {
-    showNotification('تم نسخ الرمز!');
-  }).catch(() => {
-    // طريقة بديلة للنسخ
-    const textArea = document.createElement('textarea');
-    textArea.value = symbol;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
-    showNotification('تم نسخ الرمز!');
-  });
-}
-
-// دالة تحرير الرمز
-function editSymbol(symbol, boardName) {
-  // نسخ الرمز إلى مربع النص مثل لوحة الأعمال
-  displayBox.value = symbol;
-  displayBox.focus();
-  saveToHistoryOnInput();
-  // حفظ معلومات الرمز الذي يتم تحريره
-  editingSymbol = { symbol: symbol, boardName: boardName };
-}
-
-// دالة حذف الرمز
-function deleteSymbol(symbol, boardName) {
-  if (confirm('هل تريد حذف هذا الرمز؟')) {
-    removeSymbolFromBoard(boardName, symbol);
-  }
-}
-
-// دالة نقل الرمز الى
-function moveSymbolTo(symbol, boardName) {
-  // إزالة أي قائمة فرعية سابقة
-  const oldSubmenu = document.getElementById('move-symbol-submenu');
-  if (oldSubmenu) oldSubmenu.remove();
-
-  // الحصول على اللوحات المخصصة
-  const customBoards = Object.keys(boards).filter(key => !['board1', 'board2', 'board3', 'board4', 'board5', 'board6'].includes(key));
-
-  if (customBoards.length === 0) {
-    showNotification('لا توجد لوحات مخصصة للنقل إليها');
-    // إخفاء القائمة الرئيسية
-    const mainMenu = document.getElementById('popup-menu');
-    if (mainMenu) mainMenu.remove();
+// تصدير اللوحة الحالية فقط
+async function exportCurrentTab() {
+  // التحقق من أننا لسنا في لوحة المحذوفات أو الإعدادات
+  if (currentTab === "trash" || currentTab === "settings") {
+    showToast("❌ لا يمكن تصدير لوحة المحذوفات أو الإعدادات");
     return;
   }
 
-  // إنشاء عنصر القائمة الفرعية
-  const submenu = document.createElement('div');
-  submenu.id = 'move-symbol-submenu';
-  submenu.style.position = 'fixed';
-  submenu.style.minWidth = '100px';
-  submenu.style.background = 'rgb(133, 174, 186)';
-  submenu.style.border = '1.5px solid #e0e0e0';
-  submenu.style.boxShadow = '0 8px 24px 0 rgba(0,0,0,0.09),0 1.5px 3px 0 rgba(0,0,0,0.04)';
-  submenu.style.borderRadius = '10px';
-  submenu.style.overflow = 'hidden';
-  submenu.style.zIndex = '99999';
-  submenu.style.padding = '1px';
-  submenu.style.opacity = '0';
-  submenu.style.transition = 'opacity 0.3s ease';
+  const tabData = {
+    tabName: tabNames[currentTab],
+    tabId: currentTab,
+    notes: notes[currentTab] || []
+  };
 
-  // عناصر القائمة
-  customBoards.forEach(boardKey => {
-    const div = document.createElement('div');
-    div.className = 'dropdown-item';
-    div.textContent = getBoardTitle(boardKey);
-    div.onclick = () => { moveSymbolToBoard(symbol, boardName, boardKey); };
-    div.style.cursor = 'pointer';
-    div.style.padding = '5px 3px';
-    div.style.margin = '2px';
-    div.style.fontSize = '15px';
-    div.style.border = '1px solid #1b5771';
-    div.style.borderRadius = '10px';
-    div.style.background = '#f3f7fd';
-    div.style.textAlign = 'right';
-    div.onpointerover = () => { div.style.background = '#f3f7fd'; div.style.color = '#2f80ed'; };
-    div.onpointerout  = () => { div.style.background = '#fff'; div.style.color = '#262626'; };
-    submenu.appendChild(div);
-  });
-  // إزالة خط أسفل آخر عنصر
-  submenu.lastChild.style.borderBottom = 'none';
+  // اسم الملف مع اسم اللوحة
+  const filename = `clip-note-pro-${tabNames[currentTab].replace(/[^a-zA-Z0-9\u0600-\u06FF]/g, '_')}_${new Date().toISOString().split('T')[0]}.json`;
 
-  // حساب موضع القائمة الفرعية: بجانب القائمة الرئيسية
-  const mainMenu = document.getElementById('popup-menu');
-  const mainRect = mainMenu.getBoundingClientRect();
-  const submenuHeight = 30 * customBoards.length;
-  const margin = -15; // قيمة سالبة للتقريب أكثر
-  let left = mainRect.right + margin;
-  let top = mainRect.top;
+  try {
+    // التحقق من دعم File System Access API
+    if ('showSaveFilePicker' in window) {
+      // استخدام File System Access API لإظهار مربع حوار حفظ الملف
+      const options = {
+        suggestedName: filename,
+        types: [{
+          description: 'JSON Files',
+          accept: { 'application/json': ['.json'] }
+        }]
+      };
 
-  // التأكد من عدم الخروج عن حدود الشاشة
-  if (left + 140 > window.innerWidth) {
-    left = mainRect.left - 120 - margin;
-  }
-  if (top + submenuHeight + margin > window.innerHeight) {
-    top = window.innerHeight - submenuHeight - margin;
-  }
-  if (top < 2) top = 8;
+      const fileHandle = await window.showSaveFilePicker(options);
+      const writable = await fileHandle.createWritable();
+      await writable.write(JSON.stringify(tabData, null, 2));
+      await writable.close();
 
-  submenu.style.left = left + 'px';
-  submenu.style.top = top + 'px';
+      showToast(`تم تصدير لوحة "${tabNames[currentTab]}" بنجاح ✅`);
+    } else {
+      // الطريقة التقليدية كبديل
+      const blob = new Blob([JSON.stringify(tabData, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
 
-  document.body.appendChild(submenu);
-  // تأثير التلاشي
-  setTimeout(() => {
-    submenu.style.opacity = '1';
-  }, 10);
-
-  // دالة إغلاق القائمة الفرعية بالنقر بالخارج
-  function closeSubmenu(e) {
-    if(!e || (e && !submenu.contains(e.target))) {
-      if (submenu) submenu.remove();
-      document.removeEventListener('mousedown', closeSubmenu, true);
+      showToast(`تم تصدير لوحة "${tabNames[currentTab]}" بنجاح ✅`);
     }
-  }
-  setTimeout(() => {
-    document.addEventListener('mousedown', closeSubmenu, true);
-  }, 10);
-}
-
-// دالة حذف رمز من لوحة محددة
-function removeSymbolFromBoard(boardName, symbol) {
-  const board = boards[boardName];
-  for (let i = 0; i < board.length; i++) {
-    const index = board[i].indexOf(symbol);
-    if (index !== -1) {
-      board[i].splice(index, 1);
-      // إذا أصبح السطر فارغاً، احذفه
-      if (board[i].length === 0) {
-        board.splice(i, 1);
-      }
-      saveCustomBoards(); // حفظ التغييرات
-      loadBoardContent(boardName); // تحديث العرض
-      return;
+  } catch (error) {
+    if (error.name !== 'AbortError') {
+      console.error('خطأ في حفظ الملف:', error);
+      showToast("❌ فشل في تصدير اللوحة");
     }
   }
 }
 
-// دالة حذف رمز من اللوحة الحالية
-function removeSymbol() {
-   const symbol = prompt('اكتب الرمز بالتحديد الذي تريد إزالته');
-   if (symbol) {
-     removeSymbolFromBoard(currentBoard, symbol);
-   }
-   // لا نحتاج لإغلاق القائمة هنا لأن النافذة المنبثقة ستغطيها
+// وظيفة العودة لأعلى
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 }
 
-// دالة إظهار قائمة الخيارات الإضافية
-function toggleMainDropdown(event) {
-  // أزل أي قائمة منبثقة سابقة
-  const oldMenu = document.getElementById('main-dropdown-menu');
-  if (oldMenu) oldMenu.remove();
-
-  // الزر الذي ضغط عليه المستخدم
-  const btn = event.currentTarget || event.target;
-  const rect = btn.getBoundingClientRect();
-
-  // أنشئ عناصر القائمة الرئيسية
-  const menu = document.createElement('div');
-  menu.id = 'main-dropdown-menu';
-  menu.style.position = 'fixed';
-  menu.style.minWidth = '100px';// عرض مربع القائمة الرئيسية
-  menu.style.background = ' #85aeba';
-  menu.style.border = '1.5px solid #1b5771';
-  menu.style.boxShadow = '0 8px 24px 0 rgba(0,0,0,0.09),0 1.5px 3px 0 rgba(0,0,0,0.04)';
-  menu.style.borderRadius = '10px';
-  menu.style.overflow = 'hidden';
-  menu.style.zIndex = '99999';
-  menu.style.padding = '1px';
-  menu.style.opacity = '0';
-  menu.style.transform = 'translateX(20px)';
-  menu.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-
-  // عناصر القائمة الرئيسية ة
-   const items = [
-     { label: 'إنشاء لوحة ', action: createBoard },
-     { label: 'حذف لوحة ', action: deleteBoard },
-     { label: 'تعديل لوحة', action: renameBoard },
-     { label: 'ترتيب لوحات', action: arrangeBoards },
-     { label: 'إضافة رمز ', action: addSymbol },
-     { label: 'حذف رمز ', action: removeSymbol },
-     { label: 'استرجاع 📥', action: importTexts },
-     { label: 'تصدير 📤', action: exportTexts }
-   ];
-  items.forEach(item => {
-    const div = document.createElement('div');
-    div.className = 'dropdown-item';
-    div.textContent = item.label;
-    div.onclick = () => { item.action(); closeMainMenu(); };
-    div.style.cursor = 'pointer';
-    div.style.padding = '5px 3px';//مكان الكلمات داخل القائمة
-    div.style.margin = '2px';
-    div.style.fontSize = '14px';//حجم خط عناصر القائمة الرئيسية
-    div.style.border = '1px solid #1b5771';
-    div.style.borderRadius = '10px';
-    div.style.background = ' #f3f7fd';
-    div.style.textAlign = 'right';
-    div.onpointerover = () => { div.style.background = '#f3f7fd'; div.style.color = '#2f80ed'; };
-    div.onpointerout  = () => { div.style.background = '#fff'; div.style.color = '#262626'; };
-    menu.appendChild(div);
-  });
-  // إزالة خط أسفل آخر عنصر
-  menu.lastChild.style.borderBottom = 'none';
-
-  // احسب موضع القائمة: أسفل الزر أو للأعلى إذا المسافة غير كافية
-  const menuHeight = 35 * items.length;
-  const margin = 6;
-  let left = rect.right - menu.offsetWidth;
-  if (left < 4) left = 6;
-  if (left + 160 > window.innerWidth) left = window.innerWidth - 135;
-  let top;
-  if (window.innerHeight - rect.bottom < menuHeight + margin) {
-    top = rect.top - menuHeight;
-    if (top < 2) top = 8;
+// وظيفة التحكم في ظهور زر العودة لأعلى
+function toggleScrollToTopButton() {
+  const button = document.getElementById('scrollToTopBtn');
+  if (window.scrollY > 200) { // يظهر عند النزول أكثر من 200px
+    button.classList.add('show');
   } else {
-    top = rect.bottom;
-    if (top + menuHeight + margin > window.innerHeight)
-      top = window.innerHeight - menuHeight - margin;
+    button.classList.remove('show');
   }
-  menu.style.left = left + 'px';
-  menu.style.top = top + 'px';
+}
 
-  document.body.appendChild(menu);
-  // تأثير التلاشي والانزلاق
-  setTimeout(() => {
-    menu.style.opacity = '1';
-    menu.style.transform = 'translateX(0)';
-  }, 10);
-  // دالة إغلاق القائمة بالنقر بالخارج
-  function closeMainMenu(e) {
-    if(!e || (e && !menu.contains(e.target) && (!btn.contains(e.target)))) {
-      if (menu) menu.remove();
-      document.removeEventListener('mousedown', closeMainMenu, true);
+// 🚀 تشغيل التهيئة عند تحميل الصفحة
+document.addEventListener("DOMContentLoaded", () => {
+  try {
+    // تطبيق جميع أحجام الخطوط المحفوظة
+    try {
+      const prefs = safeLocalStorageGet('fontPrefs', {});
+      if (prefs.input) document.documentElement.style.setProperty('--input-font-size', prefs.input + 'px');
+      if (prefs.note) document.documentElement.style.setProperty('--note-font-size', prefs.note + 'px');
+      if (prefs.edit) document.documentElement.style.setProperty('--edit-font-size', prefs.edit + 'px');
+      if (prefs.tab) document.documentElement.style.setProperty('--tab-font-size', prefs.tab + 'px');
+    } catch {}
+
+    // تطبيق الوضع الليلي المحفوظ
+    try {
+      const nightMode = safeLocalStorageGet('nightMode', 'false');
+      if (nightMode === 'true') {
+        document.body.classList.add('night');
+      }
+    } catch {}
+
+    const firstTabId = renderTabs(); // إنشاء التبويبات واسترجاع أول تبويب
+    switchTab(firstTabId);           // تفعيل أول تبويب وعرض ملاحظاته
+    setupInputEnterKey();            // تفعيل دعم الضغط على Enter في مربع الإدخال
+    setupImageUpload();              // تفعيل تحميل الصور
+
+    // إضافة مستمع لتحديث تنسيق الصور عند تغيير حجم النافذة
+    window.addEventListener('resize', updateImageStyles);
+
+    // إضافة مستمع للتحكم في زر العودة لأعلى
+    window.addEventListener('scroll', toggleScrollToTopButton);
+
+    // التحقق من تذكير النسخ الاحتياطي بعد تحميل الصفحة
+    setTimeout(checkBackupReminder, 2000); // تأخير 2 ثانية لضمان تحميل كل شيء
+  } catch (err) {
+    alert('حدث خطأ في جافاسكريبت:\n' + err.message);
+    console.error(err);
+  }
+});
+
+
+// 🧼 إغلاق القوائم المنبثقة عند الضغط خارجها (منطق موحد)
+document.addEventListener("click", function(e) {
+  // إذا كان الضغط داخل .menu أو .action-menu أو على زر القائمة
+  if (
+    e.target.closest('.menu') ||
+    e.target.closest('.action-menu') ||
+    (e.target.classList && e.target.classList.contains('menu-toggle'))
+  ) {
+    return;
+  }
+  // إغلاق جميع القوائم المنبثقة فقط
+  document.querySelectorAll(".menu, .action-menu").forEach(m => m.classList.add("hidden"));
+  // لا تضع منطق moveMenu هنا، فهو يعالج داخل toggleMoveMenu فقط
+});
+
+// متغيرات عامة للترجمة
+let currentSourceLang = 'auto';
+let currentTargetLang = 'ar';
+
+// وظيفة الترجمة باستخدام Google Translate API
+function translateText(providedText = null) {
+  let text;
+  if (providedText !== null) {
+    text = providedText.trim();
+  } else {
+    const textarea = document.getElementById("editTextarea");
+    text = textarea.innerText.trim();
+  }
+
+  if (!text) {
+    alert("لا يوجد نص للترجمة");
+    return;
+  }
+
+  // كشف اللغة الأساسية (بسيط)
+  const isArabic = /[\u0600-\u06FF]/.test(text);
+  currentSourceLang = isArabic ? 'ar' : 'en';
+  currentTargetLang = isArabic ? 'en' : 'ar';
+
+  // عرض النص الأصلي أولاً
+  document.getElementById("originalText").value = text;
+  updateTextDirectionAndFont(document.getElementById("originalText"));
+  document.getElementById("translatedText").value = '';
+
+  // تعيين اللغات في القوائم المنسدلة
+  document.getElementById("sourceLangSelect").value = currentSourceLang;
+  document.getElementById("targetLangSelect").value = currentTargetLang;
+
+  // فتح نافذة الترجمة
+  document.getElementById("translateModal").classList.remove("hidden");
+  // إضافة قفل التمرير للجسم عند فتح نافذة الترجمة
+  document.body.classList.add("modal-open");
+
+  // إعداد مستمعي الأحداث للترجمة الفورية
+  setupTranslationListeners();
+
+  // بدء الترجمة الأولية
+  performTranslation(text, currentSourceLang, currentTargetLang).catch(error => {
+    console.error('خطأ في الترجمة الأولية:', error);
+  });
+}
+
+// وظيفة ترجمة ملاحظة من القائمة
+function translateNote(index) {
+  translatingNoteIndex = index;
+  const noteItem = notes[currentTab][index];
+  let text = (noteItem && typeof noteItem === "object") ? (noteItem.text || "") : noteItem;
+
+  // استخراج النص العادي فقط (إزالة علامات HTML)
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = text;
+  const plainText = tempDiv.textContent || tempDiv.innerText || '';
+
+  translateText(plainText);
+}
+
+// وظيفة تنفيذ الترجمة
+function performTranslation(text, sourceLang, targetLang) {
+  return new Promise((resolve, reject) => {
+    const apiUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+
+    fetch(apiUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('فشل في الاتصال بخدمة الترجمة');
+        }
+        return response.json();
+      })
+      .then(data => {
+        let translatedText = '';
+        if (data && data[0]) {
+          // جمع جميع الأجزاء المترجمة للنصوص الطويلة
+          for (let i = 0; i < data[0].length; i++) {
+            if (data[0][i] && data[0][i][0]) {
+              translatedText += data[0][i][0];
+            }
+          }
+        }
+
+        // تحديث النص المترجم فقط (لا نحدث النص الأصلي هنا)
+        const translatedElement = document.getElementById("translatedText");
+        if (translatedElement) {
+          translatedElement.value = translatedText;
+          updateTextDirectionAndFont(translatedElement);
+        }
+
+        resolve(translatedText);
+      })
+      .catch(error => {
+        console.error('خطأ في الترجمة:', error);
+        // عرض رسالة خطأ في حالة فشل الترجمة
+        const translatedElement = document.getElementById("translatedText");
+        if (translatedElement) {
+          translatedElement.value = "خطأ: لا يمكن الترجمة بدون إتصال أنترنت.";
+          translatedElement.style.direction = 'rtl';
+        }
+        reject(error);
+      });
+  });
+}
+
+// وظيفة تبديل اللغات
+function swapLanguages() {
+  const originalText = document.getElementById("originalText").value;
+  const translatedText = document.getElementById("translatedText").value;
+  if (!originalText.trim()) return;
+
+  // تبديل اللغات والنصوص
+  const tempLang = currentSourceLang;
+  currentSourceLang = currentTargetLang;
+  currentTargetLang = tempLang;
+
+  // تبديل النصوص في الحقول
+  document.getElementById("originalText").value = translatedText;
+  document.getElementById("translatedText").value = originalText;
+
+  // تحديث اتجاه النص وتنسيق الخط حسب المحتوى الجديد
+  updateTextDirectionAndFont(document.getElementById("originalText"));
+  updateTextDirectionAndFont(document.getElementById("translatedText"));
+
+  // تحديث القوائم المنسدلة
+  document.getElementById("sourceLangSelect").value = currentSourceLang;
+  document.getElementById("targetLangSelect").value = currentTargetLang;
+}
+
+// إغلاق نافذة الترجمة
+function closeTranslateModal() {
+  document.getElementById("translateModal").classList.add("hidden");
+  // إزالة قفل التمرير من الجسم
+  document.body.classList.remove("modal-open");
+  // إعادة تعيين فهرس الملاحظة المترجمة
+  translatingNoteIndex = null;
+}
+
+// نسخ النص الأصلي
+function copyOriginalText() {
+  const text = document.getElementById("originalText");
+  if (text) {
+    const content = text.value || text.innerText || text.textContent || '';
+    navigator.clipboard.writeText(content).then(() => {
+      showToast("تم نسخ النص الأصلي ✅");
+    }).catch(err => {
+      console.error('فشل في نسخ النص:', err);
+      // محاولة بديلة باستخدام document.execCommand
+      try {
+        const textArea = document.createElement('textarea');
+        textArea.value = content;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        showToast("تم نسخ النص الأصلي ✅");
+      } catch (fallbackErr) {
+        console.error('فشل في النسخ البديل:', fallbackErr);
+        showToast("❌ فشل في نسخ النص");
+      }
+    });
+  } else {
+    showToast("❌ لم يتم العثور على النص الأصلي");
+  }
+}
+
+// نسخ النص المترجم
+function copyTranslatedText() {
+  const text = document.getElementById("translatedText");
+  if (text) {
+    const content = text.value || text.innerText || text.textContent || '';
+    navigator.clipboard.writeText(content).then(() => {
+      showToast("تم نسخ الترجمة ✅");
+    }).catch(err => {
+      console.error('فشل في نسخ النص:', err);
+      // محاولة بديلة باستخدام document.execCommand
+      try {
+        const textArea = document.createElement('textarea');
+        textArea.value = content;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        showToast("تم نسخ الترجمة ✅");
+      } catch (fallbackErr) {
+        console.error('فشل في النسخ البديل:', fallbackErr);
+        showToast("❌ فشل في نسخ النص");
+      }
+    });
+  } else {
+    showToast("❌ لم يتم العثور على النص المترجم");
+  }
+}
+
+// متغير للتحكم في الترجمة الفورية
+let translationTimeout;
+
+// متغير لتتبع الملاحظات التي تحتوي على صور لتحديث تموضعها
+let notesWithImages = new Set();
+
+// متغير لتتبع حالة التحرير
+let isEditModalOpen = false;
+
+// متغير لحفظ تموضع الصور في نافذة التحرير
+let editModalImagePositions = {};
+
+// متغير لتتبع رقم الملاحظة المترجمة من القائمة
+let translatingNoteIndex = null;
+
+// وظيفة تنسيق تلقائي للنص العربي والإنجليزي
+function autoFormatTextDirection(textarea) {
+  if (!textarea) return;
+
+  const text = textarea.innerText || textarea.textContent || '';
+  if (!text.trim()) return;
+
+  // كشف اللغة الرئيسية في النص
+  const arabicChars = /[\u0600-\u06FF]/g;
+  const englishChars = /[a-zA-Z]/g;
+
+  const arabicCount = (text.match(arabicChars) || []).length;
+  const englishCount = (text.match(englishChars) || []).length;
+
+  // إذا كان النص يحتوي على كلا اللغتين، استخدم اتجاه مختلط
+  if (arabicCount > 0 && englishCount > 0) {
+    // تنسيق النص ليكون مختلطاً
+    formatMixedText(textarea);
+  } else if (arabicCount > englishCount) {
+    // النص عربي بشكل أساسي
+    textarea.style.direction = 'rtl';
+    textarea.style.textAlign = 'right';
+  } else if (englishCount > arabicCount) {
+    // النص إنجليزي بشكل أساسي
+    textarea.style.direction = 'ltr';
+    textarea.style.textAlign = 'left';
+  } else {
+    // النص العربي بشكل افتراضي
+    textarea.style.direction = 'rtl';
+    textarea.style.textAlign = 'right';
+  }
+}
+
+// وظيفة تنسيق النص المختلط (عربي وإنجليزي)
+function formatMixedText(textarea) {
+  // إذا كان النص يحتوي على صور، لا نقم بالتنسيق المعقد للحفاظ على الصور
+  const hasImages = textarea.querySelectorAll('img').length > 0;
+  if (hasImages) {
+    // فقط ضبط اتجاه النص العام
+    textarea.style.direction = 'rtl';
+    textarea.style.textAlign = 'right';
+    return;
+  }
+
+  const text = textarea.innerText || textarea.textContent || '';
+  if (!text.trim()) return;
+
+  // تقسيم النص إلى كلمات مع الحفاظ على علامات الترقيم
+  const words = text.split(/(\s+|[.,!?;:])/);
+
+  // إنشاء محتوى HTML جديد مع تنسيق لكل كلمة
+  let formattedHTML = '';
+
+  for (const word of words) {
+    if (word.trim() === '' || /^[.,!?;:]$/.test(word)) {
+      // المسافات والفراغات وعلامات الترقيم
+      formattedHTML += word;
+    } else {
+      // كشف لغة الكلمة
+      const isArabic = /[\u0600-\u06FF]/.test(word);
+      const isEnglish = /[a-zA-Z]/.test(word);
+
+      if (isArabic && !isEnglish) {
+        // كلمة عربية - استخدم اتجاه RTL
+        formattedHTML += `<span style="direction: rtl; unicode-bidi: embed; display: inline;">${word}</span>`;
+      } else if (isEnglish && !isArabic) {
+        // كلمة إنجليزية - استخدم اتجاه LTR
+        formattedHTML += `<span style="direction: ltr; unicode-bidi: embed; display: inline;">${word}</span>`;
+      } else {
+        // كلمة مختلطة أو رموز أخرى
+        formattedHTML += word;
+      }
     }
   }
-  setTimeout(() => {
-    document.addEventListener('mousedown', closeMainMenu, true);
-  }, 10);
+
+  // الحفاظ على اتجاه النص العام كـ RTL للنصوص العربية
+  textarea.style.direction = 'rtl';
+  textarea.style.textAlign = 'right';
+  textarea.style.unicodeBidi = 'plaintext';
+
+  // تطبيق التنسيق
+  const selection = window.getSelection();
+  const range = selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
+  const cursorPosition = range ? getCursorPosition(textarea, range) : null;
+
+  // تطبيق النص المنسق
+  textarea.innerHTML = formattedHTML;
+
+  // استعادة موضع المؤشر إذا أمكن
+  if (cursorPosition !== null) {
+    setTimeout(() => setCursorPosition(textarea, cursorPosition), 10);
+  }
 }
 
-// دوال إدارة اللوحات
-function createBoard() {
-    const boardName = prompt('أدخل اسم اللوحة الجديدة:');
-    if (boardName && boardName.trim()) {
-      const boardKey = boardName.trim(); // استخدام الاسم المُدخل كمفتاح
-      boards[boardKey] = [[]]; // لوحة فارغة
-      // إضافة اللوحة الجديدة إلى نهاية boardOrder
-      boardOrder.push(boardKey);
-      saveCustomBoards();
-      saveBoardOrder();
-      updateTabsDisplay();
-      // الانتقال مباشرة للوحة الجديدة
-      currentBoard = boardKey;
-      loadBoardContent(boardKey);
-      showNotification('تم إنشاء اللوحة بنجاح!');
-    }
+// وظيفة للحصول على موضع المؤشر في textarea
+function getCursorPosition(textarea, range) {
+  try {
+    const preCaretRange = range.cloneRange();
+    preCaretRange.selectNodeContents(textarea);
+    preCaretRange.setEnd(range.endContainer, range.endOffset);
+    return preCaretRange.toString().length;
+  } catch (e) {
+    return null;
+  }
 }
 
-function deleteBoard() {
-    const boardNames = Object.keys(boards).filter(key => !['board1', 'board2', 'board3', 'board4', 'board5', 'board6'].includes(key));
-    if (boardNames.length === 0) {
-      alert('لا توجد لوحات مخصصة للحذف');
-      return;
-    }
+// وظيفة لتعيين موضع المؤشر في textarea
+function setCursorPosition(textarea, position) {
+  try {
+    const range = document.createRange();
+    const selection = window.getSelection();
 
-    const boardToDelete = prompt('أدخل اسم اللوحة المراد حذفها:\n' + boardNames.join('\n'));
-    if (boardToDelete && boardNames.includes(boardToDelete)) {
-      delete boards[boardToDelete];
-      // إزالة اللوحة من boardOrder
-      const index = boardOrder.indexOf(boardToDelete);
-      if (index !== -1) {
-        boardOrder.splice(index, 1);
-        saveBoardOrder();
-      }
-      saveCustomBoards();
-      updateTabsDisplay();
-      // إذا كانت اللوحة المحذوفة هي الحالية، انتقل للوحة الأولى
-      if (currentBoard === boardToDelete) {
-        currentBoard = 'board1';
-        loadBoardContent('board1');
-      }
-      showNotification('تم حذف اللوحة بنجاح!');
-    }
-}
+    // العثور على العقدة النصية المناسبة
+    let node = textarea.firstChild;
+    let remaining = position;
 
-function renameBoard() {
-    const boardNames = Object.keys(boards).filter(key => !['board1', 'board2', 'board3', 'board4', 'board5', 'board6'].includes(key));
-    if (boardNames.length === 0) {
-      alert('لا توجد لوحات مخصصة لتعديل اسمها');
-      return;
-    }
-
-    const oldName = prompt('أدخل اسم اللوحة المراد تعديلها:\n' + boardNames.join('\n'));
-    if (oldName && boardNames.includes(oldName)) {
-      const newName = prompt('أدخل الاسم الجديد:');
-      if (newName && newName.trim()) {
-        boards[newName] = boards[oldName];
-        delete boards[oldName];
-        // إذا كانت اللوحة المُعاد تسميتها هي الحالية، حدث currentBoard
-        if (currentBoard === oldName) {
-          currentBoard = newName;
+    while (node && remaining > 0) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        if (remaining <= node.textContent.length) {
+          range.setStart(node, remaining);
+          range.setEnd(node, remaining);
+          break;
+        } else {
+          remaining -= node.textContent.length;
         }
-        // تحديث boardOrder
-        const index = boardOrder.indexOf(oldName);
-        if (index !== -1) {
-          boardOrder[index] = newName;
-          saveBoardOrder();
-        }
-        saveCustomBoards();
-        updateTabsDisplay();
-        showNotification('تم تعديل اسم اللوحة بنجاح!');
       }
+      node = getNextNode(node);
     }
+
+    if (node) {
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+  } catch (e) {
+    // في حالة الخطأ، ضع المؤشر في نهاية النص
+    textarea.focus();
+  }
 }
 
-// دالة ترتيب اللوحات
-function arrangeBoards() {
-    // إنشاء نافذة ترتيب اللوحات
-    const modal = document.createElement('div');
-    modal.style.position = 'fixed';
-    modal.style.top = '0';
-    modal.style.left = '0';
-    modal.style.width = '100%';
-    modal.style.height = '100%';
-    modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
-    modal.style.display = 'flex';
-    modal.style.justifyContent = 'center';
-    modal.style.alignItems = 'center';
-    modal.style.zIndex = '10000';
+// وظيفة مساعدة للحصول على العقدة التالية
+function getNextNode(node) {
+  if (node.firstChild) {
+    return node.firstChild;
+  }
+  while (node) {
+    if (node.nextSibling) {
+      return node.nextSibling;
+    }
+    node = node.parentNode;
+  }
+  return null;
+}
 
-    const modalContent = document.createElement('div');
-    modalContent.style.backgroundColor = 'white';
-    modalContent.style.padding = '5px';
-    modalContent.style.borderRadius = '10px';
-    modalContent.style.maxWidth = '500px';
-    modalContent.style.width = '85%';
-    modalContent.style.maxHeight = '60vh';
-    modalContent.style.overflowY = 'auto';
+// وظيفة تحديث تموضع الصور في الملاحظات الأصلية
+function updateImagePositionsInNotes() {
+  try {
+    const editTextarea = document.getElementById('editTextarea');
+    if (!editTextarea) return;
 
-    const title = document.createElement('h7');
-    title.textContent = 'ترتيب اللوحات';
-    title.style.textAlign = 'center';
-    title.style.marginBottom = '7px';
-    title.style.margintop = '10px';
-    title.style.color = '#333';
-    modalContent.appendChild(title);
+    const images = editTextarea.querySelectorAll('img');
 
-    const boardList = document.createElement('div');
-    boardList.style.display = 'flex';
-    boardList.style.flexDirection = 'column';
-    boardList.style.gap = '6px';
-
-    // إنشاء قائمة اللوحات مع أزرار التحكم
-    boardOrder.forEach((boardKey, index) => {
-        if (boards[boardKey]) {
-            const boardItem = document.createElement('div');
-            boardItem.style.display = 'flex';
-            boardItem.style.alignItems = 'center';
-            boardItem.style.justifyContent = 'space-between';
-            boardItem.style.padding = '1px';
-            boardItem.style.margin = '1px 65px';
-            boardItem.style.backgroundColor = '#f8f9fa';
-            boardItem.style.border = '1px solid #e9ecef';
-            boardItem.style.borderRadius = '8px';
-            boardItem.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-            boardItem.dataset.boardKey = boardKey;
-            boardItem.dataset.index = index;
-
-            // اسم اللوحة
-            const boardName = document.createElement('span');
-            boardName.textContent = getBoardTitle(boardKey);
-            boardName.style.fontSize = '16px';
-            boardName.style.fontWeight = '500';
-            boardName.style.color = '#333';
-            boardName.style.flex = '1';
-            boardName.style.textAlign = 'center';
-
-            // زر الرفع لأعلى (على اليمين)
-            const upButton = document.createElement('button');
-            upButton.innerHTML = '⬆️';
-            upButton.style.padding = '8px 8px';
-            /*upButton.style.margin = '8px 8px';*/
-            upButton.style.backgroundColor = '#007bff';
-            upButton.style.color = 'white';
-            upButton.style.border = 'none';
-            upButton.style.borderRadius = '5px';
-            upButton.style.cursor = 'pointer';
-            upButton.style.fontSize = '16px';
-            upButton.style.transition = 'background-color 0.3s';
-            upButton.title = 'رفع لأعلى';
-            upButton.onclick = () => moveBoardUp(index);
-
-            // زر الخفض لأسفل (على اليسار)
-            const downButton = document.createElement('button');
-            downButton.innerHTML = '⬇️';
-            downButton.style.padding = '8px 8px';
-            /*downButton.style.margin = '8px 8px';*/
-            downButton.style.backgroundColor = '#28a745';
-            downButton.style.color = 'white';
-            downButton.style.border = 'none';
-            downButton.style.borderRadius = '5px';
-            downButton.style.cursor = 'pointer';
-            downButton.style.fontSize = '16px';
-            downButton.style.transition = 'background-color 0.3s';
-            downButton.title = 'خفض لأسفل';
-            downButton.onclick = () => moveBoardDown(index);
-
-            // تعطيل الأزرار حسب الموضع
-            if (index === 0) {
-                upButton.disabled = true;
-                upButton.style.opacity = '0.5';
-                upButton.style.cursor = 'not-allowed';
-            }
-            if (index === boardOrder.length - 1) {
-                downButton.disabled = true;
-                downButton.style.opacity = '0.5';
-                downButton.style.cursor = 'not-allowed';
-            }
-
-            // إضافة تأثيرات التمرير
-            upButton.onmouseover = () => {
-                if (!upButton.disabled) upButton.style.backgroundColor = '#0056b3';
-            };
-            upButton.onmouseout = () => {
-                if (!upButton.disabled) upButton.style.backgroundColor = '#007bff';
-            };
-
-            downButton.onmouseover = () => {
-                if (!downButton.disabled) downButton.style.backgroundColor = '#218838';
-            };
-            downButton.onmouseout = () => {
-                if (!downButton.disabled) downButton.style.backgroundColor = '#28a745';
-            };
-
-            boardItem.appendChild(downButton);
-            boardItem.appendChild(boardName);
-            boardItem.appendChild(upButton);
-            boardList.appendChild(boardItem);
-        }
+    // تحديث قائمة الملاحظات التي تحتوي على صور
+    notes[currentTab].forEach((note, index) => {
+      const noteText = (typeof note === 'object' && note.text) ? note.text : note;
+      if (noteText.includes('<img')) {
+        notesWithImages.add(`${currentTab}_${index}`);
+      }
     });
 
-    // دالة رفع اللوحة لأعلى
-    function moveBoardUp(index) {
-        if (index > 0) {
-            [boardOrder[index], boardOrder[index - 1]] = [boardOrder[index - 1], boardOrder[index]];
-            updateBoardList();
-        }
-    }
+    // حفظ تموضع الصور في البيانات
+    images.forEach((img, imgIndex) => {
+      const imgSrc = img.src;
+      const imgClass = img.className;
 
-    // دالة خفض اللوحة لأسفل
-    function moveBoardDown(index) {
-        if (index < boardOrder.length - 1) {
-            [boardOrder[index], boardOrder[index + 1]] = [boardOrder[index + 1], boardOrder[index]];
-            updateBoardList();
-        }
-    }
+      // البحث عن هذه الصورة في الملاحظات وحفظ تموضعها
+      notes[currentTab].forEach((note, noteIndex) => {
+        let noteText = (typeof note === 'object' && note.text) ? note.text : note;
+        if (noteText.includes(imgSrc)) {
+          // حفظ معلومات التموضع مع الصورة
+          const noteObj = (typeof note === 'object') ? note : { text: note };
+          noteObj.imagePositions = noteObj.imagePositions || {};
 
-    // دالة تحديث قائمة اللوحات
-    function updateBoardList() {
-        boardList.innerHTML = '';
+          // الحصول على الموضع النسبي للصورة داخل نافذة التحرير
+          const textareaRect = editTextarea.getBoundingClientRect();
+          const imgRect = img.getBoundingClientRect();
 
-        boardOrder.forEach((boardKey, index) => {
-            if (boards[boardKey]) {
-                const boardItem = document.createElement('div');
-                boardItem.style.display = 'flex';
-                boardItem.style.alignItems = 'center';
-                boardItem.style.justifyContent = 'space-between';
-                boardItem.style.padding = '1px';
-                boardItem.style.margin = '1px 65px';
-                boardItem.style.backgroundColor = '#f8f9fa';
-                boardItem.style.border = '1px solid #e9ecef';
-                boardItem.style.borderRadius = '8px';
-                boardItem.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-                boardItem.dataset.boardKey = boardKey;
-                boardItem.dataset.index = index;
-
-                // اسم اللوحة
-                const boardName = document.createElement('span');
-                boardName.textContent = getBoardTitle(boardKey);
-                boardName.style.fontSize = '16px';
-                boardName.style.fontWeight = '500';
-                boardName.style.color = '#333';
-                boardName.style.flex = '1';
-                boardName.style.textAlign = 'center';
-
-                // زر الرفع لأعلى (على اليمين)
-                const upButton = document.createElement('button');
-                upButton.innerHTML = '⬆️';
-                upButton.style.padding = '8px 8px';
-                upButton.style.backgroundColor = '#007bff';
-                upButton.style.color = 'white';
-                upButton.style.border = 'none';
-                upButton.style.borderRadius = '5px';
-                upButton.style.cursor = 'pointer';
-                upButton.style.fontSize = '16px';
-                upButton.style.transition = 'background-color 0.3s';
-                upButton.title = 'رفع لأعلى';
-                upButton.onclick = () => moveBoardUp(index);
-
-                // زر الخفض لأسفل (على اليسار)
-                const downButton = document.createElement('button');
-                downButton.innerHTML = '⬇️';
-                downButton.style.padding = '8px 8px';
-                downButton.style.backgroundColor = '#28a745';
-                downButton.style.color = 'white';
-                downButton.style.border = 'none';
-                downButton.style.borderRadius = '5px';
-                downButton.style.cursor = 'pointer';
-                downButton.style.fontSize = '16px';
-                downButton.style.transition = 'background-color 0.3s';
-                downButton.title = 'خفض لأسفل';
-                downButton.onclick = () => moveBoardDown(index);
-
-                // تعطيل الأزرار حسب الموضع
-                if (index === 0) {
-                    upButton.disabled = true;
-                    upButton.style.opacity = '0.5';
-                    upButton.style.cursor = 'not-allowed';
-                }
-                if (index === boardOrder.length - 1) {
-                    downButton.disabled = true;
-                    downButton.style.opacity = '0.5';
-                    downButton.style.cursor = 'not-allowed';
-                }
-
-                // إضافة تأثيرات التمرير
-                upButton.onmouseover = () => {
-                    if (!upButton.disabled) upButton.style.backgroundColor = '#0056b3';
-                };
-                upButton.onmouseout = () => {
-                    if (!upButton.disabled) upButton.style.backgroundColor = '#007bff';
-                };
-
-                downButton.onmouseover = () => {
-                    if (!downButton.disabled) downButton.style.backgroundColor = '#218838';
-                };
-                downButton.onmouseout = () => {
-                    if (!downButton.disabled) downButton.style.backgroundColor = '#28a745';
-                };
-
-                boardItem.appendChild(downButton);
-                boardItem.appendChild(boardName);
-                boardItem.appendChild(upButton);
-                boardList.appendChild(boardItem);
+          noteObj.imagePositions[imgSrc] = {
+            class: imgClass,
+            index: imgIndex,
+            position: {
+              top: imgRect.top - textareaRect.top,
+              left: imgRect.left - textareaRect.left,
+              width: imgRect.width,
+              height: imgRect.height
             }
-        });
-    }
-    /*حفظ , الغاء في ترتيب اللوحات*/
-    modalContent.appendChild(boardList);
+          };
 
-    const buttonContainer = document.createElement('div');
-    buttonContainer.style.display = 'flex';
-    buttonContainer.style.justifyContent = 'space-around';
-    buttonContainer.style.margin = '5px 60px 0px';
-    buttonContainer.style.gap = '5px';
-
-    const saveButton = document.createElement('button');
-    saveButton.textContent = 'حفظ';
-    saveButton.style.padding = '5px 8px';
-    saveButton.style.backgroundColor = '#28a745';
-    saveButton.style.color = 'white';
-    saveButton.style.border = 'none';
-    saveButton.style.borderRadius = '10px';
-    saveButton.style.cursor = 'pointer';
-    saveButton.style.fontSize = '16px';
-    saveButton.style.fontFamily = 'system-ui';
-    saveButton.style.fontWeight = '500';
-    saveButton.onclick = () => {
-        saveBoardOrder();
-        updateTabsDisplay();
-        document.body.removeChild(modal);
-        showNotification('تم حفظ ترتيب اللوحات!');
-    };
-
-    const cancelButton = document.createElement('button');
-    cancelButton.textContent = 'إلغاء';
-    cancelButton.style.padding = '5px 8px';
-    cancelButton.style.backgroundColor = '#dc3545';
-    cancelButton.style.color = 'white';
-    cancelButton.style.border = 'none';
-    cancelButton.style.borderRadius = '10px';
-    cancelButton.style.cursor = 'pointer';
-    cancelButton.style.fontSize = '16px';
-    cancelButton.style.fontFamily = 'system-ui';
-    cancelButton.style.fontWeight = '500';
-    cancelButton.onclick = () => {
-        document.body.removeChild(modal);
-    };
-
-    buttonContainer.appendChild(saveButton);
-    buttonContainer.appendChild(cancelButton);
-    modalContent.appendChild(buttonContainer);
-
-    modal.appendChild(modalContent);
-    document.body.appendChild(modal);
-
-    // إغلاق النافذة عند النقر خارجها
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            document.body.removeChild(modal);
-        }
-    });
-}
-
-// تحديث عرض التبويبات
-function updateTabsDisplay() {
-    const keywordsTable = document.querySelector('#keywords');
-    const existingTabs = ['board1', 'board2', 'board3', 'board4', 'board5', 'board6'];
-
-    // مسح جميع التبويبات
-    keywordsTable.rows[0].innerHTML = '';
-
-    // إضافة التبويبات حسب الترتيب
-    boardOrder.forEach(boardKey => {
-        if (boards[boardKey]) {
-            const newTab = document.createElement('td');
-            newTab.textContent = getBoardTitle(boardKey);
-            newTab.setAttribute('data-board', boardKey);
-            if (!existingTabs.includes(boardKey)) {
-                newTab.setAttribute('data-custom', 'true');
-            }
-            keywordsTable.rows[0].appendChild(newTab);
-        }
-    });
-
-    // إعادة إضافة مستمعي الأحداث للتبويبات
-    document.querySelectorAll("#keywords td").forEach(cell => {
-      cell.addEventListener("click", () => {
-        let boardName = cell.getAttribute("data-board");
-
-        if (boardName === "board7") {
-          // تبويب الأعمال - إظهار منطقة الأعمال وإخفاء حاوية التبويبات
-          worksSection.style.setProperty('display', 'block', 'important');
-          document.getElementById('board-content-section').style.display = 'none';
-          displaySavedTexts();
-        } else if (boards[boardName]) {
-          // تبويب آخر - إظهار حاوية التبويبات وإخفاء منطقة الأعمال
-          worksSection.style.setProperty('display', 'none', 'important');
-          document.getElementById('board-content-section').style.display = 'block';
-          currentBoard = boardName;
-          loadBoardContent(boardName);
+          // تحديث النص في الملاحظة
+          notes[currentTab][noteIndex] = noteObj;
         }
       });
     });
+
+    console.log('تم تحديث تموضع الصور في الملاحظات');
+  } catch (error) {
+    console.error('خطأ في تحديث تموضع الصور:', error);
+  }
 }
 
-// إضافة  المسافة
-saveBtn.addEventListener('click', saveText);
-undoBtn.addEventListener('click', undo);
-redoBtn.addEventListener('click', redo);
-const wBtn = document.getElementById("w-btn");
-wBtn.addEventListener('click', () => {
-    const start = displayBox.selectionStart;
-    const end = displayBox.selectionEnd;
-    const text = displayBox.value;
-    displayBox.value = text.slice(0, start) + ' ‎' + text.slice(end);
-    displayBox.selectionStart = displayBox.selectionEnd = start + 1;
-    displayBox.focus();
-    saveToHistoryOnInput();
+// وظيفة حفظ التعديل من نافذة الترجمة
+function saveTranslationEdit() {
+  try {
+    // الحصول على النص المترجم من نافذة الترجمة
+    const translatedText = document.getElementById("translatedText").value.trim();
+
+    if (!translatedText) {
+      showToast('❌ لا يوجد نص مترجم لحفظه');
+      return;
+    }
+
+    // التحقق من ما إذا كنا نترجم ملاحظة من القائمة أو من نافذة التحرير
+    if (translatingNoteIndex !== null) {
+      // حفظ في الملاحظة الأصلية
+      const noteItem = notes[currentTab][translatingNoteIndex];
+      if (noteItem && typeof noteItem === "object") {
+        noteItem.text = translatedText;
+        noteItem.lastModified = new Date().toISOString();
+      } else {
+        notes[currentTab][translatingNoteIndex] = {
+          text: translatedText,
+          createdAt: new Date().toISOString(),
+          lastModified: new Date().toISOString()
+        };
+      }
+
+      // حفظ في localStorage
+      safeLocalStorageSet("notes", notes);
+
+      // تحديث عرض الملاحظات
+      renderNotes();
+
+      // إعادة تعيين الفهرس
+      translatingNoteIndex = null;
+
+      showToast('✅ تم حفظ النص المترجم في الملاحظة');
+    } else {
+      // حفظ في نافذة التحرير (السلوك القديم)
+      const editTextarea = document.getElementById("editTextarea");
+      if (editTextarea) {
+        editTextarea.textContent = translatedText;
+        // تطبيق التنسيق التلقائي
+        autoFormatTextDirection(editTextarea);
+      }
+
+      showToast('✅ تم حفظ النص المترجم في نافذة التحرير');
+    }
+
+    // إغلاق نافذة الترجمة
+    closeTranslateModal();
+
+  } catch (error) {
+    console.error('خطأ في حفظ التعديل من نافذة الترجمة:', error);
+    showToast('❌ خطأ في حفظ التعديل');
+  }
+}
+
+// وظيفة تحديث اتجاه النص وتنسيق الخط حسب المحتوى
+function updateTextDirectionAndFont(textarea) {
+  const text = textarea.value || textarea.innerText || '';
+  if (!text.trim()) {
+    // إذا كان النص فارغاً، استخدم الاتجاه الافتراضي حسب اللغة المحددة
+    const isOriginal = textarea.id === 'originalText';
+    const lang = isOriginal ? currentSourceLang : currentTargetLang;
+    textarea.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+    textarea.style.textAlign = lang === 'ar' ? 'right' : 'left';
+    textarea.style.fontFamily = lang === 'ar' ? '"Segoe UI", Tahoma, sans-serif' : '"Segoe UI", Tahoma, sans-serif';
+    return;
+  }
+
+  // كشف اللغة من المحتوى
+  const arabicChars = /[\u0600-\u06FF]/g;
+  const englishChars = /[a-zA-Z]/g;
+
+  const arabicCount = (text.match(arabicChars) || []).length;
+  const englishCount = (text.match(englishChars) || []).length;
+
+  if (arabicCount > englishCount) {
+    // النص عربي بشكل أساسي
+    textarea.style.direction = 'rtl';
+    textarea.style.textAlign = 'right';
+    textarea.style.fontFamily = '"Segoe UI", Tahoma, sans-serif';
+  } else if (englishCount > arabicCount) {
+    // النص إنجليزي بشكل أساسي
+    textarea.style.direction = 'ltr';
+    textarea.style.textAlign = 'left';
+    textarea.style.fontFamily = '"Segoe UI", Tahoma, sans-serif';
+  } else {
+    // نص مختلط أو غير محدد - استخدم الاتجاه الافتراضي
+    const isOriginal = textarea.id === 'originalText';
+    const lang = isOriginal ? currentSourceLang : currentTargetLang;
+    textarea.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+    textarea.style.textAlign = lang === 'ar' ? 'right' : 'left';
+    textarea.style.fontFamily = '"Segoe UI", Tahoma, sans-serif';
+  }
+}
+
+// إضافة مستمعي الأحداث للترجمة الفورية
+function setupTranslationListeners() {
+  const originalText = document.getElementById("originalText");
+  const translatedText = document.getElementById("translatedText");
+  const sourceLangSelect = document.getElementById("sourceLangSelect");
+  const targetLangSelect = document.getElementById("targetLangSelect");
+
+  // مستمع لتغيير لغة المصدر
+  sourceLangSelect.addEventListener('change', function() {
+    currentSourceLang = this.value;
+    updateTextDirectionAndFont(originalText);
+    // إعادة الترجمة إذا كان هناك نص
+    const text = originalText.value.trim();
+    if (text) {
+      clearTimeout(translationTimeout);
+      translationTimeout = setTimeout(() => {
+        performTranslation(text, currentSourceLang, currentTargetLang)
+          .catch(error => {
+            console.log('تم إلغاء الترجمة أو حدث خطأ:', error);
+          });
+      }, 300);
+    }
+  });
+
+  // مستمع لتغيير لغة الهدف
+  targetLangSelect.addEventListener('change', function() {
+    currentTargetLang = this.value;
+    updateTextDirectionAndFont(translatedText);
+    // إعادة الترجمة إذا كان هناك نص
+    const text = originalText.value.trim();
+    if (text) {
+      clearTimeout(translationTimeout);
+      translationTimeout = setTimeout(() => {
+        performTranslation(text, currentSourceLang, currentTargetLang)
+          .catch(error => {
+            console.log('تم إلغاء الترجمة أو حدث خطأ:', error);
+          });
+      }, 300);
+    }
+  });
+
+  // ترجمة فورية عند الكتابة في النص الأصلي مع تأخير
+  originalText.addEventListener('input', function() {
+    // تحديث تنسيق النص عند الكتابة
+    updateTextDirectionAndFont(this);
+
+    clearTimeout(translationTimeout);
+    const text = this.value.trim();
+
+    if (text) {
+      translationTimeout = setTimeout(() => {
+        performTranslation(text, currentSourceLang, currentTargetLang)
+          .catch(error => {
+            console.log('تم إلغاء الترجمة أو حدث خطأ:', error);
+          });
+      }, 500); // انتظار 500ms قبل الترجمة
+    } else {
+      document.getElementById("translatedText").value = '';
+    }
+  });
+
+  // ترجمة فورية عند الكتابة في النص المترجم مع تأخير
+  translatedText.addEventListener('input', function() {
+    // تحديث تنسيق النص عند الكتابة
+    updateTextDirectionAndFont(this);
+
+    clearTimeout(translationTimeout);
+    const text = this.value.trim();
+
+    if (text) {
+      translationTimeout = setTimeout(() => {
+        // تبديل اللغات مؤقتاً للترجمة العكسية
+        const tempSource = currentSourceLang;
+        const tempTarget = currentTargetLang;
+        currentSourceLang = tempTarget;
+        currentTargetLang = tempSource;
+
+        performTranslation(text, currentSourceLang, currentTargetLang)
+          .then(() => {
+            // إعادة اللغات الأصلية
+            currentSourceLang = tempSource;
+            currentTargetLang = tempTarget;
+          })
+          .catch(error => {
+            // إعادة اللغات الأصلية في حالة الخطأ
+            currentSourceLang = tempSource;
+            currentTargetLang = tempTarget;
+            console.log('تم إلغاء الترجمة أو حدث خطأ:', error);
+          });
+      }, 500); // انتظار 500ms قبل الترجمة
+    } else {
+      document.getElementById("originalText").value = '';
+    }
+  });
+}
+
+// وظيفة جعل الصور قابلة للسحب والإفلات مع تحسينات (معطلة)
+function makeImagesDraggable() {
+  // تم تعطيل هذه الوظيفة - الصور لم تعد قابلة للسحب والإفلات
+  return;
+  const editTextarea = document.getElementById("editTextarea");
+  if (!editTextarea) return;
+
+  // إضافة مؤشر للصور لتحسين تجربة السحب والتموضع الحر
+  editTextarea.style.position = 'relative';
+
+  const images = editTextarea.querySelectorAll('img');
+
+  images.forEach(img => {
+    // إزالة المستمعين السابقين لتجنب التكرار
+    img.removeEventListener('mousedown', handleMouseDown);
+    img.removeEventListener('dragstart', handleDragStart);
+    img.removeEventListener('dragend', handleDragEnd);
+    img.removeEventListener('touchstart', handleTouchStart);
+    img.removeEventListener('touchmove', handleTouchMove);
+    img.removeEventListener('touchend', handleTouchEnd);
+
+    img.draggable = true;
+    img.style.cursor = 'move';
+
+    let isDragging = false;
+    let startX, startY, initialX, initialY;
+
+    // دعم السحب بالماوس للديسكتوب
+    function handleMouseDown(e) {
+      isDragging = false;
+      startX = e.clientX;
+      startY = e.clientY;
+      initialX = img.offsetLeft;
+      initialY = img.offsetTop;
+
+      function handleMouseMove(e) {
+        if (Math.abs(e.clientX - startX) > 5 || Math.abs(e.clientY - startY) > 5) {
+          isDragging = true;
+          img.style.position = 'fixed';
+          img.style.left = e.clientX - 25 + 'px';
+          img.style.top = e.clientY - 25 + 'px';
+          img.style.zIndex = '1000';
+          img.style.pointerEvents = 'none';
+          img.style.transform = 'rotate(2deg)';
+        }
+      }
+
+      function handleMouseUp(e) {
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+
+        if (isDragging) {
+          img.style.position = '';
+          img.style.left = '';
+          img.style.top = '';
+          img.style.zIndex = '';
+          img.style.pointerEvents = '';
+          img.style.transform = '';
+
+          // محاولة إدراج الصورة في المكان الجديد مع تحسين التموضع
+          try {
+            let range;
+            if (document.caretRangeFromPoint) {
+              range = document.caretRangeFromPoint(e.clientX, e.clientY);
+            } else if (document.caretPositionFromPoint) {
+              const pos = document.caretPositionFromPoint(e.clientX, e.clientY);
+              range = pos.range || pos;
+            }
+
+            if (range && typeof range.insertNode === 'function') {
+              // إزالة الصورة من مكانها الأصلي
+              if (img.parentNode) {
+                img.parentNode.removeChild(img);
+              }
+
+              // تحديد نوع التموضع بناءً على موضع الإفلات - مبسط
+              const textareaRect = editTextarea.getBoundingClientRect();
+              const dropX = e.clientX - textareaRect.left;
+              const textareaWidth = textareaRect.width;
+
+              // تموضع بسيط: صورة على اليمين أو النص مضمن
+              if (dropX > textareaWidth * 0.5) {
+                img.className = 'float-right';
+              } else {
+                img.className = 'inline';
+              }
+
+              range.insertNode(img);
+
+              // إضافة مسافة بعد الصورة لتحسين التدفق
+              const spaceNode = document.createTextNode(' ');
+              range.insertNode(spaceNode);
+            } else {
+              // إذا لم نتمكن من الحصول على range صالح، أعد إدراج الصورة في نهاية النص
+              if (img.parentNode) {
+                img.parentNode.removeChild(img);
+              }
+              img.className = 'inline';
+              editTextarea.appendChild(img);
+              editTextarea.appendChild(document.createTextNode(' '));
+            }
+          } catch (error) {
+            console.error('خطأ في إدراج الصورة:', error);
+            // في حالة الخطأ، أعد إدراج الصورة في نهاية النص
+            if (img.parentNode) {
+              img.parentNode.removeChild(img);
+            }
+            img.className = 'inline';
+            editTextarea.appendChild(img);
+            editTextarea.appendChild(document.createTextNode(' '));
+          }
+        }
+      }
+
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+    }
+
+    function handleDragStart(e) {
+      e.dataTransfer.setData('text/html', img.outerHTML);
+      e.dataTransfer.effectAllowed = 'move';
+      img.style.opacity = '0.7';
+    }
+
+    function handleDragEnd(e) {
+      img.style.opacity = '1';
+    }
+
+    // دعم السحب باللمس للجوال مع تحسينات
+    let touchData = null;
+
+    function handleTouchStart(e) {
+      touchData = {
+        startX: e.touches[0].clientX,
+        startY: e.touches[0].clientY,
+        element: this,
+        placeholder: null
+      };
+
+      this.style.opacity = '0.7';
+
+      // إنشاء عنصر نائب مؤقت
+      touchData.placeholder = document.createElement('span');
+      touchData.placeholder.innerHTML = ' ';
+      touchData.placeholder.style.display = 'inline-block';
+      touchData.placeholder.style.width = this.offsetWidth + 'px';
+      touchData.placeholder.style.height = this.offsetHeight + 'px';
+
+      if (this.nextSibling) {
+        this.parentNode.insertBefore(touchData.placeholder, this.nextSibling);
+      } else {
+        this.parentNode.appendChild(touchData.placeholder);
+      }
+    }
+
+    function handleTouchMove(e) {
+      if (!touchData) return;
+
+      e.preventDefault();
+      const touch = e.touches[0];
+      const deltaX = touch.clientX - touchData.startX;
+      const deltaY = touch.clientY - touchData.startY;
+
+      // ابدأ السحب بعد حركة معينة
+      if (Math.abs(deltaX) > 10 || Math.abs(deltaY) > 10) {
+        touchData.element.style.position = 'fixed';
+        touchData.element.style.left = touch.clientX - 25 + 'px';
+        touchData.element.style.top = touch.clientY - 25 + 'px';
+        touchData.element.style.zIndex = '1000';
+        touchData.element.style.pointerEvents = 'none';
+      }
+    }
+
+    function handleTouchEnd(e) {
+      if (!touchData) return;
+
+      const touch = e.changedTouches[0];
+
+      // إزالة العنصر النائب
+      if (touchData.placeholder && touchData.placeholder.parentNode) {
+        touchData.placeholder.parentNode.removeChild(touchData.placeholder);
+      }
+
+      // استعادة التنسيق الأصلي
+      touchData.element.style.opacity = '1';
+      touchData.element.style.position = '';
+      touchData.element.style.left = '';
+      touchData.element.style.top = '';
+      touchData.element.style.zIndex = '';
+      touchData.element.style.pointerEvents = '';
+
+      // محاولة إدراج الصورة في المكان الجديد
+      try {
+        let range;
+        if (document.caretRangeFromPoint) {
+          range = document.caretRangeFromPoint(touch.clientX, touch.clientY);
+        } else if (document.caretPositionFromPoint) {
+          const pos = document.caretPositionFromPoint(touch.clientX, touch.clientY);
+          range = pos.range || pos;
+        }
+
+        if (range && typeof range.insertNode === 'function') {
+          // إزالة الصورة من مكانها الأصلي
+          if (touchData.element.parentNode) {
+            touchData.element.parentNode.removeChild(touchData.element);
+          }
+
+          // تحديد نوع التموضع بناءً على موضع الإفلات للجوال - مبسط
+          const textareaRect = editTextarea.getBoundingClientRect();
+          const dropX = touch.clientX - textareaRect.left;
+          const textareaWidth = textareaRect.width;
+
+          // تموضع بسيط: صورة على اليمين أو النص مضمن
+          if (dropX > textareaWidth * 0.5) {
+            touchData.element.className = 'float-right';
+          } else {
+            touchData.element.className = 'inline';
+          }
+
+          range.insertNode(touchData.element);
+
+          // إضافة مسافة بعد الصورة لتحسين التدفق
+          const spaceNode = document.createTextNode(' ');
+          range.insertNode(spaceNode);
+        } else {
+          // إذا لم نتمكن من الحصول على range صالح، أعد إدراج الصورة في نهاية النص
+          if (touchData.element.parentNode) {
+            touchData.element.parentNode.removeChild(touchData.element);
+          }
+          touchData.element.className = 'inline';
+          editTextarea.appendChild(touchData.element);
+          editTextarea.appendChild(document.createTextNode(' '));
+        }
+      } catch (error) {
+        console.error('خطأ في إدراج الصورة:', error);
+        // في حالة الخطأ، أعد إدراج الصورة في نهاية النص
+        if (touchData.element.parentNode) {
+          touchData.element.parentNode.removeChild(touchData.element);
+        }
+        editTextarea.appendChild(touchData.element);
+      }
+
+      touchData = null;
+    }
+
+    img.addEventListener('mousedown', handleMouseDown);
+    img.addEventListener('dragstart', handleDragStart);
+    img.addEventListener('dragend', handleDragEnd);
+    img.addEventListener('touchstart', handleTouchStart, { passive: false });
+    img.addEventListener('touchmove', handleTouchMove, { passive: false });
+    img.addEventListener('touchend', handleTouchEnd);
+  });
+
+  // دعم السحب بالماوس للديسكتوب مع تحسينات
+  function handleDragOver(e) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+  }
+
+  function handleDrop(e) {
+    e.preventDefault();
+    try {
+      const draggedHTML = e.dataTransfer.getData('text/html');
+      if (draggedHTML && draggedHTML.includes('<img')) {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = draggedHTML;
+        const draggedImg = tempDiv.firstChild;
+
+        // إزالة الصورة المسحوبة من مكانها الأصلي
+        const originalImg = editTextarea.querySelector(`img[src="${draggedImg.src}"]`);
+        if (originalImg && originalImg !== draggedImg) {
+          originalImg.remove();
+        }
+
+        // تحديد نوع التموضع بناءً على موضع الإفلات للديسكتوب - مبسط
+        const textareaRect = editTextarea.getBoundingClientRect();
+        const dropX = e.clientX - textareaRect.left;
+        const textareaWidth = textareaRect.width;
+
+        // تموضع بسيط: صورة على اليمين أو النص مضمن
+        if (dropX > textareaWidth * 0.5) {
+          draggedImg.className = 'float-right';
+        } else {
+          draggedImg.className = 'inline';
+        }
+
+        // إدراج الصورة في المكان الجديد
+        let range;
+        if (document.caretRangeFromPoint) {
+          range = document.caretRangeFromPoint(e.clientX, e.clientY);
+        } else if (document.caretPositionFromPoint) {
+          const pos = document.caretPositionFromPoint(e.clientX, e.clientY);
+          range = pos.range || pos;
+        }
+
+        if (range && typeof range.insertNode === 'function') {
+          range.insertNode(draggedImg);
+          // إضافة مسافة بعد الصورة لتحسين التدفق
+          const spaceNode = document.createTextNode(' ');
+          range.insertNode(spaceNode);
+        } else {
+          editTextarea.appendChild(draggedImg);
+          editTextarea.appendChild(document.createTextNode(' '));
+        }
+      }
+    } catch (error) {
+      console.error('خطأ في إفلات الصورة:', error);
+    }
+  }
+
+  // إزالة المستمعين السابقين
+  editTextarea.removeEventListener('dragover', handleDragOver);
+  editTextarea.removeEventListener('drop', handleDrop);
+
+  editTextarea.addEventListener('dragover', handleDragOver);
+  editTextarea.addEventListener('drop', handleDrop);
+}
+
+
+// ⎋ إغلاق نافذة التحرير عند الضغط على زر ESC
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") {
+    closeEditModal();
+    closeTabOrderModal();
+  }
 });
-moreOptionsBtn.addEventListener('click', toggleMainDropdown);
 
-// تحميل اللوحات المخصصة عند بدء التطبيق
-loadCustomBoards();
-loadBoardOrder();
-updateTabsDisplay();
-// تطبيق اتجاه النصوص بعد تحميل كل شيء
-setTimeout(() => {
-    updateTextAlignForAll();
-}, 200);
-addDirectionButtonsToTop();
+// متغيرات لترتيب التبويبات
+let tabOrder = [];
 
-// إضافة مستمع للضغطات المهمة
-displayBox.addEventListener('keydown', handleKeyDown);
-
-// إضافة مستمعات للكتابة لحفظ التاريخ حرفاً بحرف
-// احذف جميع أكواد saveToHistory/saveToHistoryImmediate/saveToHistoryMobile وارتباطها input/keydown/lastSaveTime في الأعلى وأسفل.
-// فقط ابقِ التاريخ يُبنى عبر saveToHistoryOnInput الحديثة.
-
-// إضافة مستمعي الأحداث لنافذة التحرير
-saveEditBtn.addEventListener('click', saveEdit);
-cancelEditBtn.addEventListener('click', cancelEdit);
-
-// إضافة مستمع لإغلاق القائمة عند النقر خارجها
-document.addEventListener('click', (e) => {
-  // إغلاق قوائم الرموز في لوحة الأعمال
-  if (!e.target.closest('.text-actions')) {
-    document.querySelectorAll('.dropdown-menu').forEach(menu => {
-      menu.style.display = 'none';
-    });
+// دالة فتح نافذة ترتيب التبويبات
+function openTabOrderModal() {
+  // إنشاء النافذة إذا لم تكن موجودة
+  let modal = document.getElementById('tabOrderModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'tabOrderModal';
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>🔀 ترتيب لوحات</h4>
+          <button onclick="closeTabOrderModal()" class="close-btn">✖</button>
+        </div>
+        <div class="modal-body">
+          <div id="tabOrderList" class="tab-order-list"></div>
+        </div>
+        <div class="modal-footer">
+          <button onclick="saveTabOrder()" class="save-btn">💾 حفظ الترتيب</button>
+          <button onclick="closeTabOrderModal()" class="cancel-btn">إلغاء</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
   }
 
-  // إغلاق قائمة الخيارات الرئيسية
-  const mainMenu = document.getElementById('main-dropdown-menu');
-  if (mainMenu && !mainMenu.contains(e.target) && e.target !== moreOptionsBtn) {
-    mainMenu.remove();
+  // تحميل الترتيب الحالي
+  loadTabOrder();
+
+  // عرض النافذة
+  modal.classList.remove('hidden');
+}
+
+// دالة إغلاق نافذة ترتيب التبويبات
+function closeTabOrderModal() {
+  const modal = document.getElementById('tabOrderModal');
+  if (modal) {
+    modal.classList.add('hidden');
+  }
+}
+
+// دالة تحميل ترتيب التبويبات
+function loadTabOrder() {
+  // الحصول على الترتيب المحفوظ أو الافتراضي
+  const savedOrder = safeLocalStorageGet('tabOrder', null);
+  if (savedOrder && Array.isArray(savedOrder)) {
+    // استخدام الترتيب المحفوظ، مع إضافة التبويبات الجديدة
+    const savedNormal = savedOrder.filter(id => tabNames[id] && id !== 'settings' && id !== 'trash' && id !== 'home');
+    // Get all normal tabs not in saved order
+    const allNormal = Object.keys(tabNames).filter(id => id !== 'settings' && id !== 'trash' && id !== 'home');
+    const missing = allNormal.filter(id => !savedNormal.includes(id));
+    tabOrder = ['home', ...savedNormal, ...missing];
+  } else {
+    // الترتيب الافتراضي: الرئيسية أولاً ثم باقي التبويبات مرتبة أبجدياً
+    const normalTabs = Object.keys(tabNames).filter(id => id !== 'settings' && id !== 'trash' && id !== 'home');
+    normalTabs.sort();
+    tabOrder = ['home', ...normalTabs];
   }
 
-  // إغلاق قوائم الرموز في اللوحات المخصصة
-  const symbolMenu = document.getElementById('popup-menu');
-  if (symbolMenu && !symbolMenu.contains(e.target) && !e.target.closest('.menu-btn')) {
-    symbolMenu.remove();
+  renderTabOrderList();
+}
+
+// دالة عرض قائمة التبويبات القابلة للترتيب
+function renderTabOrderList() {
+  const listContainer = document.getElementById('tabOrderList');
+  if (!listContainer) return;
+
+  listContainer.innerHTML = '';
+
+  tabOrder.forEach((tabId, index) => {
+    if (tabNames[tabId] && tabId !== 'settings' && tabId !== 'trash') {
+      const tabItem = document.createElement('div');
+      tabItem.className = 'tab-order-item';
+      tabItem.draggable = true;
+      tabItem.dataset.tabId = tabId;
+      tabItem.innerHTML = `
+        <button class="move-up-btn" onclick="moveTabUp('${tabId}')">▲</button>
+        <span class="tab-name">${tabNames[tabId]}</span>
+        <button class="move-down-btn" onclick="moveTabDown('${tabId}')">▼</button>
+        <span class="tab-position">${index + 1}</span>
+      `;
+
+      listContainer.appendChild(tabItem);
+    }
+  });
+}
+
+// متغيات لإدارة السحب والإفلات
+let draggedElement = null;
+let placeholder = null;
+let touchStartY = 0;
+let touchStartX = 0;
+
+// دوال السحب والإفلات للديسكتوب
+function handleDragStart(e) {
+  draggedElement = e.target;
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/html', e.target.outerHTML);
+  e.target.classList.add('dragging');
+}
+
+function handleDragEnd(e) {
+  e.target.classList.remove('dragging');
+  if (placeholder) {
+    placeholder.remove();
+    placeholder = null;
+  }
+  draggedElement = null;
+}
+
+function handleDragOver(e) {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+
+  const target = e.target.closest('.tab-order-item');
+  if (!target || target === draggedElement) return;
+
+  const rect = target.getBoundingClientRect();
+  const midpoint = rect.top + rect.height / 2;
+
+  // إزالة placeholder القديم إذا وجد
+  if (placeholder) {
+    placeholder.remove();
   }
 
-  // إغلاق قائمة نقل الرمز الى
-  const moveSymbolSubmenuTouch = document.getElementById('move-symbol-submenu');
-  if (moveSymbolSubmenuTouch && !moveSymbolSubmenuTouch.contains(e.target) && !e.target.closest('.dropdown-item')) {
-    moveSymbolSubmenuTouch.remove();
+  // إنشاء placeholder جديد
+  placeholder = document.createElement('div');
+  placeholder.className = 'tab-order-placeholder';
+  placeholder.style.height = '4px';
+  placeholder.style.background = '#007bff';
+  placeholder.style.borderRadius = '2px';
+  placeholder.style.margin = '2px 0';
+  placeholder.style.transition = 'all 0.2s ease';
+
+  // تحديد الموقع بناءً على النقطة الوسطى
+  if (e.clientY < midpoint) {
+    // فوق العنصر المستهدف
+    target.parentNode.insertBefore(placeholder, target);
+  } else {
+    // تحت العنصر المستهدف
+    target.parentNode.insertBefore(placeholder, target.nextSibling);
+  }
+}
+
+function handleDrop(e) {
+  e.preventDefault();
+
+  if (!draggedElement || !placeholder) return;
+
+  const draggedTabId = draggedElement.dataset.tabId;
+  const placeholderIndex = Array.from(placeholder.parentNode.children).indexOf(placeholder);
+
+  // إزالة العنصر المسحوب من موقعه القديم
+  const oldIndex = tabOrder.indexOf(draggedTabId);
+  if (oldIndex > -1) {
+    tabOrder.splice(oldIndex, 1);
   }
 
-  // إغلاق قائمة النقل الى
-  const moveToSubmenuTouch = document.getElementById('move-to-submenu');
-  if (moveToSubmenuTouch && !moveToSubmenuTouch.contains(e.target) && !e.target.closest('.dropdown-item')) {
-    moveToSubmenuTouch.remove();
+  // إدراج العنصر في الموقع الجديد (قبل أو بعد العنصر المستهدف)
+  tabOrder.splice(placeholderIndex, 0, draggedTabId);
+
+  // إعادة عرض القائمة
+  renderTabOrderList();
+}
+
+// دوال السحب والإفلات للجوال (لمس)
+function handleTouchStart(e) {
+  const touch = e.touches[0];
+  touchStartX = touch.clientX;
+  touchStartY = touch.clientY;
+  draggedElement = e.target.closest('.tab-order-item');
+
+  if (draggedElement) {
+    draggedElement.classList.add('dragging');
+  }
+}
+
+function handleTouchMove(e) {
+  if (!draggedElement) return;
+
+  e.preventDefault();
+
+  const touch = e.touches[0];
+  const deltaX = Math.abs(touch.clientX - touchStartX);
+  const deltaY = Math.abs(touch.clientY - touchStartY);
+
+  // ابدأ السحب بعد حركة معينة
+  if (deltaY > 10 || deltaX > 10) {
+    draggedElement.style.position = 'fixed';
+    draggedElement.style.left = touch.clientX - 50 + 'px';
+    draggedElement.style.top = touch.clientY - 20 + 'px';
+    draggedElement.style.zIndex = '1000';
+    draggedElement.style.opacity = '0.8';
+  }
+}
+
+function handleTouchEnd(e) {
+  if (!draggedElement) return;
+
+  const touch = e.changedTouches[0];
+  draggedElement.style.position = '';
+  draggedElement.style.left = '';
+  draggedElement.style.top = '';
+  draggedElement.style.zIndex = '';
+  draggedElement.style.opacity = '';
+
+  // العثور على العنصر المستهدف
+  const targetElement = document.elementFromPoint(touch.clientX, touch.clientY);
+  const targetItem = targetElement ? targetElement.closest('.tab-order-item') : null;
+
+  if (targetItem && targetItem !== draggedElement) {
+    const draggedTabId = draggedElement.dataset.tabId;
+    const targetTabId = targetItem.dataset.tabId;
+
+    // تبديل المواقع
+    const draggedIndex = tabOrder.indexOf(draggedTabId);
+    const targetIndex = tabOrder.indexOf(targetTabId);
+
+    if (draggedIndex > -1 && targetIndex > -1) {
+      [tabOrder[draggedIndex], tabOrder[targetIndex]] = [tabOrder[targetIndex], tabOrder[draggedIndex]];
+      renderTabOrderList();
+    }
   }
 
-  // إغلاق قائمة النقل الى
-  const moveToSubmenu = document.getElementById('move-to-submenu');
-  if (moveToSubmenu && !moveToSubmenu.contains(e.target) && !e.target.closest('.dropdown-item')) {
-    moveToSubmenu.remove();
+  draggedElement.classList.remove('dragging');
+  draggedElement = null;
+}
+
+// دوال تحريك التبويبات لأعلى ولأسفل
+function moveTabUp(tabId) {
+  const currentIndex = tabOrder.indexOf(tabId);
+  if (currentIndex > 0) {
+    // تبديل مع العنصر السابق
+    [tabOrder[currentIndex], tabOrder[currentIndex - 1]] = [tabOrder[currentIndex - 1], tabOrder[currentIndex]];
+    renderTabOrderList();
   }
+}
 
-  // إغلاق قائمة نقل الرمز الى
-  const moveSymbolSubmenu = document.getElementById('move-symbol-submenu');
-  if (moveSymbolSubmenu && !moveSymbolSubmenu.contains(e.target) && !e.target.closest('.dropdown-item')) {
-    moveSymbolSubmenu.remove();
+function moveTabDown(tabId) {
+  const currentIndex = tabOrder.indexOf(tabId);
+  if (currentIndex < tabOrder.length - 1) {
+    // تبديل مع العنصر التالي
+    [tabOrder[currentIndex], tabOrder[currentIndex + 1]] = [tabOrder[currentIndex + 1], tabOrder[currentIndex]];
+    renderTabOrderList();
   }
-});
+}
 
-// إضافة دعم للأجهزة اللمسية (الجوال)
-document.addEventListener('touchstart', (e) => {
-  // إغلاق قوائم الرموز في لوحة الأعمال
-  if (!e.target.closest('.text-actions')) {
-    document.querySelectorAll('.dropdown-menu').forEach(menu => {
-      menu.style.display = 'none';
-    });
-  }
+// دالة حفظ ترتيب التبويبات
+function saveTabOrder() {
+  // حفظ الترتيب في localStorage
+  safeLocalStorageSet('tabOrder', tabOrder);
 
-  // إغلاق قائمة الخيارات الرئيسية
-  const mainMenu = document.getElementById('main-dropdown-menu');
-  if (mainMenu && !mainMenu.contains(e.target) && e.target !== moreOptionsBtn) {
-    mainMenu.remove();
-  }
+  // تحديث عرض التبويبات
+  renderTabs();
 
-  // إغلاق قوائم الرموز في اللوحات المخصصة
-  const symbolMenu = document.getElementById('popup-menu');
-  if (symbolMenu && !symbolMenu.contains(e.target) && !e.target.closest('.menu-btn')) {
-    symbolMenu.remove();
-  }
-});
+  // إغلاق النافذة
+  closeTabOrderModal();
 
-// تهيئة التاريخ بالنص الفارغ
-textHistory.push('');
-historyIndex = 0;
-
-// إخفاء منطقة الأعمال افتراضياً
-worksSection.style.display = 'none';
-// إظهار حاوية التبويبات افتراضياً
-document.getElementById('board-content-section').style.display = 'block';
+  showToast('✅ تم حفظ ترتيب االلوحات');
+}
