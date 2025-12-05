@@ -739,7 +739,7 @@ function toggleMenu(event, index) {
   menu.style.position = 'fixed';
   menu.style.minWidth = '50px';//عرض لائحة نسخ
   menu.style.background = '#fff';
-  menu.style.border = '1.5px solid #e0e0e0';
+  menu.style.border = '1.5px solid #686767';
   menu.style.boxShadow = '0 8px 24px 0 rgba(0,0,0,0.09),0 1.5px 3px 0 rgba(0,0,0,0.04)';
   menu.style.borderRadius = '10px';
   menu.style.overflow = 'hidden';
@@ -769,7 +769,7 @@ function toggleMenu(event, index) {
     div.style.cursor = 'pointer';
     div.style.padding = '6px 10px';//طول وعرض حجم لائحة نسخ
     div.style.fontSize = '15px';//حجم خط لائحة نسخ
-    div.style.borderBottom = '1px solid #f0f0f0';
+    div.style.border = '1px solid #686767';
     div.style.background = '#fff';
     div.style.textAlign = 'right';
     div.onpointerover = () => { div.style.background = '#f3f7fd'; div.style.color = '#2f80ed'; };
@@ -777,7 +777,7 @@ function toggleMenu(event, index) {
     menu.appendChild(div);
   });
   // إزالة خط أسفل آخر عنصر
-  menu.lastChild.style.borderBottom = 'none';
+ /* menu.lastChild.style.borderBottom = 'none';*/
 
   // احسب موضع القائمة: أسفل الزر أو للأعلى إذا المسافة غير كافية
   const menuHeight = 30 * items.length; // تقدير تقريبي
@@ -915,7 +915,7 @@ function moveTo(index) {
     submenu.appendChild(div);
   });
   // إزالة خط أسفل آخر عنصر
-  submenu.lastChild.style.borderBottom = 'none';
+  /*submenu.lastChild.style.borderBottom = 'none';*/
 
   // حساب موضع القائمة الفرعية: بجانب القائمة الرئيسية
   const mainMenu = document.getElementById('popup-menu');
@@ -1080,7 +1080,7 @@ async function exportTexts() {
   if ('showSaveFilePicker' in window) {
     // استخدام File System Access API للأجهزة المكتبية الحديثة
     const options = {
-      suggestedName: `Keyboard_${dateString}.json`,
+      suggestedName: `Keyboard_${dateString} (symbols).json`,
       types: [{
         description: 'ملف JSON',
         accept: { 'application/json': ['.json'] }
@@ -1097,12 +1097,12 @@ async function exportTexts() {
       if (error.name !== 'AbortError') {
         console.error('خطأ في حفظ الملف:', error);
         // الرجوع للطريقة التقليدية
-        fallbackDownload(blob, `Keyboard_${dateString}.json`);
+        fallbackDownload(blob, `Keyboard_${dateString} (symbols).json`);
       }
     }
   } else {
     // الطريقة التقليدية للأجهزة القديمة والجوال أو عند وجود مشاكل مع المجلدات العربية
-    fallbackDownload(blob, `Keyboard_${dateString}.json`);
+    fallbackDownload(blob, `Keyboard_${dateString} (symbols).json`);
   }
 }
 
@@ -1190,6 +1190,86 @@ function importTexts() {
   input.click();
 }
 
+// دالة تصدير اللوحة الحالية
+async function exportBoard() {
+  const boardName = currentBoard;
+  const boardData = boards[boardName];
+  const exportData = {
+    boardName: boardName,
+    boardData: boardData,
+    exportDate: new Date().toLocaleString('ar-SA')
+  };
+  const data = JSON.stringify(exportData, null, 2);
+
+  if (data.length === 0 || data === '{}') {
+    showNotification('لا توجد بيانات للتصدير');
+    return;
+  }
+
+  const blob = new Blob([data], { type: 'application/json' });
+  const filename = `${getBoardTitle(boardName)} (symbols).json`;
+
+  // التحقق من دعم File System Access API
+  if ('showSaveFilePicker' in window) {
+    // استخدام File System Access API للأجهزة المكتبية الحديثة
+    const options = {
+      suggestedName: filename,
+      types: [{
+        description: 'ملف JSON',
+        accept: { 'application/json': ['.json'] }
+      }]
+    };
+
+    try {
+      const handle = await window.showSaveFilePicker(options);
+      const writable = await handle.createWritable();
+      await writable.write(blob);
+      await writable.close();
+      showNotification('تم حفظ اللوحة بنجاح!');
+    } catch (error) {
+      if (error.name !== 'AbortError') {
+        console.error('خطأ في حفظ الملف:', error);
+        // الرجوع للطريقة التقليدية
+        fallbackDownload(blob, filename);
+      }
+    }
+  } else {
+    // الطريقة التقليدية للأجهزة القديمة والجوال أو عند وجود مشاكل مع المجلدات العربية
+    fallbackDownload(blob, filename);
+  }
+}
+
+// دالة استرجاع لوحة
+function importBoard() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+  input.onchange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const data = JSON.parse(e.target.result);
+          if (data.boardName && data.boardData) {
+            boards[data.boardName] = data.boardData;
+            saveCustomBoards();
+            updateTabsDisplay();
+            loadBoardContent(data.boardName);
+            showNotification('تم استرجاع اللوحة بنجاح!');
+          } else {
+            showNotification('ملف JSON غير صحيح');
+          }
+        } catch {
+          showNotification('خطأ في قراءة الملف');
+        }
+      };
+      reader.readAsText(file);
+    }
+  };
+  input.click();
+}
+
 // دالة إضافة رمز إلى اللوحة الحالية
 function addSymbol() {
    const symbol = prompt('اكتب الرمز تريد إضافته في اللوحة الحالية');
@@ -1226,7 +1306,7 @@ function toggleSymbolMenu(event, boardName, symbol) {
   menu.id = 'popup-menu';
   menu.style.position = 'fixed';
   menu.style.minWidth = '70px';
-  menu.style.background = ' #85aeba';
+  menu.style.background = ' #dedede';
   menu.style.border = '1.5px solid #1b5771';
   menu.style.boxShadow = '0 8px 24px 0 rgba(0,0,0,0.09),0 1.5px 3px 0 rgba(0,0,0,0.04)';
   menu.style.borderRadius = '10px';
@@ -1259,7 +1339,7 @@ function toggleSymbolMenu(event, boardName, symbol) {
     div.style.padding = '5px 3px';// تباعد افقي وعمودي بين تحرير نسخ
     div.style.margin = '2px';
     div.style.fontSize = '15px';//حجم خط تحرير نسخ
-    div.style.border = '1px solid #1b5771';
+    div.style.border = '1px solid #686767';
     div.style.borderRadius = '10px';
     div.style.background = ' #f3f7fd';
     div.style.textAlign = 'center';
@@ -1268,7 +1348,7 @@ function toggleSymbolMenu(event, boardName, symbol) {
     menu.appendChild(div);
   });
   // إزالة خط أسفل آخر عنصر
-  menu.lastChild.style.borderBottom = 'none';
+ /* menu.lastChild.style.borderBottom = 'none';*/
 
   // احسب موضع القائمة
   const menuHeight = 35 * items.length;
@@ -1361,8 +1441,8 @@ function moveSymbolTo(symbol, boardName) {
   submenu.id = 'move-symbol-submenu';
   submenu.style.position = 'fixed';
   submenu.style.minWidth = '100px';
-  submenu.style.background = 'rgb(133, 174, 186)';
-  submenu.style.border = '1.5px solid #e0e0e0';
+  submenu.style.background = ' #dedede';
+  submenu.style.border = '1.5px solid #686767';
   submenu.style.boxShadow = '0 8px 24px 0 rgba(0,0,0,0.09),0 1.5px 3px 0 rgba(0,0,0,0.04)';
   submenu.style.borderRadius = '10px';
   submenu.style.overflow = 'hidden';
@@ -1381,16 +1461,16 @@ function moveSymbolTo(symbol, boardName) {
     div.style.padding = '5px 3px';
     div.style.margin = '2px';
     div.style.fontSize = '15px';
-    div.style.border = '1px solid #1b5771';
+    div.style.border = '1px solid #686767';
     div.style.borderRadius = '10px';
     div.style.background = '#f3f7fd';
-    div.style.textAlign = 'right';
+    div.style.textAlign = 'center';
     div.onpointerover = () => { div.style.background = '#f3f7fd'; div.style.color = '#2f80ed'; };
     div.onpointerout  = () => { div.style.background = '#fff'; div.style.color = '#262626'; };
     submenu.appendChild(div);
   });
   // إزالة خط أسفل آخر عنصر
-  submenu.lastChild.style.borderBottom = 'none';
+  /*submenu.lastChild.style.borderBottom = 'none';*/
 
   // حساب موضع القائمة الفرعية: بجانب القائمة الرئيسية
   const mainMenu = document.getElementById('popup-menu');
@@ -1472,8 +1552,8 @@ function toggleMainDropdown(event) {
   menu.id = 'main-dropdown-menu';
   menu.style.position = 'fixed';
   menu.style.minWidth = '100px';// عرض مربع القائمة الرئيسية
-  menu.style.background = ' #85aeba';
-  menu.style.border = '1.5px solid #1b5771';
+  menu.style.background = ' #dedede';
+  menu.style.border = '1.5px solid #686767';
   menu.style.boxShadow = '0 8px 24px 0 rgba(0,0,0,0.09),0 1.5px 3px 0 rgba(0,0,0,0.04)';
   menu.style.borderRadius = '10px';
   menu.style.overflow = 'hidden';
@@ -1491,8 +1571,10 @@ function toggleMainDropdown(event) {
      { label: 'ترتيب لوحات', action: arrangeBoards },
      { label: 'إضافة رمز ', action: addSymbol },
      { label: 'حذف رمز ', action: removeSymbol },
-     { label: 'تصدير نسخة📤', action: exportTexts },
-     { label: 'استرجاع 📥', action: importTexts }
+     { label: 'تصدير نسخة', action: exportTexts },
+     { label: 'استرجاع نسخة', action: importTexts },
+     { label: 'تصدير لوحة', action: exportBoard },
+     { label: 'استرجاع لوحة', action: importBoard }
    ];
   items.forEach(item => {
     const div = document.createElement('div');
@@ -1503,7 +1585,7 @@ function toggleMainDropdown(event) {
     div.style.padding = '5px 3px';//مكان الكلمات داخل القائمة
     div.style.margin = '2px';
     div.style.fontSize = '14px';//حجم خط عناصر القائمة الرئيسية
-    div.style.border = '1px solid #1b5771';
+    div.style.border = '1px solid #686767';
     div.style.borderRadius = '10px';
     div.style.background = ' #f3f7fd';
     div.style.textAlign = 'center';
@@ -1512,7 +1594,7 @@ function toggleMainDropdown(event) {
     menu.appendChild(div);
   });
   // إزالة خط أسفل آخر عنصر
-  menu.lastChild.style.borderBottom = 'none';
+  /*menu.lastChild.style.borderBottom = 'none';*/
 
   // احسب موضع القائمة: أسفل الزر أو للأعلى إذا المسافة غير كافية
   const menuHeight = 35 * items.length;
